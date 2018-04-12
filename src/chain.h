@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CHAIN_H
-#define PIGEON_CHAIN_H
+#ifndef BULL_CHAIN_H
+#define BULL_CHAIN_H
 
 #include "arith_uint256.h"
 #include "primitives/block.h"
@@ -492,4 +492,4 @@ public:
     CBlockIndex* FindEarliestAtLeast(int64_t nTime) const;
 };
 
-#endif // PIGEON_CHAIN_H
+#endif // BULL_CHAIN_H

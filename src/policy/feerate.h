@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_POLICY_FEERATE_H
-#define PIGEON_POLICY_FEERATE_H
+#ifndef BULL_POLICY_FEERATE_H
+#define BULL_POLICY_FEERATE_H
 
 #include "amount.h"
 #include "serialize.h"
@@ -57,4 +57,4 @@ public:
     }
 };
 
-#endif //  PIGEON_POLICY_FEERATE_H
+#endif //  BULL_POLICY_FEERATE_H

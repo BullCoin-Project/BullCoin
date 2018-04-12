@@ -1,5 +1,5 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 
 #include "support/events.h"
 
-#include "test/test_pigeon.h"
+#include "test/test_bull.h"
 
 #include <vector>
 

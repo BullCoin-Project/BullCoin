@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_OPENURIDIALOG_H
-#define PIGEON_QT_OPENURIDIALOG_H
+#ifndef BULL_QT_OPENURIDIALOG_H
+#define BULL_QT_OPENURIDIALOG_H
 
 #include <QDialog>
 
@@ -32,4 +32,4 @@ private:
     Ui::OpenURIDialog *ui;
 };
 
-#endif // PIGEON_QT_OPENURIDIALOG_H
+#endif // BULL_QT_OPENURIDIALOG_H

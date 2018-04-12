@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test running pigeond with the -rpcbind and -rpcallowip options."""
+"""Test running bulld with the -rpcbind and -rpcallowip options."""
 
 import socket
 import sys
 
-from test_framework.test_framework import PigeonTestFramework, SkipTest
+from test_framework.test_framework import BullTestFramework, SkipTest
 from test_framework.util import *
 from test_framework.netutil import *
 
-class RPCBindTest(PigeonTestFramework):
+class RPCBindTest(BullTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

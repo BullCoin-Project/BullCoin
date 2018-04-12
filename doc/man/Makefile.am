@@ -1,13 +1,13 @@
 dist_man1_MANS=
 
-if BUILD_PIGEOND
-  dist_man1_MANS+=pigeond.1
+if BUILD_BULLD
+  dist_man1_MANS+=bulld.1
 endif
 
 if ENABLE_QT
-  dist_man1_MANS+=pigeon-qt.1
+  dist_man1_MANS+=bull-qt.1
 endif
 
-if BUILD_PIGEON_UTILS
-  dist_man1_MANS+=pigeon-cli.1 pigeon-tx.1
+if BUILD_BULL_UTILS
+  dist_man1_MANS+=bull-cli.1 bull-tx.1
 endif

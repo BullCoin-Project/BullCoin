@@ -7,17 +7,17 @@ define(_CLIENT_VERSION_BUILD, 1)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2018)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Pigeon Core]])
-AC_INIT([Pigeon Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/PigeonProject/Pigeoncoin/issues],[pigeon],[https://pigeoncoin.org/])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bull Core]])
+AC_INIT([Bull Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/BullProject/Bullcoin/issues],[bull],[https://bullcoin.org/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
-AC_CONFIG_HEADERS([src/config/pigeon-config.h])
+AC_CONFIG_HEADERS([src/config/bull-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-PIGEON_DAEMON_NAME=pigeond
-PIGEON_GUI_NAME=pigeon-qt
-PIGEON_CLI_NAME=pigeon-cli
-PIGEON_TX_NAME=pigeon-tx
+BULL_DAEMON_NAME=bulld
+BULL_GUI_NAME=bull-qt
+BULL_CLI_NAME=bull-cli
+BULL_TX_NAME=bull-tx
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR(ARFLAGS, [Flags for the archiver, defaults to <cr> if not set])
@@ -27,9 +27,9 @@ fi
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef PIGEON_CONFIG_H])
-AH_TOP([#define PIGEON_CONFIG_H])
-AH_BOTTOM([#endif //PIGEON_CONFIG_H])
+AH_TOP([#ifndef BULL_CONFIG_H])
+AH_TOP([#define BULL_CONFIG_H])
+AH_BOTTOM([#endif //BULL_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -83,7 +83,7 @@ AC_PATH_TOOL(RANLIB, ranlib)
 AC_PATH_TOOL(STRIP, strip)
 AC_PATH_TOOL(GCOV, gcov)
 AC_PATH_PROG(LCOV, lcov)
-dnl Python 3.x is supported from 3.4 on (see https://github.com/PigeonProject/Pigeoncoin/issues/7893)
+dnl Python 3.x is supported from 3.4 on (see https://github.com/BullProject/Bullcoin/issues/7893)
 AC_PATH_PROGS([PYTHON], [python3.6 python3.5 python3.4 python3 python2.7 python2 python])
 AC_PATH_PROG(GENHTML, genhtml)
 AC_PATH_PROG([GIT], [git])
@@ -291,21 +291,21 @@ CPPFLAGS="$CPPFLAGS -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build pigeon-cli pigeon-tx (default=yes)])],
-  [build_pigeon_utils=$withval],
-  [build_pigeon_utils=yes])
+  [build bull-cli bull-tx (default=yes)])],
+  [build_bull_utils=$withval],
+  [build_bull_utils=yes])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
-  [build_pigeon_libs=$withval],
-  [build_pigeon_libs=yes])
+  [build_bull_libs=$withval],
+  [build_bull_libs=yes])
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build pigeond daemon (default=yes)])],
-  [build_pigeond=$withval],
-  [build_pigeond=yes])
+  [build bulld daemon (default=yes)])],
+  [build_bulld=$withval],
+  [build_bulld=yes])
 
 use_pkgconfig=yes
 case $host in
@@ -500,7 +500,7 @@ AC_C_BIGENDIAN
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-# The following macro will add the necessary defines to pigeon-config.h, but
+# The following macro will add the necessary defines to bull-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -707,7 +707,7 @@ AC_SUBST(LIBMEMENV)
 
 if test x$enable_wallet != xno; then
     dnl Check for libdb_cxx only if wallet enabled
-    PIGEON_FIND_BDB48
+    BULL_FIND_BDB48
 fi
 
 dnl Check for libminiupnpc (optional)
@@ -719,12 +719,12 @@ if test x$use_upnp != xno; then
   )
 fi
 
-PIGEON_QT_INIT
+BULL_QT_INIT
 
-dnl sets $pigeon_enable_qt, $pigeon_enable_qt_test, $pigeon_enable_qt_dbus
-PIGEON_QT_CONFIGURE([$use_pkgconfig], [qt5])
+dnl sets $bull_enable_qt, $bull_enable_qt_test, $bull_enable_qt_dbus
+BULL_QT_CONFIGURE([$use_pkgconfig], [qt5])
 
-if test x$build_pigeon_utils$build_pigeond$pigeon_enable_qt$use_tests$use_bench = xnonononono; then
+if test x$build_bull_utils$build_bulld$bull_enable_qt$use_tests$use_bench = xnonononono; then
     use_boost=no
 else
     use_boost=yes
@@ -906,11 +906,11 @@ if test x$use_pkgconfig = xyes; then
     [
       PKG_CHECK_MODULES([SSL], [libssl],, [AC_MSG_ERROR(openssl  not found.)])
       PKG_CHECK_MODULES([CRYPTO], [libcrypto],,[AC_MSG_ERROR(libcrypto  not found.)])
-      PIGEON_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [PIGEON_QT_FAIL(libprotobuf not found)])])
+      BULL_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [BULL_QT_FAIL(libprotobuf not found)])])
       if test x$use_qr != xno; then
-        PIGEON_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+        BULL_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
       fi
-      if test x$build_pigeon_utils$build_pigeond$pigeon_enable_qt$use_tests != xnononono; then
+      if test x$build_bull_utils$build_bulld$bull_enable_qt$use_tests != xnononono; then
         PKG_CHECK_MODULES([EVENT], [libevent],, [AC_MSG_ERROR(libevent not found.)])
         if test x$TARGET_OS != xwindows; then
           PKG_CHECK_MODULES([EVENT_PTHREADS], [libevent_pthreads],, [AC_MSG_ERROR(libevent_pthreads not found.)])
@@ -935,7 +935,7 @@ else
   AC_CHECK_HEADER([openssl/ssl.h],, AC_MSG_ERROR(libssl headers missing),)
   AC_CHECK_LIB([ssl],         [main],SSL_LIBS=-lssl, AC_MSG_ERROR(libssl missing))
 
-  if test x$build_pigeon_utils$build_pigeond$pigeon_enable_qt$use_tests != xnononono; then
+  if test x$build_bull_utils$build_bulld$bull_enable_qt$use_tests != xnononono; then
     AC_CHECK_HEADER([event2/event.h],, AC_MSG_ERROR(libevent headers missing),)
     AC_CHECK_LIB([event],[main],EVENT_LIBS=-levent,AC_MSG_ERROR(libevent missing))
     if test x$TARGET_OS != xwindows; then
@@ -966,10 +966,10 @@ else
     esac
   fi
 
-  PIGEON_QT_CHECK(AC_CHECK_LIB([protobuf] ,[main],[PROTOBUF_LIBS=-lprotobuf], PIGEON_QT_FAIL(libprotobuf not found)))
+  BULL_QT_CHECK(AC_CHECK_LIB([protobuf] ,[main],[PROTOBUF_LIBS=-lprotobuf], BULL_QT_FAIL(libprotobuf not found)))
   if test x$use_qr != xno; then
-    PIGEON_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
-    PIGEON_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
+    BULL_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
+    BULL_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
   fi
 fi
 
@@ -984,7 +984,7 @@ dnl univalue check
 
 need_bundled_univalue=yes
 
-if test x$build_pigeon_utils$build_pigeond$pigeon_enable_qt$use_tests$use_bench = xnonononono; then
+if test x$build_bull_utils$build_bulld$bull_enable_qt$use_tests$use_bench = xnonononono; then
   need_bundled_univalue=no
 else
 
@@ -1028,23 +1028,23 @@ AM_CONDITIONAL([EMBEDDED_UNIVALUE],[test x$need_bundled_univalue = xyes])
 AC_SUBST(UNIVALUE_CFLAGS)
 AC_SUBST(UNIVALUE_LIBS)
 
-PIGEON_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
+BULL_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
-AC_MSG_CHECKING([whether to build pigeond])
-AM_CONDITIONAL([BUILD_PIGEOND], [test x$build_pigeond = xyes])
-AC_MSG_RESULT($build_pigeond)
+AC_MSG_CHECKING([whether to build bulld])
+AM_CONDITIONAL([BUILD_BULLD], [test x$build_bulld = xyes])
+AC_MSG_RESULT($build_bulld)
 
-AC_MSG_CHECKING([whether to build utils (pigeon-cli pigeon-tx)])
-AM_CONDITIONAL([BUILD_PIGEON_UTILS], [test x$build_pigeon_utils = xyes])
-AC_MSG_RESULT($build_pigeon_utils)
+AC_MSG_CHECKING([whether to build utils (bull-cli bull-tx)])
+AM_CONDITIONAL([BUILD_BULL_UTILS], [test x$build_bull_utils = xyes])
+AC_MSG_RESULT($build_bull_utils)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_PIGEON_LIBS], [test x$build_pigeon_libs = xyes])
-if test x$build_pigeon_libs = xyes; then
+AM_CONDITIONAL([BUILD_BULL_LIBS], [test x$build_bull_libs = xyes])
+if test x$build_bull_libs = xyes; then
   AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libpigeonconsensus.pc:libpigeonconsensus.pc.in])
+  AC_CONFIG_FILES([libbullconsensus.pc:libbullconsensus.pc.in])
 fi
-AC_MSG_RESULT($build_pigeon_libs)
+AC_MSG_RESULT($build_bull_libs)
 
 AC_LANG_POP
 
@@ -1106,13 +1106,13 @@ fi
 
 dnl these are only used when qt is enabled
 BUILD_TEST_QT=""
-if test x$pigeon_enable_qt != xno; then
+if test x$bull_enable_qt != xno; then
   dnl enable dbus support
   AC_MSG_CHECKING([whether to build GUI with support for D-Bus])
-  if test x$pigeon_enable_qt_dbus != xno; then
+  if test x$bull_enable_qt_dbus != xno; then
     AC_DEFINE([USE_DBUS],[1],[Define if dbus support should be compiled in])
   fi
-  AC_MSG_RESULT($pigeon_enable_qt_dbus)
+  AC_MSG_RESULT($bull_enable_qt_dbus)
 
   dnl enable qr support
   AC_MSG_CHECKING([whether to build GUI with support for QR codes])
@@ -1135,8 +1135,8 @@ if test x$pigeon_enable_qt != xno; then
     AC_MSG_WARN("xgettext is required to update qt translations")
   fi
 
-  AC_MSG_CHECKING([whether to build test_pigeon-qt])
-  if test x$use_gui_tests$pigeon_enable_qt_test = xyesyes; then
+  AC_MSG_CHECKING([whether to build test_bull-qt])
+  if test x$use_gui_tests$bull_enable_qt_test = xyesyes; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="yes"
   else
@@ -1146,7 +1146,7 @@ fi
 
 AM_CONDITIONAL([ENABLE_ZMQ], [test "x$use_zmq" = "xyes"])
 
-AC_MSG_CHECKING([whether to build test_pigeon])
+AC_MSG_CHECKING([whether to build test_bull])
 if test x$use_tests = xyes; then
   AC_MSG_RESULT([yes])
   BUILD_TEST="yes"
@@ -1162,7 +1162,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test x$build_pigeon_utils$build_pigeon_libs$build_pigeond$pigeon_enable_qt$use_bench$use_tests = xnononononono; then
+if test x$build_bull_utils$build_bull_libs$build_bulld$bull_enable_qt$use_bench$use_tests = xnononononono; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --with-gui --enable-bench or --enable-tests])
 fi
 
@@ -1171,7 +1171,7 @@ AM_CONDITIONAL([BUILD_DARWIN], [test x$BUILD_OS = xdarwin])
 AM_CONDITIONAL([TARGET_WINDOWS], [test x$TARGET_OS = xwindows])
 AM_CONDITIONAL([ENABLE_WALLET],[test x$enable_wallet = xyes])
 AM_CONDITIONAL([ENABLE_TESTS],[test x$BUILD_TEST = xyes])
-AM_CONDITIONAL([ENABLE_QT],[test x$pigeon_enable_qt = xyes])
+AM_CONDITIONAL([ENABLE_QT],[test x$bull_enable_qt = xyes])
 AM_CONDITIONAL([ENABLE_QT_TESTS],[test x$BUILD_TEST_QT = xyes])
 AM_CONDITIONAL([ENABLE_BENCH],[test x$use_bench = xyes])
 AM_CONDITIONAL([USE_QRCODE], [test x$use_qr = xyes])
@@ -1200,10 +1200,10 @@ AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS")
 AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
-AC_SUBST(PIGEON_DAEMON_NAME)
-AC_SUBST(PIGEON_GUI_NAME)
-AC_SUBST(PIGEON_CLI_NAME)
-AC_SUBST(PIGEON_TX_NAME)
+AC_SUBST(BULL_DAEMON_NAME)
+AC_SUBST(BULL_GUI_NAME)
+AC_SUBST(BULL_CLI_NAME)
+AC_SUBST(BULL_TX_NAME)
 
 AC_SUBST(RELDFLAGS)
 AC_SUBST(ERROR_CXXFLAGS)
@@ -1233,7 +1233,7 @@ AC_CONFIG_FILES([contrib/devtools/split-debug.sh],[chmod +x contrib/devtools/spl
 AC_CONFIG_FILES([doc/Doxyfile])
 AC_CONFIG_LINKS([contrib/filter-lcov.py:contrib/filter-lcov.py])
 AC_CONFIG_LINKS([test/functional/test_runner.py:test/functional/test_runner.py])
-AC_CONFIG_LINKS([test/util/pigeon-util-test.py:test/util/pigeon-util-test.py])
+AC_CONFIG_LINKS([test/util/bull-util-test.py:test/util/bull-util-test.py])
 
 dnl boost's m4 checks do something really nasty: they export these vars. As a
 dnl result, they leak into secp256k1's configure and crazy things happen.
@@ -1289,9 +1289,9 @@ esac
 echo 
 echo "Options used to compile and link:"
 echo "  with wallet   = $enable_wallet"
-echo "  with gui / qt = $pigeon_enable_qt"
-if test x$pigeon_enable_qt != xno; then
-    echo "    qt version  = $pigeon_qt_got_major_vers"
+echo "  with gui / qt = $bull_enable_qt"
+if test x$bull_enable_qt != xno; then
+    echo "    qt version  = $bull_qt_got_major_vers"
     echo "    with qr     = $use_qr"
 fi
 echo "  with zmq      = $use_zmq"

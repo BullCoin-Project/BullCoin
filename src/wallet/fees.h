@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2017 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_WALLET_FEES_H
-#define PIGEON_WALLET_FEES_H
+#ifndef BULL_WALLET_FEES_H
+#define BULL_WALLET_FEES_H
 
 #include "amount.h"
 
@@ -32,4 +32,4 @@ CAmount GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_control, c
  */
 CFeeRate GetDiscardRate(const CBlockPolicyEstimator& estimator);
 
-#endif // PIGEON_WALLET_FEES_H
+#endif // BULL_WALLET_FEES_H

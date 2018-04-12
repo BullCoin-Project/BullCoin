@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_SCRIPT_SCRIPT_H
-#define PIGEON_SCRIPT_SCRIPT_H
+#ifndef BULL_SCRIPT_SCRIPT_H
+#define BULL_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -627,7 +627,7 @@ public:
     }
 
     /**
-     * Pre-version-0.6, Pigeon always counted CHECKMULTISIGs
+     * Pre-version-0.6, Bull always counted CHECKMULTISIGs
      * as 20 sigops. With pay-to-script-hash, that changed:
      * CHECKMULTISIGs serialized in scriptSigs are
      * counted more accurately, assuming they are of the form
@@ -695,4 +695,4 @@ public:
     virtual ~CReserveScript() {}
 };
 
-#endif // PIGEON_SCRIPT_SCRIPT_H
+#endif // BULL_SCRIPT_SCRIPT_H

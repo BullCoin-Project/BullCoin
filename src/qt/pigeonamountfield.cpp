@@ -1,11 +1,11 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "pigeonamountfield.h"
+#include "bullamountfield.h"
 
-#include "pigeonunits.h"
+#include "bullunits.h"
 #include "guiconstants.h"
 #include "qvaluecombobox.h"
 
@@ -25,7 +25,7 @@ class AmountSpinBox: public QAbstractSpinBox
 public:
     explicit AmountSpinBox(QWidget *parent):
         QAbstractSpinBox(parent),
-        currentUnit(PigeonUnits::PGN),
+        currentUnit(BullUnits::BUL),
         singleStep(100000) // satoshis
     {
         setAlignment(Qt::AlignRight);
@@ -49,7 +49,7 @@ public:
         CAmount val = parse(input, &valid);
         if(valid)
         {
-            input = PigeonUnits::format(currentUnit, val, false, PigeonUnits::separatorAlways);
+            input = BullUnits::format(currentUnit, val, false, BullUnits::separatorAlways);
             lineEdit()->setText(input);
         }
     }
@@ -61,7 +61,7 @@ public:
 
     void setValue(const CAmount& value)
     {
-        lineEdit()->setText(PigeonUnits::format(currentUnit, value, false, PigeonUnits::separatorAlways));
+        lineEdit()->setText(BullUnits::format(currentUnit, value, false, BullUnits::separatorAlways));
         Q_EMIT valueChanged();
     }
 
@@ -70,7 +70,7 @@ public:
         bool valid = false;
         CAmount val = value(&valid);
         val = val + steps * singleStep;
-        val = qMin(qMax(val, CAmount(0)), PigeonUnits::maxMoney());
+        val = qMin(qMax(val, CAmount(0)), BullUnits::maxMoney());
         setValue(val);
     }
 
@@ -100,7 +100,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(PigeonUnits::format(PigeonUnits::PGN, PigeonUnits::maxMoney(), false, PigeonUnits::separatorAlways));
+            int w = fm.width(BullUnits::format(BullUnits::BUL, BullUnits::maxMoney(), false, BullUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -138,10 +138,10 @@ private:
     CAmount parse(const QString &text, bool *valid_out=0) const
     {
         CAmount val = 0;
-        bool valid = PigeonUnits::parse(currentUnit, text, &val);
+        bool valid = BullUnits::parse(currentUnit, text, &val);
         if(valid)
         {
-            if(val < 0 || val > PigeonUnits::maxMoney())
+            if(val < 0 || val > BullUnits::maxMoney())
                 valid = false;
         }
         if(valid_out)
@@ -179,7 +179,7 @@ protected:
         {
             if(val > 0)
                 rv |= StepDownEnabled;
-            if(val < PigeonUnits::maxMoney())
+            if(val < BullUnits::maxMoney())
                 rv |= StepUpEnabled;
         }
         return rv;
@@ -189,9 +189,9 @@ Q_SIGNALS:
     void valueChanged();
 };
 
-#include "pigeonamountfield.moc"
+#include "bullamountfield.moc"
 
-PigeonAmountField::PigeonAmountField(QWidget *parent) :
+BullAmountField::BullAmountField(QWidget *parent) :
     QWidget(parent),
     amount(0)
 {
@@ -203,7 +203,7 @@ PigeonAmountField::PigeonAmountField(QWidget *parent) :
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
-    unit->setModel(new PigeonUnits(this));
+    unit->setModel(new BullUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -221,19 +221,19 @@ PigeonAmountField::PigeonAmountField(QWidget *parent) :
     unitChanged(unit->currentIndex());
 }
 
-void PigeonAmountField::clear()
+void BullAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-void PigeonAmountField::setEnabled(bool fEnabled)
+void BullAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
     unit->setEnabled(fEnabled);
 }
 
-bool PigeonAmountField::validate()
+bool BullAmountField::validate()
 {
     bool valid = false;
     value(&valid);
@@ -241,7 +241,7 @@ bool PigeonAmountField::validate()
     return valid;
 }
 
-void PigeonAmountField::setValid(bool valid)
+void BullAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet("");
@@ -249,7 +249,7 @@ void PigeonAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-bool PigeonAmountField::eventFilter(QObject *object, QEvent *event)
+bool BullAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -259,45 +259,45 @@ bool PigeonAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *PigeonAmountField::setupTabChain(QWidget *prev)
+QWidget *BullAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     QWidget::setTabOrder(amount, unit);
     return unit;
 }
 
-CAmount PigeonAmountField::value(bool *valid_out) const
+CAmount BullAmountField::value(bool *valid_out) const
 {
     return amount->value(valid_out);
 }
 
-void PigeonAmountField::setValue(const CAmount& value)
+void BullAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
 }
 
-void PigeonAmountField::setReadOnly(bool fReadOnly)
+void BullAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
 }
 
-void PigeonAmountField::unitChanged(int idx)
+void BullAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, PigeonUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, BullUnits::UnitRole).toInt();
 
     amount->setDisplayUnit(newUnit);
 }
 
-void PigeonAmountField::setDisplayUnit(int newUnit)
+void BullAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }
 
-void PigeonAmountField::setSingleStep(const CAmount& step)
+void BullAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }

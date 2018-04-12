@@ -52,7 +52,7 @@
         </size>
        </property>
        <property name="pixmap">
-        <pixmap resource="../pigeon.qrc">:/icons/pigeon</pixmap>
+        <pixmap resource="../bull.qrc">:/icons/bull</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -150,7 +150,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../pigeon.qrc"/>
+  <include location="../bull.qrc"/>
  </resources>
  <connections>
   <connection>

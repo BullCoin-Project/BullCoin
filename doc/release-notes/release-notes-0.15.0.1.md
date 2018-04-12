@@ -1,28 +1,28 @@
-Pigeon Core version *0.15.0.1* is now available from:
+Bull Core version *0.15.0.1* is now available from:
 
-  <https://pigeon.org/bin/pigeon-core-0.15.0.1/>
+  <https://bull.org/bin/bull-core-0.15.0.1/>
 
 and
 
-  <https://pigeoncoin.org/bin/pigeon-core-0.15.0.1/>
+  <https://bullcoin.org/bin/bull-core-0.15.0.1/>
 
 This is a minor bug fix for 0.15.0.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/PigeonProject/Pigeoncoin/issues>
+  <https://github.com/BullProject/Bullcoin/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://pigeoncoin.org/en/list/announcements/join/>
+  <https://bullcoin.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the 
-installer (on Windows) or just copy over `/Applications/Pigeon-Qt` (on Mac)
-or `pigeond`/`pigeon-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Bull-Qt` (on Mac)
+or `bulld`/`bull-qt` (on Linux).
 
 The first time you run version 0.15.0 or higher, your chainstate database will
 be converted to a new format, which will take anywhere from a few minutes to
@@ -51,10 +51,10 @@ processing the entire blockchain.
 Compatibility
 ==============
 
-Pigeon Core is extensively tested on multiple operating systems using
+Bull Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-Pigeon Core should also work on most other Unix-like systems but is not
+Bull Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -84,4 +84,4 @@ Thanks to everyone who directly contributed to this release:
 - Jonas Schnelli
 - Wladimir J. van der Laan
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/pigeon/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bull/).

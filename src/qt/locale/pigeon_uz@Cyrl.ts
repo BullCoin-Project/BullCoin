@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Хабар ёзиш...</translation>
@@ -146,8 +146,8 @@
         <translation>Дискдаги блоклар қайта индексланмоқда...</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
-        <translation>Тангаларни Pigeon манзилига жўнатиш</translation>
+        <source>Send coins to a Bull address</source>
+        <translation>Тангаларни Bull манзилига жўнатиш</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -170,8 +170,8 @@
         <translation>Хабарни &amp;тасдиқлаш...</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -198,12 +198,12 @@
         <translation>Ҳамёнингизга тегишли махфий калитларни кодлаш</translation>
     </message>
     <message>
-        <source>Sign messages with your Pigeon addresses to prove you own them</source>
-        <translation>Pigeon манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
+        <source>Sign messages with your Bull addresses to prove you own them</source>
+        <translation>Bull манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Pigeon addresses</source>
-        <translation>Хабарларни махсус Pigeon манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
+        <source>Verify messages to ensure they were signed with specified Bull addresses</source>
+        <translation>Хабарларни махсус Bull манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -222,8 +222,8 @@
         <translation>Ички ойналар асбоблар панели</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pigeon: URIs)</source>
-        <translation>Тўловлар (QR кодлари ва pigeon ёрдамида яратишлар: URI’лар) сўраш</translation>
+        <source>Request payments (generates QR codes and bull: URIs)</source>
+        <translation>Тўловлар (QR кодлари ва bull ёрдамида яратишлар: URI’лар) сўраш</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -234,16 +234,16 @@
         <translation>Фойдаланилган қабул қилинган манзиллар ва ёрлиқлар рўйхатини кўрсатиш</translation>
     </message>
     <message>
-        <source>Open a pigeon: URI or payment request</source>
-        <translation>Pigeon’ни очиш: URI ёки тўлов сўрови</translation>
+        <source>Open a bull: URI or payment request</source>
+        <translation>Bull’ни очиш: URI ёки тўлов сўрови</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Буйруқлар сатри мосламалари</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Pigeon network</source>
-        <translation><numerusform>%n та Pigeon тармоғига фаол уланиш мавжуд</numerusform></translation>
+        <source>%n active connection(s) to Bull network</source>
+        <translation><numerusform>%n та Bull тармоғига фаол уланиш мавжуд</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -601,8 +601,8 @@
         <translation>Шакл</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Pigeon network after a connection is established, but this process has not completed yet.</source>
-        <translation>Кўрсатилган маълумот эскирган бўлиши мумкин. Ҳамёнингиз алоқа ўрнатилгандан сўнг Pigeon тармоқ билан автоматик тарзда синхронланади, аммо жараён ҳалигача тугалланмади.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bull network after a connection is established, but this process has not completed yet.</source>
+        <translation>Кўрсатилган маълумот эскирган бўлиши мумкин. Ҳамёнингиз алоқа ўрнатилгандан сўнг Bull тармоқ билан автоматик тарзда синхронланади, аммо жараён ҳалигача тугалланмади.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -682,8 +682,8 @@
         <translation>Миқдори</translation>
     </message>
     <message>
-        <source>Enter a Pigeon address (e.g. %1)</source>
-        <translation>Pigeon манзилини киритинг (масалан.  %1)</translation>
+        <source>Enter a Bull address (e.g. %1)</source>
+        <translation>Bull манзилини киритинг (масалан.  %1)</translation>
     </message>
     <message>
         <source>%1 m</source>
@@ -1190,7 +1190,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Танламалар:</translation>
@@ -1208,8 +1208,8 @@
         <translation>Демон сифатида орқа фонда ишга туширинг ва буйруқларга рози бўлинг</translation>
     </message>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Pigeon Core</translation>
+        <source>Bull Core</source>
+        <translation>Bull Core</translation>
     </message>
     <message>
         <source>Connection options:</source>

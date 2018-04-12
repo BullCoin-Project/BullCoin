@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2015-2016 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test processing of unrequested blocks.
@@ -59,16 +59,16 @@ work on its chain).
 """
 
 from test_framework.mininode import *
-from test_framework.test_framework import PigeonTestFramework
+from test_framework.test_framework import BullTestFramework
 from test_framework.util import *
 import time
 from test_framework.blocktools import create_block, create_coinbase
 
-class AcceptBlockTest(PigeonTestFramework):
+class AcceptBlockTest(BullTestFramework):
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("PIGEOND", "pigeond"),
-                          help="pigeond binary to test")
+                          default=os.getenv("BULLD", "bulld"),
+                          help="bulld binary to test")
 
     def set_test_params(self):
         self.setup_clean_chain = True

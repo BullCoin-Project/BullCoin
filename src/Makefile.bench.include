@@ -1,19 +1,19 @@
 # Copyright (c) 2015-2016 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += bench/bench_pigeon
+bin_PROGRAMS += bench/bench_bull
 BENCH_SRCDIR = bench
-BENCH_BINARY = bench/bench_pigeon$(EXEEXT)
+BENCH_BINARY = bench/bench_bull$(EXEEXT)
 
 RAW_BENCH_FILES = \
   bench/data/block413567.raw
 GENERATED_BENCH_FILES = $(RAW_BENCH_FILES:.raw=.raw.h)
 
-bench_bench_pigeon_SOURCES = \
+bench_bench_bull_SOURCES = \
   $(RAW_BENCH_FILES) \
-  bench/bench_pigeon.cpp \
+  bench/bench_bull.cpp \
   bench/bench.cpp \
   bench/bench.h \
   bench/checkblock.cpp \
@@ -30,16 +30,16 @@ bench_bench_pigeon_SOURCES = \
   bench/perf.h \
   bench/prevector_destructor.cpp
 
-nodist_bench_bench_pigeon_SOURCES = $(GENERATED_BENCH_FILES)
+nodist_bench_bench_bull_SOURCES = $(GENERATED_BENCH_FILES)
 
-bench_bench_pigeon_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
-bench_bench_pigeon_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bench_bench_pigeon_LDADD = \
-  $(LIBPIGEON_SERVER) \
-  $(LIBPIGEON_COMMON) \
-  $(LIBPIGEON_UTIL) \
-  $(LIBPIGEON_CONSENSUS) \
-  $(LIBPIGEON_CRYPTO) \
+bench_bench_bull_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
+bench_bench_bull_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bench_bench_bull_LDADD = \
+  $(LIBBULL_SERVER) \
+  $(LIBBULL_COMMON) \
+  $(LIBBULL_UTIL) \
+  $(LIBBULL_CONSENSUS) \
+  $(LIBBULL_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
@@ -47,30 +47,30 @@ bench_bench_pigeon_LDADD = \
   $(LIBUNIVALUE)
 
 if ENABLE_ZMQ
-bench_bench_pigeon_LDADD += $(LIBPIGEON_ZMQ) $(ZMQ_LIBS)
+bench_bench_bull_LDADD += $(LIBBULL_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-bench_bench_pigeon_SOURCES += bench/coin_selection.cpp
-bench_bench_pigeon_LDADD += $(LIBPIGEON_WALLET) $(LIBPIGEON_CRYPTO)
+bench_bench_bull_SOURCES += bench/coin_selection.cpp
+bench_bench_bull_LDADD += $(LIBBULL_WALLET) $(LIBBULL_CRYPTO)
 endif
 
-bench_bench_pigeon_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-bench_bench_pigeon_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bench_bench_bull_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+bench_bench_bull_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-CLEAN_PIGEON_BENCH = bench/*.gcda bench/*.gcno $(GENERATED_BENCH_FILES)
+CLEAN_BULL_BENCH = bench/*.gcda bench/*.gcno $(GENERATED_BENCH_FILES)
 
-CLEANFILES += $(CLEAN_PIGEON_BENCH)
+CLEANFILES += $(CLEAN_BULL_BENCH)
 
 bench/checkblock.cpp: bench/data/block413567.raw.h
 
-pigeon_bench: $(BENCH_BINARY)
+bull_bench: $(BENCH_BINARY)
 
 bench: $(BENCH_BINARY) FORCE
 	$(BENCH_BINARY)
 
-pigeon_bench_clean : FORCE
-	rm -f $(CLEAN_PIGEON_BENCH) $(bench_bench_pigeon_OBJECTS) $(BENCH_BINARY)
+bull_bench_clean : FORCE
+	rm -f $(CLEAN_BULL_BENCH) $(bench_bench_bull_OBJECTS) $(BENCH_BINARY)
 
 %.raw.h: %.raw
 	@$(MKDIR_P) $(@D)

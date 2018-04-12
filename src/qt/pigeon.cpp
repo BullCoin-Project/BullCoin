@@ -1,13 +1,13 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
-#include "pigeongui.h"
+#include "bullgui.h"
 
 #include "chainparams.h"
 #include "clientmodel.h"
@@ -93,7 +93,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("pigeon-core", psz).toStdString();
+    return QCoreApplication::translate("bull-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -140,11 +140,11 @@ static void initTranslations(QTranslator &qtTranslatorBase, QTranslator &qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. pigeon_de.qm (shortcut "de" needs to be defined in pigeon.qrc)
+    // Load e.g. bull_de.qm (shortcut "de" needs to be defined in bull.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. pigeon_de_DE.qm (shortcut "de_DE" needs to be defined in pigeon.qrc)
+    // Load e.g. bull_de_DE.qm (shortcut "de_DE" needs to be defined in bull.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -171,14 +171,14 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-/** Class encapsulating Pigeon Core startup and shutdown.
+/** Class encapsulating Bull Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
-class PigeonCore: public QObject
+class BullCore: public QObject
 {
     Q_OBJECT
 public:
-    explicit PigeonCore();
+    explicit BullCore();
     /** Basic initialization, before starting initialization/shutdown thread.
      * Return true on success.
      */
@@ -201,13 +201,13 @@ private:
     void handleRunawayException(const std::exception *e);
 };
 
-/** Main Pigeon application object */
-class PigeonApplication: public QApplication
+/** Main Bull application object */
+class BullApplication: public QApplication
 {
     Q_OBJECT
 public:
-    explicit PigeonApplication(int &argc, char **argv);
-    ~PigeonApplication();
+    explicit BullApplication(int &argc, char **argv);
+    ~BullApplication();
 
 #ifdef ENABLE_WALLET
     /// Create payment server
@@ -230,7 +230,7 @@ public:
     /// Get process return value
     int getReturnValue() const { return returnValue; }
 
-    /// Get window identifier of QMainWindow (PigeonGUI)
+    /// Get window identifier of QMainWindow (BullGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -249,7 +249,7 @@ private:
     QThread *coreThread;
     OptionsModel *optionsModel;
     ClientModel *clientModel;
-    PigeonGUI *window;
+    BullGUI *window;
     QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -262,20 +262,20 @@ private:
     void startThread();
 };
 
-#include "pigeon.moc"
+#include "bull.moc"
 
-PigeonCore::PigeonCore():
+BullCore::BullCore():
     QObject()
 {
 }
 
-void PigeonCore::handleRunawayException(const std::exception *e)
+void BullCore::handleRunawayException(const std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
     Q_EMIT runawayException(QString::fromStdString(GetWarnings("gui")));
 }
 
-bool PigeonCore::baseInitialize()
+bool BullCore::baseInitialize()
 {
     if (!AppInitBasicSetup())
     {
@@ -296,7 +296,7 @@ bool PigeonCore::baseInitialize()
     return true;
 }
 
-void PigeonCore::initialize()
+void BullCore::initialize()
 {
     try
     {
@@ -310,7 +310,7 @@ void PigeonCore::initialize()
     }
 }
 
-void PigeonCore::shutdown()
+void BullCore::shutdown()
 {
     try
     {
@@ -327,7 +327,7 @@ void PigeonCore::shutdown()
     }
 }
 
-PigeonApplication::PigeonApplication(int &argc, char **argv):
+BullApplication::BullApplication(int &argc, char **argv):
     QApplication(argc, argv),
     coreThread(0),
     optionsModel(0),
@@ -343,17 +343,17 @@ PigeonApplication::PigeonApplication(int &argc, char **argv):
     setQuitOnLastWindowClosed(false);
 
     // UI per-platform customization
-    // This must be done inside the PigeonApplication constructor, or after it, because
+    // This must be done inside the BullApplication constructor, or after it, because
     // PlatformStyle::instantiate requires a QApplication
     std::string platformName;
-    platformName = gArgs.GetArg("-uiplatform", PigeonGUI::DEFAULT_UIPLATFORM);
+    platformName = gArgs.GetArg("-uiplatform", BullGUI::DEFAULT_UIPLATFORM);
     platformStyle = PlatformStyle::instantiate(QString::fromStdString(platformName));
     if (!platformStyle) // Fall back to "other" if specified name not found
         platformStyle = PlatformStyle::instantiate("other");
     assert(platformStyle);
 }
 
-PigeonApplication::~PigeonApplication()
+BullApplication::~BullApplication()
 {
     if(coreThread)
     {
@@ -376,27 +376,27 @@ PigeonApplication::~PigeonApplication()
 }
 
 #ifdef ENABLE_WALLET
-void PigeonApplication::createPaymentServer()
+void BullApplication::createPaymentServer()
 {
     paymentServer = new PaymentServer(this);
 }
 #endif
 
-void PigeonApplication::createOptionsModel(bool resetSettings)
+void BullApplication::createOptionsModel(bool resetSettings)
 {
     optionsModel = new OptionsModel(nullptr, resetSettings);
 }
 
-void PigeonApplication::createWindow(const NetworkStyle *networkStyle)
+void BullApplication::createWindow(const NetworkStyle *networkStyle)
 {
-    window = new PigeonGUI(platformStyle, networkStyle, 0);
+    window = new BullGUI(platformStyle, networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
     pollShutdownTimer->start(200);
 }
 
-void PigeonApplication::createSplashScreen(const NetworkStyle *networkStyle)
+void BullApplication::createSplashScreen(const NetworkStyle *networkStyle)
 {
     SplashScreen *splash = new SplashScreen(0, networkStyle);
     // We don't hold a direct pointer to the splash screen after creation, but the splash
@@ -406,12 +406,12 @@ void PigeonApplication::createSplashScreen(const NetworkStyle *networkStyle)
     connect(this, SIGNAL(requestedShutdown()), splash, SLOT(close()));
 }
 
-void PigeonApplication::startThread()
+void BullApplication::startThread()
 {
     if(coreThread)
         return;
     coreThread = new QThread(this);
-    PigeonCore *executor = new PigeonCore();
+    BullCore *executor = new BullCore();
     executor->moveToThread(coreThread);
 
     /*  communication to and from thread */
@@ -427,20 +427,20 @@ void PigeonApplication::startThread()
     coreThread->start();
 }
 
-void PigeonApplication::parameterSetup()
+void BullApplication::parameterSetup()
 {
     InitLogging();
     InitParameterInteraction();
 }
 
-void PigeonApplication::requestInitialize()
+void BullApplication::requestInitialize()
 {
     qDebug() << __func__ << ": Requesting initialize";
     startThread();
     Q_EMIT requestedInitialize();
 }
 
-void PigeonApplication::requestShutdown()
+void BullApplication::requestShutdown()
 {
     // Show a simple window indicating shutdown status
     // Do this first as some of the steps may take some time below,
@@ -467,7 +467,7 @@ void PigeonApplication::requestShutdown()
     Q_EMIT requestedShutdown();
 }
 
-void PigeonApplication::initializeResult(bool success)
+void BullApplication::initializeResult(bool success)
 {
     qDebug() << __func__ << ": Initialization result: " << success;
     // Set exit result.
@@ -490,8 +490,8 @@ void PigeonApplication::initializeResult(bool success)
         {
             walletModel = new WalletModel(platformStyle, vpwallets[0], optionsModel);
 
-            window->addWallet(PigeonGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(PigeonGUI::DEFAULT_WALLET);
+            window->addWallet(BullGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(BullGUI::DEFAULT_WALLET);
 
             connect(walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
                              paymentServer, SLOT(fetchPaymentACK(CWallet*,const SendCoinsRecipient&,QByteArray)));
@@ -511,7 +511,7 @@ void PigeonApplication::initializeResult(bool success)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // pigeon: URIs or payment requests:
+        // bull: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
                          window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -525,18 +525,18 @@ void PigeonApplication::initializeResult(bool success)
     }
 }
 
-void PigeonApplication::shutdownResult()
+void BullApplication::shutdownResult()
 {
     quit(); // Exit main loop after shutdown finished
 }
 
-void PigeonApplication::handleRunawayException(const QString &message)
+void BullApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", PigeonGUI::tr("A fatal error occurred. Pigeon can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", BullGUI::tr("A fatal error occurred. Bull can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(EXIT_FAILURE);
 }
 
-WId PigeonApplication::getMainWinId() const
+WId BullApplication::getMainWinId() const
 {
     if (!window)
         return 0;
@@ -544,7 +544,7 @@ WId PigeonApplication::getMainWinId() const
     return window->winId();
 }
 
-#ifndef PIGEON_QT_TEST
+#ifndef BULL_QT_TEST
 int main(int argc, char *argv[])
 {
     SetupEnvironment();
@@ -562,10 +562,10 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(pigeon);
-    Q_INIT_RESOURCE(pigeon_locale);
+    Q_INIT_RESOURCE(bull);
+    Q_INIT_RESOURCE(bull_locale);
 
-    PigeonApplication app(argc, argv);
+    BullApplication app(argc, argv);
 #if QT_VERSION > 0x050100
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -619,7 +619,7 @@ int main(int argc, char *argv[])
     if (!Intro::pickDataDirectory())
         return EXIT_SUCCESS;
 
-    /// 6. Determine availability of data directory and parse pigeon.conf
+    /// 6. Determine availability of data directory and parse bull.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!fs::is_directory(GetDataDir(false)))
     {
@@ -628,7 +628,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     try {
-        gArgs.ReadConfigFile(gArgs.GetArg("-conf", PIGEON_CONF_FILENAME));
+        gArgs.ReadConfigFile(gArgs.GetArg("-conf", BULL_CONF_FILENAME));
     } catch (const std::exception& e) {
         QMessageBox::critical(0, QObject::tr(PACKAGE_NAME),
                               QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));
@@ -671,7 +671,7 @@ int main(int argc, char *argv[])
         exit(EXIT_SUCCESS);
 
     // Start up the payment server early, too, so impatient users that click on
-    // pigeon: links repeatedly have their payment requests routed to this process:
+    // bull: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 
@@ -707,7 +707,7 @@ int main(int argc, char *argv[])
         // Perform base initialization before spinning up initialization/shutdown thread
         // This is acceptable because this function only contains steps that are quick to execute,
         // so the GUI thread won't be held up.
-        if (PigeonCore::baseInitialize()) {
+        if (BullCore::baseInitialize()) {
             app.requestInitialize();
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
             WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("%1 didn't yet exit safely...").arg(QObject::tr(PACKAGE_NAME)), (HWND)app.getMainWinId());
@@ -729,4 +729,4 @@ int main(int argc, char *argv[])
     }
     return rv;
 }
-#endif // PIGEON_QT_TEST
+#endif // BULL_QT_TEST

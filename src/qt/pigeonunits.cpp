@@ -1,87 +1,87 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "pigeonunits.h"
+#include "bullunits.h"
 
 #include "primitives/transaction.h"
 
 #include <QStringList>
 
-PigeonUnits::PigeonUnits(QObject *parent):
+BullUnits::BullUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<PigeonUnits::Unit> PigeonUnits::availableUnits()
+QList<BullUnits::Unit> BullUnits::availableUnits()
 {
-    QList<PigeonUnits::Unit> unitlist;
-    unitlist.append(PGN);
-    unitlist.append(mPGN);
-    unitlist.append(uPGN);
+    QList<BullUnits::Unit> unitlist;
+    unitlist.append(BUL);
+    unitlist.append(mBUL);
+    unitlist.append(uBUL);
     return unitlist;
 }
 
-bool PigeonUnits::valid(int unit)
+bool BullUnits::valid(int unit)
 {
     switch(unit)
     {
-    case PGN:
-    case mPGN:
-    case uPGN:
+    case BUL:
+    case mBUL:
+    case uBUL:
         return true;
     default:
         return false;
     }
 }
 
-QString PigeonUnits::name(int unit)
+QString BullUnits::name(int unit)
 {
     switch(unit)
     {
-    case PGN: return QString("PGN");
-    case mPGN: return QString("mPGN");
-    case uPGN: return QString::fromUtf8("μPGN");
+    case BUL: return QString("BUL");
+    case mBUL: return QString("mBUL");
+    case uBUL: return QString::fromUtf8("μBUL");
     default: return QString("???");
     }
 }
 
-QString PigeonUnits::description(int unit)
+QString BullUnits::description(int unit)
 {
     switch(unit)
     {
-    case PGN: return QString("Pigeons");
-    case mPGN: return QString("Milli-Pigeons (1 / 1" THIN_SP_UTF8 "000)");
-    case uPGN: return QString("Micro-Pigeons (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BUL: return QString("Bulls");
+    case mBUL: return QString("Milli-Bulls (1 / 1" THIN_SP_UTF8 "000)");
+    case uBUL: return QString("Micro-Bulls (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
 
-qint64 PigeonUnits::factor(int unit)
+qint64 BullUnits::factor(int unit)
 {
     switch(unit)
     {
-    case PGN:  return 100000000;
-    case mPGN: return 100000;
-    case uPGN: return 100;
+    case BUL:  return 100000000;
+    case mBUL: return 100000;
+    case uBUL: return 100;
     default:   return 100000000;
     }
 }
 
-int PigeonUnits::decimals(int unit)
+int BullUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case PGN: return 8;
-    case mPGN: return 5;
-    case uPGN: return 2;
+    case BUL: return 8;
+    case mBUL: return 5;
+    case uBUL: return 2;
     default: return 0;
     }
 }
 
-QString PigeonUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
+QString BullUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -120,12 +120,12 @@ QString PigeonUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorS
 // Please take care to use formatHtmlWithUnit instead, when
 // appropriate.
 
-QString PigeonUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString BullUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
 }
 
-QString PigeonUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString BullUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
@@ -133,7 +133,7 @@ QString PigeonUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool pl
 }
 
 
-bool PigeonUnits::parse(int unit, const QString &value, CAmount *val_out)
+bool BullUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -172,23 +172,23 @@ bool PigeonUnits::parse(int unit, const QString &value, CAmount *val_out)
     return ok;
 }
 
-QString PigeonUnits::getAmountColumnTitle(int unit)
+QString BullUnits::getAmountColumnTitle(int unit)
 {
     QString amountTitle = QObject::tr("Amount");
-    if (PigeonUnits::valid(unit))
+    if (BullUnits::valid(unit))
     {
-        amountTitle += " ("+PigeonUnits::name(unit) + ")";
+        amountTitle += " ("+BullUnits::name(unit) + ")";
     }
     return amountTitle;
 }
 
-int PigeonUnits::rowCount(const QModelIndex &parent) const
+int BullUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant PigeonUnits::data(const QModelIndex &index, int role) const
+QVariant BullUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())
@@ -208,7 +208,7 @@ QVariant PigeonUnits::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-CAmount PigeonUnits::maxMoney()
+CAmount BullUnits::maxMoney()
 {
     return MAX_MONEY;
 }

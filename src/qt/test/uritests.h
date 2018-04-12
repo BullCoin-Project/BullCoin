@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_TEST_URITESTS_H
-#define PIGEON_QT_TEST_URITESTS_H
+#ifndef BULL_QT_TEST_URITESTS_H
+#define BULL_QT_TEST_URITESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -17,4 +17,4 @@ private Q_SLOTS:
     void uriTests();
 };
 
-#endif // PIGEON_QT_TEST_URITESTS_H
+#endif // BULL_QT_TEST_URITESTS_H

@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_SCRIPT_SCRIPT_ERROR_H
-#define PIGEON_SCRIPT_SCRIPT_ERROR_H
+#ifndef BULL_SCRIPT_SCRIPT_ERROR_H
+#define BULL_SCRIPT_SCRIPT_ERROR_H
 
 typedef enum ScriptError_t
 {
@@ -72,4 +72,4 @@ typedef enum ScriptError_t
 
 const char* ScriptErrorString(const ScriptError error);
 
-#endif // PIGEON_SCRIPT_SCRIPT_ERROR_H
+#endif // BULL_SCRIPT_SCRIPT_ERROR_H

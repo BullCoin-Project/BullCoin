@@ -1,41 +1,41 @@
-Pigeon Core
+Bull Core
 =============
 
 Setup
 ---------------------
-Pigeon Core is the original Pigeon client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Pigeon transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Bull Core is the original Bull client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bull transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Pigeon Core, visit [pigeoncore.org](https://pigeoncoin.org/en/releases/).
+To download Bull Core, visit [bullcore.org](https://bullcoin.org/en/releases/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Pigeon on your native platform.
+The following are some helpful notes on how to run Bull on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/pigeon-qt` (GUI) or
-- `bin/pigeond` (headless)
+- `bin/bull-qt` (GUI) or
+- `bin/bulld` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run pigeon-qt.exe.
+Unpack the files into a directory, and then run bull-qt.exe.
 
 ### OS X
 
-Drag Pigeon-Core to your applications folder, and then run Pigeon-Core.
+Drag Bull-Core to your applications folder, and then run Bull-Core.
 
 ### Need Help?
 
-* See the documentation at the [Pigeon Wiki](https://en.pigeon.it/wiki/Main_Page)
+* See the documentation at the [Bull Wiki](https://en.bull.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [#pigeon](http://webchat.freenode.net?channels=pigeon) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=pigeon).
-* Ask for help on the [PigeonTalk](https://pigeontalk.org/) forums, in the [Technical Support board](https://pigeontalk.org/index.php?board=4.0).
+* Ask for help on [#bull](http://webchat.freenode.net?channels=bull) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=bull).
+* Ask for help on the [BullTalk](https://bulltalk.org/) forums, in the [Technical Support board](https://bulltalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build Pigeon on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Bull on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [OS X Build Notes](build-osx.md)
@@ -46,12 +46,12 @@ The following are developer notes on how to build Pigeon on your native platform
 
 Development
 ---------------------
-The Pigeon repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Bull repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/pigeon/doxygen/)
+- [Source Code Documentation (External Link)](https://dev.visucore.com/bull/doxygen/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [Travis CI](travis-ci.md)
@@ -62,9 +62,9 @@ The Pigeon repo's [root README](/README.md) contains relevant information on the
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [PigeonTalk](https://pigeontalk.org/) forums, in the [Development & Technical Discussion board](https://pigeontalk.org/index.php?board=6.0).
-* Discuss project-specific development on #pigeon-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=pigeon-core-dev).
-* Discuss general Pigeon development on #pigeon-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=pigeon-dev).
+* Discuss on the [BullTalk](https://bulltalk.org/) forums, in the [Development & Technical Discussion board](https://bulltalk.org/index.php?board=6.0).
+* Discuss project-specific development on #bull-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bull-core-dev).
+* Discuss general Bull development on #bull-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bull-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_PREVECTOR_H
-#define PIGEON_PREVECTOR_H
+#ifndef BULL_PREVECTOR_H
+#define BULL_PREVECTOR_H
 
 #include <assert.h>
 #include <stdlib.h>
@@ -515,4 +515,4 @@ public:
 };
 #pragma pack(pop)
 
-#endif // PIGEON_PREVECTOR_H
+#endif // BULL_PREVECTOR_H

@@ -1,15 +1,15 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
-#include "pigeongui.h"
+#include "bullgui.h"
 
-#include "pigeonunits.h"
+#include "bullunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -65,7 +65,7 @@
 #include <QUrlQuery>
 #endif
 
-const std::string PigeonGUI::DEFAULT_UIPLATFORM =
+const std::string BullGUI::DEFAULT_UIPLATFORM =
 #if defined(Q_OS_MAC)
         "macosx"
 #elif defined(Q_OS_WIN)
@@ -77,9 +77,9 @@ const std::string PigeonGUI::DEFAULT_UIPLATFORM =
 
 /** Display name for default wallet name. Uses tilde to avoid name
  * collisions in the future with additional wallets */
-const QString PigeonGUI::DEFAULT_WALLET = "~Default";
+const QString BullGUI::DEFAULT_WALLET = "~Default";
 
-PigeonGUI::PigeonGUI(const PlatformStyle *_platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
+BullGUI::BullGUI(const PlatformStyle *_platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
     QMainWindow(parent),
     enableWallet(false),
     clientModel(0),
@@ -261,7 +261,7 @@ PigeonGUI::PigeonGUI(const PlatformStyle *_platformStyle, const NetworkStyle *ne
 #endif
 }
 
-PigeonGUI::~PigeonGUI()
+BullGUI::~BullGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -278,7 +278,7 @@ PigeonGUI::~PigeonGUI()
     delete rpcConsole;
 }
 
-void PigeonGUI::createActions()
+void BullGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
@@ -290,7 +290,7 @@ void PigeonGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Pigeon address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Bull address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -301,7 +301,7 @@ void PigeonGUI::createActions()
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
     receiveCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and pigeon: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and bull: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
@@ -361,9 +361,9 @@ void PigeonGUI::createActions()
     changePassphraseAction = new QAction(platformStyle->TextColorIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
     signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Pigeon addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Bull addresses to prove you own them"));
     verifyMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/verify"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Pigeon addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Bull addresses"));
 
     openRPCConsoleAction = new QAction(platformStyle->TextColorIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -376,11 +376,11 @@ void PigeonGUI::createActions()
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a pigeon: URI or payment request"));
+    openAction->setStatusTip(tr("Open a bull: URI or payment request"));
 
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible Pigeon command-line options").arg(tr(PACKAGE_NAME)));
+    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible Bull command-line options").arg(tr(PACKAGE_NAME)));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -410,7 +410,7 @@ void PigeonGUI::createActions()
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
 }
 
-void PigeonGUI::createMenuBar()
+void BullGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -455,7 +455,7 @@ void PigeonGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void PigeonGUI::createToolBars()
+void BullGUI::createToolBars()
 {
     if(walletFrame)
     {
@@ -471,7 +471,7 @@ void PigeonGUI::createToolBars()
     }
 }
 
-void PigeonGUI::setClientModel(ClientModel *_clientModel)
+void BullGUI::setClientModel(ClientModel *_clientModel)
 {
     this->clientModel = _clientModel;
     if(_clientModel)
@@ -534,7 +534,7 @@ void PigeonGUI::setClientModel(ClientModel *_clientModel)
 }
 
 #ifdef ENABLE_WALLET
-bool PigeonGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool BullGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     if(!walletFrame)
         return false;
@@ -542,14 +542,14 @@ bool PigeonGUI::addWallet(const QString& name, WalletModel *walletModel)
     return walletFrame->addWallet(name, walletModel);
 }
 
-bool PigeonGUI::setCurrentWallet(const QString& name)
+bool BullGUI::setCurrentWallet(const QString& name)
 {
     if(!walletFrame)
         return false;
     return walletFrame->setCurrentWallet(name);
 }
 
-void PigeonGUI::removeAllWallets()
+void BullGUI::removeAllWallets()
 {
     if(!walletFrame)
         return;
@@ -558,7 +558,7 @@ void PigeonGUI::removeAllWallets()
 }
 #endif // ENABLE_WALLET
 
-void PigeonGUI::setWalletActionsEnabled(bool enabled)
+void BullGUI::setWalletActionsEnabled(bool enabled)
 {
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
@@ -576,7 +576,7 @@ void PigeonGUI::setWalletActionsEnabled(bool enabled)
     openAction->setEnabled(enabled);
 }
 
-void PigeonGUI::createTrayIcon(const NetworkStyle *networkStyle)
+void BullGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -589,7 +589,7 @@ void PigeonGUI::createTrayIcon(const NetworkStyle *networkStyle)
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-void PigeonGUI::createTrayIconMenu()
+void BullGUI::createTrayIconMenu()
 {
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-Mac OSes)
@@ -626,7 +626,7 @@ void PigeonGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void PigeonGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void BullGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -636,7 +636,7 @@ void PigeonGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void PigeonGUI::optionsClicked()
+void BullGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -646,7 +646,7 @@ void PigeonGUI::optionsClicked()
     dlg.exec();
 }
 
-void PigeonGUI::aboutClicked()
+void BullGUI::aboutClicked()
 {
     if(!clientModel)
         return;
@@ -655,7 +655,7 @@ void PigeonGUI::aboutClicked()
     dlg.exec();
 }
 
-void PigeonGUI::showDebugWindow()
+void BullGUI::showDebugWindow()
 {
     rpcConsole->showNormal();
     rpcConsole->show();
@@ -663,19 +663,19 @@ void PigeonGUI::showDebugWindow()
     rpcConsole->activateWindow();
 }
 
-void PigeonGUI::showDebugWindowActivateConsole()
+void BullGUI::showDebugWindowActivateConsole()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_CONSOLE);
     showDebugWindow();
 }
 
-void PigeonGUI::showHelpMessageClicked()
+void BullGUI::showHelpMessageClicked()
 {
     helpMessageDialog->show();
 }
 
 #ifdef ENABLE_WALLET
-void PigeonGUI::openClicked()
+void BullGUI::openClicked()
 {
     OpenURIDialog dlg(this);
     if(dlg.exec())
@@ -684,42 +684,42 @@ void PigeonGUI::openClicked()
     }
 }
 
-void PigeonGUI::gotoOverviewPage()
+void BullGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void PigeonGUI::gotoHistoryPage()
+void BullGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void PigeonGUI::gotoReceiveCoinsPage()
+void BullGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void PigeonGUI::gotoSendCoinsPage(QString addr)
+void BullGUI::gotoSendCoinsPage(QString addr)
 {
     sendCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void PigeonGUI::gotoSignMessageTab(QString addr)
+void BullGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void PigeonGUI::gotoVerifyMessageTab(QString addr)
+void BullGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 #endif // ENABLE_WALLET
 
-void PigeonGUI::updateNetworkState()
+void BullGUI::updateNetworkState()
 {
     int count = clientModel->getNumConnections();
     QString icon;
@@ -735,7 +735,7 @@ void PigeonGUI::updateNetworkState()
     QString tooltip;
 
     if (clientModel->getNetworkActive()) {
-        tooltip = tr("%n active connection(s) to Pigeon network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+        tooltip = tr("%n active connection(s) to Bull network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
     } else {
         tooltip = tr("Network activity disabled.") + QString("<br>") + tr("Click to enable network activity again.");
         icon = ":/icons/network_disabled";
@@ -748,17 +748,17 @@ void PigeonGUI::updateNetworkState()
     connectionsControl->setPixmap(platformStyle->SingleColorIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
 }
 
-void PigeonGUI::setNumConnections(int count)
+void BullGUI::setNumConnections(int count)
 {
     updateNetworkState();
 }
 
-void PigeonGUI::setNetworkActive(bool networkActive)
+void BullGUI::setNetworkActive(bool networkActive)
 {
     updateNetworkState();
 }
 
-void PigeonGUI::updateHeadersSyncProgressLabel()
+void BullGUI::updateHeadersSyncProgressLabel()
 {
     int64_t headersTipTime = clientModel->getHeaderTipTime();
     int headersTipHeight = clientModel->getHeaderTipHeight();
@@ -767,7 +767,7 @@ void PigeonGUI::updateHeadersSyncProgressLabel()
         progressBarLabel->setText(tr("Syncing Headers (%1%)...").arg(QString::number(100.0 / (headersTipHeight+estHeadersLeft)*headersTipHeight, 'f', 1)));
 }
 
-void PigeonGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
+void BullGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
 {
     if (modalOverlay)
     {
@@ -877,9 +877,9 @@ void PigeonGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVeri
     progressBar->setToolTip(tooltip);
 }
 
-void PigeonGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void BullGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Pigeon"); // default title
+    QString strTitle = tr("Bull"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -905,7 +905,7 @@ void PigeonGUI::message(const QString &title, const QString &message, unsigned i
             break;
         }
     }
-    // Append title to "Pigeon - "
+    // Append title to "Bull - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 
@@ -936,7 +936,7 @@ void PigeonGUI::message(const QString &title, const QString &message, unsigned i
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void PigeonGUI::changeEvent(QEvent *e)
+void BullGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -955,7 +955,7 @@ void PigeonGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void PigeonGUI::closeEvent(QCloseEvent *event)
+void BullGUI::closeEvent(QCloseEvent *event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if(clientModel && clientModel->getOptionsModel())
@@ -978,7 +978,7 @@ void PigeonGUI::closeEvent(QCloseEvent *event)
 #endif
 }
 
-void PigeonGUI::showEvent(QShowEvent *event)
+void BullGUI::showEvent(QShowEvent *event)
 {
     // enable the debug window when the main window shows up
     openRPCConsoleAction->setEnabled(true);
@@ -987,11 +987,11 @@ void PigeonGUI::showEvent(QShowEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-void PigeonGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
+void BullGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
 {
     // On new transaction, make an info balloon
     QString msg = tr("Date: %1\n").arg(date) +
-                  tr("Amount: %1\n").arg(PigeonUnits::formatWithUnit(unit, amount, true)) +
+                  tr("Amount: %1\n").arg(BullUnits::formatWithUnit(unit, amount, true)) +
                   tr("Type: %1\n").arg(type);
     if (!label.isEmpty())
         msg += tr("Label: %1\n").arg(label);
@@ -1002,14 +1002,14 @@ void PigeonGUI::incomingTransaction(const QString& date, int unit, const CAmount
 }
 #endif // ENABLE_WALLET
 
-void PigeonGUI::dragEnterEvent(QDragEnterEvent *event)
+void BullGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void PigeonGUI::dropEvent(QDropEvent *event)
+void BullGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -1021,7 +1021,7 @@ void PigeonGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-bool PigeonGUI::eventFilter(QObject *object, QEvent *event)
+bool BullGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -1034,7 +1034,7 @@ bool PigeonGUI::eventFilter(QObject *object, QEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-bool PigeonGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
+bool BullGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     // URI has to be valid
     if (walletFrame && walletFrame->handlePaymentRequest(recipient))
@@ -1046,7 +1046,7 @@ bool PigeonGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
     return false;
 }
 
-void PigeonGUI::setHDStatus(int hdEnabled)
+void BullGUI::setHDStatus(int hdEnabled)
 {
     labelWalletHDStatusIcon->setPixmap(platformStyle->SingleColorIcon(hdEnabled ? ":/icons/hd_enabled" : ":/icons/hd_disabled").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
     labelWalletHDStatusIcon->setToolTip(hdEnabled ? tr("HD key generation is <b>enabled</b>") : tr("HD key generation is <b>disabled</b>"));
@@ -1055,7 +1055,7 @@ void PigeonGUI::setHDStatus(int hdEnabled)
     labelWalletHDStatusIcon->setEnabled(hdEnabled);
 }
 
-void PigeonGUI::setEncryptionStatus(int status)
+void BullGUI::setEncryptionStatus(int status)
 {
     switch(status)
     {
@@ -1085,7 +1085,7 @@ void PigeonGUI::setEncryptionStatus(int status)
 }
 #endif // ENABLE_WALLET
 
-void PigeonGUI::showNormalIfMinimized(bool fToggleHidden)
+void BullGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     if(!clientModel)
         return;
@@ -1110,12 +1110,12 @@ void PigeonGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void PigeonGUI::toggleHidden()
+void BullGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void PigeonGUI::detectShutdown()
+void BullGUI::detectShutdown()
 {
     if (ShutdownRequested())
     {
@@ -1125,7 +1125,7 @@ void PigeonGUI::detectShutdown()
     }
 }
 
-void PigeonGUI::showProgress(const QString &title, int nProgress)
+void BullGUI::showProgress(const QString &title, int nProgress)
 {
     if (nProgress == 0)
     {
@@ -1148,7 +1148,7 @@ void PigeonGUI::showProgress(const QString &title, int nProgress)
         progressDialog->setValue(nProgress);
 }
 
-void PigeonGUI::setTrayIconVisible(bool fHideTrayIcon)
+void BullGUI::setTrayIconVisible(bool fHideTrayIcon)
 {
     if (trayIcon)
     {
@@ -1156,13 +1156,13 @@ void PigeonGUI::setTrayIconVisible(bool fHideTrayIcon)
     }
 }
 
-void PigeonGUI::showModalOverlay()
+void BullGUI::showModalOverlay()
 {
     if (modalOverlay && (progressBar->isVisible() || modalOverlay->isLayerVisible()))
         modalOverlay->toggleVisibility();
 }
 
-static bool ThreadSafeMessageBox(PigeonGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(BullGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -1179,21 +1179,21 @@ static bool ThreadSafeMessageBox(PigeonGUI *gui, const std::string& message, con
     return ret;
 }
 
-void PigeonGUI::subscribeToCoreSignals()
+void BullGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
     uiInterface.ThreadSafeQuestion.connect(boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void PigeonGUI::unsubscribeFromCoreSignals()
+void BullGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
     uiInterface.ThreadSafeQuestion.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void PigeonGUI::toggleNetworkActive()
+void BullGUI::toggleNetworkActive()
 {
     if (clientModel) {
         clientModel->setNetworkActive(!clientModel->getNetworkActive());
@@ -1206,12 +1206,12 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
 {
     createContextMenu();
     setToolTip(tr("Unit to show amounts in. Click to select another unit."));
-    QList<PigeonUnits::Unit> units = PigeonUnits::availableUnits();
+    QList<BullUnits::Unit> units = BullUnits::availableUnits();
     int max_width = 0;
     const QFontMetrics fm(font());
-    for (const PigeonUnits::Unit unit : units)
+    for (const BullUnits::Unit unit : units)
     {
-        max_width = qMax(max_width, fm.width(PigeonUnits::name(unit)));
+        max_width = qMax(max_width, fm.width(BullUnits::name(unit)));
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
@@ -1228,9 +1228,9 @@ void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event)
 void UnitDisplayStatusBarControl::createContextMenu()
 {
     menu = new QMenu(this);
-    for (PigeonUnits::Unit u : PigeonUnits::availableUnits())
+    for (BullUnits::Unit u : BullUnits::availableUnits())
     {
-        QAction *menuAction = new QAction(QString(PigeonUnits::name(u)), this);
+        QAction *menuAction = new QAction(QString(BullUnits::name(u)), this);
         menuAction->setData(QVariant(u));
         menu->addAction(menuAction);
     }
@@ -1255,7 +1255,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *_optionsModel)
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
-    setText(PigeonUnits::name(newUnits));
+    setText(BullUnits::name(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */

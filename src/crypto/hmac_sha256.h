@@ -1,10 +1,10 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CRYPTO_HMAC_SHA256_H
-#define PIGEON_CRYPTO_HMAC_SHA256_H
+#ifndef BULL_CRYPTO_HMAC_SHA256_H
+#define BULL_CRYPTO_HMAC_SHA256_H
 
 #include "crypto/sha256.h"
 
@@ -30,4 +30,4 @@ public:
     void Finalize(unsigned char hash[OUTPUT_SIZE]);
 };
 
-#endif // PIGEON_CRYPTO_HMAC_SHA256_H
+#endif // BULL_CRYPTO_HMAC_SHA256_H

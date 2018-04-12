@@ -1,14 +1,14 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /**
  * Utilities for converting data from/to strings.
  */
-#ifndef PIGEON_UTILSTRENCODINGS_H
-#define PIGEON_UTILSTRENCODINGS_H
+#ifndef BULL_UTILSTRENCODINGS_H
+#define BULL_UTILSTRENCODINGS_H
 
 #include <stdint.h>
 #include <string>
@@ -174,4 +174,4 @@ bool ConvertBits(O& out, I it, I end) {
     return true;
 }
 
-#endif // PIGEON_UTILSTRENCODINGS_H
+#endif // BULL_UTILSTRENCODINGS_H

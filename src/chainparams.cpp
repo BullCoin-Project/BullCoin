@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Pigeon Core developers
+// Copyright (c) 2009-2016 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -225,11 +225,11 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xf0cc5f92b11a6655a4939fc239e8bf960cd0453b87b5a0820ab36904279341a5"));
 
         vSeeds.emplace_back("seed.x16s.org", false);
-        vSeeds.emplace_back("seed.pigeoncoin.org", false);
-        vSeeds.emplace_back("seed.pigeoncoin.cc", false);
-        vSeeds.emplace_back("pgndns1.pigeoncoin.cc", false);
+        vSeeds.emplace_back("seed.bullcoin.org", false);
+        vSeeds.emplace_back("seed.bullcoin.cc", false);
+        vSeeds.emplace_back("pgndns1.bullcoin.cc", false);
         vSeeds.emplace_back("seed2.x16s.org", false);
-        vSeeds.emplace_back("seed2.pigeoncoin.org", false);
+        vSeeds.emplace_back("seed2.bullcoin.org", false);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55); // changed 60 to 55
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122); // changed 122 to 123
@@ -253,7 +253,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Pigeon chain
+            // Update as we know more about the contents of the Bull chain
             1509572692, // * UNIX timestamp of last known number of transactions
             1,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -313,7 +313,7 @@ public:
         vSeeds.clear();
 
         vSeeds.emplace_back("test-seed.x16s.org", false);
-        vSeeds.emplace_back("test-seed.pigeoncoin.org", false);
+        vSeeds.emplace_back("test-seed.bullcoin.org", false);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,112); // from 111
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,193); // from 196
@@ -336,7 +336,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Pigeon chain
+            // Update as we know more about the contents of the Bull chain
             1513705170, // * UNIX timestamp of last known number of transactions
             1,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)

@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
 #include "chainparams.h"
@@ -31,8 +31,8 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called Pigeon (https://www.pigeon.org/),
- * which enables instant payments to anyone, anywhere in the world. Pigeon uses peer-to-peer technology to operate
+ * This is the developer documentation of the reference client for an experimental new digital currency called Bull (https://www.bull.org/),
+ * which enables instant payments to anyone, anywhere in the world. Bull uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
  * The software is a community-driven open source project, released under the MIT license.
@@ -71,7 +71,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/pigeon.conf are parsed in qt/pigeon.cpp's main()
+    // If Qt is used, parameters/bull.conf are parsed in qt/bull.cpp's main()
     gArgs.ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
@@ -86,9 +86,9 @@ bool AppInit(int argc, char* argv[])
         else
         {
             strUsage += "\n" + _("Usage:") + "\n" +
-                  "  pigeond [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
+                  "  bulld [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_PIGEOND);
+            strUsage += "\n" + HelpMessage(HMM_BULLD);
         }
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -104,7 +104,7 @@ bool AppInit(int argc, char* argv[])
         }
         try
         {
-            gArgs.ReadConfigFile(gArgs.GetArg("-conf", PIGEON_CONF_FILENAME));
+            gArgs.ReadConfigFile(gArgs.GetArg("-conf", BULL_CONF_FILENAME));
         } catch (const std::exception& e) {
             fprintf(stderr,"Error reading configuration file: %s\n", e.what());
             return false;
@@ -120,12 +120,12 @@ bool AppInit(int argc, char* argv[])
         // Error out when loose non-argument tokens are encountered on command line
         for (int i = 1; i < argc; i++) {
             if (!IsSwitchChar(argv[i][0])) {
-                fprintf(stderr, "Error: Command line contains unexpected token '%s', see pigeond -h for a list of options.\n", argv[i]);
+                fprintf(stderr, "Error: Command line contains unexpected token '%s', see bulld -h for a list of options.\n", argv[i]);
                 exit(EXIT_FAILURE);
             }
         }
 
-        // -server defaults to true for pigeond but not for the GUI so do this here
+        // -server defaults to true for bulld but not for the GUI so do this here
         gArgs.SoftSetBoolArg("-server", true);
         // Set this early so that parameter interactions go to console
         InitLogging();
@@ -148,7 +148,7 @@ bool AppInit(int argc, char* argv[])
         if (gArgs.GetBoolArg("-daemon", false))
         {
 #if HAVE_DECL_DAEMON
-            fprintf(stdout, "Pigeon server starting\n");
+            fprintf(stdout, "Bull server starting\n");
 
             // Daemonize
             if (daemon(1, 0)) { // don't chdir (1), do close FDs (0)
@@ -190,7 +190,7 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    // Connect pigeond signal handlers
+    // Connect bulld signal handlers
     noui_connect();
 
     return (AppInit(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE);

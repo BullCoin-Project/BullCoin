@@ -1,16 +1,16 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_WALLETVIEW_H
-#define PIGEON_QT_WALLETVIEW_H
+#ifndef BULL_QT_WALLETVIEW_H
+#define BULL_QT_WALLETVIEW_H
 
 #include "amount.h"
 
 #include <QStackedWidget>
 
-class PigeonGUI;
+class BullGUI;
 class ClientModel;
 class OverviewPage;
 class PlatformStyle;
@@ -40,13 +40,13 @@ public:
     explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);
     ~WalletView();
 
-    void setPigeonGUI(PigeonGUI *gui);
+    void setBullGUI(BullGUI *gui);
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a pigeon wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a bull wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
@@ -129,4 +129,4 @@ Q_SIGNALS:
     void outOfSyncWarningClicked();
 };
 
-#endif // PIGEON_QT_WALLETVIEW_H
+#endif // BULL_QT_WALLETVIEW_H

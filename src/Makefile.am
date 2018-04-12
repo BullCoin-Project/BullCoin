@@ -1,5 +1,5 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,28 +19,28 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-PIGEON_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+BULL_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-PIGEON_INCLUDES += -I$(srcdir)/secp256k1/include
-PIGEON_INCLUDES += $(UNIVALUE_CFLAGS)
+BULL_INCLUDES += -I$(srcdir)/secp256k1/include
+BULL_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBPIGEON_SERVER=libpigeon_server.a
-LIBPIGEON_COMMON=libpigeon_common.a
-LIBPIGEON_CONSENSUS=libpigeon_consensus.a
-LIBPIGEON_CLI=libpigeon_cli.a
-LIBPIGEON_UTIL=libpigeon_util.a
-LIBPIGEON_CRYPTO=crypto/libpigeon_crypto.a
-LIBPIGEONQT=qt/libpigeonqt.a
+LIBBULL_SERVER=libbull_server.a
+LIBBULL_COMMON=libbull_common.a
+LIBBULL_CONSENSUS=libbull_consensus.a
+LIBBULL_CLI=libbull_cli.a
+LIBBULL_UTIL=libbull_util.a
+LIBBULL_CRYPTO=crypto/libbull_crypto.a
+LIBBULLQT=qt/libbullqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBPIGEON_ZMQ=libpigeon_zmq.a
+LIBBULL_ZMQ=libbull_zmq.a
 endif
-if BUILD_PIGEON_LIBS
-LIBPIGEONCONSENSUS=libpigeonconsensus.la
+if BUILD_BULL_LIBS
+LIBBULLCONSENSUS=libbullconsensus.la
 endif
 if ENABLE_WALLET
-LIBPIGEON_WALLET=libpigeon_wallet.a
+LIBBULL_WALLET=libbull_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -49,33 +49,33 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBPIGEON_CRYPTO) \
-  $(LIBPIGEON_UTIL) \
-  $(LIBPIGEON_COMMON) \
-  $(LIBPIGEON_CONSENSUS) \
-  $(LIBPIGEON_SERVER) \
-  $(LIBPIGEON_CLI) \
-  $(LIBPIGEON_WALLET) \
-  $(LIBPIGEON_ZMQ)
+  $(LIBBULL_CRYPTO) \
+  $(LIBBULL_UTIL) \
+  $(LIBBULL_COMMON) \
+  $(LIBBULL_CONSENSUS) \
+  $(LIBBULL_SERVER) \
+  $(LIBBULL_CLI) \
+  $(LIBBULL_WALLET) \
+  $(LIBBULL_ZMQ)
 
-lib_LTLIBRARIES = $(LIBPIGEONCONSENSUS)
+lib_LTLIBRARIES = $(LIBBULLCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_PIGEOND
-  bin_PROGRAMS += pigeond
+if BUILD_BULLD
+  bin_PROGRAMS += bulld
 endif
 
-if BUILD_PIGEON_UTILS
-  bin_PROGRAMS += pigeon-cli pigeon-tx
+if BUILD_BULL_UTILS
+  bin_PROGRAMS += bull-cli bull-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# pigeon core #
-PIGEON_CORE_H = \
+# bull core #
+BULL_CORE_H = \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -180,12 +180,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libpigeon_util_a-clientversion.$(OBJEXT): obj/build.h
+libbull_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between pigeond and pigeon-qt
-libpigeon_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libpigeon_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_server_a_SOURCES = \
+# server: shared between bulld and bull-qt
+libbull_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libbull_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_server_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   bloom.cpp \
@@ -224,23 +224,23 @@ libpigeon_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(PIGEON_CORE_H)
+  $(BULL_CORE_H)
 
 if ENABLE_ZMQ
-libpigeon_zmq_a_CPPFLAGS = $(PIGEON_INCLUDES) $(ZMQ_CFLAGS)
-libpigeon_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_zmq_a_SOURCES = \
+libbull_zmq_a_CPPFLAGS = $(BULL_INCLUDES) $(ZMQ_CFLAGS)
+libbull_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between pigeond and pigeon-qt, but only linked
+# wallet: shared between bulld and bull-qt, but only linked
 # when wallet enabled
-libpigeon_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-libpigeon_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_wallet_a_SOURCES = \
+libbull_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+libbull_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_wallet_a_SOURCES = \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/feebumper.cpp \
@@ -250,12 +250,12 @@ libpigeon_wallet_a_SOURCES = \
   wallet/rpcwallet.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
-  $(PIGEON_CORE_H)
+  $(BULL_CORE_H)
 
 # crypto primitives library
-crypto_libpigeon_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libpigeon_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libpigeon_crypto_a_SOURCES = \
+crypto_libbull_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbull_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbull_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -312,13 +312,13 @@ crypto_libpigeon_crypto_a_SOURCES = \
   crypto/sha512.h
 
 if USE_ASM
-crypto_libpigeon_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+crypto_libbull_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libpigeon_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-libpigeon_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_consensus_a_SOURCES = \
+libbull_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+libbull_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -335,7 +335,7 @@ libpigeon_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/pigeonconsensus.cpp \
+  script/bullconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -350,10 +350,10 @@ libpigeon_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between pigeond, and pigeon-qt and non-server tools
-libpigeon_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-libpigeon_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_common_a_SOURCES = \
+# common: shared between bulld, and bull-qt and non-server tools
+libbull_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+libbull_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
   chainparams.cpp \
@@ -371,14 +371,14 @@ libpigeon_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(PIGEON_CORE_H)
+  $(BULL_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libpigeon_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-libpigeon_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_util_a_SOURCES = \
+libbull_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+libbull_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -395,101 +395,101 @@ libpigeon_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(PIGEON_CORE_H)
+  $(BULL_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libpigeon_util_a_SOURCES += compat/glibc_compat.cpp
+libbull_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between pigeon-cli and pigeon-qt
-libpigeon_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-libpigeon_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libpigeon_cli_a_SOURCES = \
+# cli: shared between bull-cli and bull-qt
+libbull_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+libbull_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbull_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(PIGEON_CORE_H)
+  $(BULL_CORE_H)
 
-nodist_libpigeon_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libbull_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# pigeond binary #
-pigeond_SOURCES = pigeond.cpp
-pigeond_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-pigeond_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-pigeond_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# bulld binary #
+bulld_SOURCES = bulld.cpp
+bulld_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+bulld_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bulld_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-pigeond_SOURCES += pigeond-res.rc
+bulld_SOURCES += bulld-res.rc
 endif
 
-pigeond_LDADD = \
-  $(LIBPIGEON_SERVER) \
-  $(LIBPIGEON_COMMON) \
+bulld_LDADD = \
+  $(LIBBULL_SERVER) \
+  $(LIBBULL_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBPIGEON_UTIL) \
-  $(LIBPIGEON_WALLET) \
-  $(LIBPIGEON_ZMQ) \
-  $(LIBPIGEON_CONSENSUS) \
-  $(LIBPIGEON_CRYPTO) \
+  $(LIBBULL_UTIL) \
+  $(LIBBULL_WALLET) \
+  $(LIBBULL_ZMQ) \
+  $(LIBBULL_CONSENSUS) \
+  $(LIBBULL_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-pigeond_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+bulld_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# pigeon-cli binary #
-pigeon_cli_SOURCES = pigeon-cli.cpp
-pigeon_cli_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES) $(EVENT_CFLAGS)
-pigeon_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-pigeon_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# bull-cli binary #
+bull_cli_SOURCES = bull-cli.cpp
+bull_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES) $(EVENT_CFLAGS)
+bull_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bull_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-pigeon_cli_SOURCES += pigeon-cli-res.rc
+bull_cli_SOURCES += bull-cli-res.rc
 endif
 
-pigeon_cli_LDADD = \
-  $(LIBPIGEON_CLI) \
+bull_cli_LDADD = \
+  $(LIBBULL_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBPIGEON_UTIL) \
-  $(LIBPIGEON_CRYPTO)
+  $(LIBBULL_UTIL) \
+  $(LIBBULL_CRYPTO)
 
-pigeon_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+bull_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# pigeon-tx binary #
-pigeon_tx_SOURCES = pigeon-tx.cpp
-pigeon_tx_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-pigeon_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-pigeon_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# bull-tx binary #
+bull_tx_SOURCES = bull-tx.cpp
+bull_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+bull_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bull_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-pigeon_tx_SOURCES += pigeon-tx-res.rc
+bull_tx_SOURCES += bull-tx-res.rc
 endif
 
-pigeon_tx_LDADD = \
+bull_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBPIGEON_COMMON) \
-  $(LIBPIGEON_UTIL) \
-  $(LIBPIGEON_CONSENSUS) \
-  $(LIBPIGEON_CRYPTO) \
+  $(LIBBULL_COMMON) \
+  $(LIBBULL_UTIL) \
+  $(LIBBULL_CONSENSUS) \
+  $(LIBBULL_CRYPTO) \
   $(LIBSECP256K1)
 
-pigeon_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+bull_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# pigeonconsensus library #
-if BUILD_PIGEON_LIBS
-include_HEADERS = script/pigeonconsensus.h
-libpigeonconsensus_la_SOURCES = $(crypto_libpigeon_crypto_a_SOURCES) $(libpigeon_consensus_a_SOURCES)
+# bullconsensus library #
+if BUILD_BULL_LIBS
+include_HEADERS = script/bullconsensus.h
+libbullconsensus_la_SOURCES = $(crypto_libbull_crypto_a_SOURCES) $(libbull_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libpigeonconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libbullconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libpigeonconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libpigeonconsensus_la_LIBADD = $(LIBSECP256K1)
-libpigeonconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_PIGEON_INTERNAL
-libpigeonconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbullconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libbullconsensus_la_LIBADD = $(LIBSECP256K1)
+libbullconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BULL_INTERNAL
+libbullconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -519,12 +519,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/pigeon-config.h: config/stamp-h1
+config/bull-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/pigeon-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/bull-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/pigeon-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/pigeon-config.h.in
+$(top_srcdir)/$(subdir)/config/bull-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bull-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

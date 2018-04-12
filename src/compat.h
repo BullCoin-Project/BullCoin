@@ -1,14 +1,14 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_COMPAT_H
-#define PIGEON_COMPAT_H
+#ifndef BULL_COMPAT_H
+#define BULL_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
 #ifdef WIN32
@@ -96,4 +96,4 @@ bool static inline IsSelectableSocket(const SOCKET& s) {
 #endif
 }
 
-#endif // PIGEON_COMPAT_H
+#endif // BULL_COMPAT_H

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # Copyright (c) 2017 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the listsincelast RPC."""
 
-from test_framework.test_framework import PigeonTestFramework
+from test_framework.test_framework import BullTestFramework
 from test_framework.util import assert_equal
 
-class ListSinceBlockTest (PigeonTestFramework):
+class ListSinceBlockTest (BullTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
         self.setup_clean_chain = True
@@ -91,8 +91,8 @@ class ListSinceBlockTest (PigeonTestFramework):
 
         Problematic case:
 
-        1. User 1 receives PGN in tx1 from utxo1 in block aa1.
-        2. User 2 receives PGN in tx2 from utxo1 (same) in block bb1
+        1. User 1 receives BUL in tx1 from utxo1 in block aa1.
+        2. User 2 receives BUL in tx2 from utxo1 (same) in block bb1
         3. User 1 sees 2 confirmations at block aa3.
         4. Reorg into bb chain.
         5. User 1 asks `listsinceblock aa3` and does not see that tx1 is now

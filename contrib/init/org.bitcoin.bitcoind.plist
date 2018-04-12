@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>org.pigeon.pigeond</string>
+	<string>org.bull.bulld</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/bin/pigeond</string>
+		<string>/usr/local/bin/bulld</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_INTRO_H
-#define PIGEON_QT_INTRO_H
+#ifndef BULL_QT_INTRO_H
+#define BULL_QT_INTRO_H
 
 #include <QDialog>
 #include <QMutex>
@@ -76,4 +76,4 @@ private:
     friend class FreespaceChecker;
 };
 
-#endif // PIGEON_QT_INTRO_H
+#endif // BULL_QT_INTRO_H

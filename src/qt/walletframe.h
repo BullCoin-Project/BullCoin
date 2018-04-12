@@ -1,15 +1,15 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_WALLETFRAME_H
-#define PIGEON_QT_WALLETFRAME_H
+#ifndef BULL_QT_WALLETFRAME_H
+#define BULL_QT_WALLETFRAME_H
 
 #include <QFrame>
 #include <QMap>
 
-class PigeonGUI;
+class BullGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -22,9 +22,9 @@ QT_END_NAMESPACE
 
 /**
  * A container for embedding all wallet-related
- * controls into PigeonGUI. The purpose of this class is to allow future
+ * controls into BullGUI. The purpose of this class is to allow future
  * refinements of the wallet controls with minimal need for further
- * modifications to PigeonGUI, thus greatly simplifying merges while
+ * modifications to BullGUI, thus greatly simplifying merges while
  * reducing the risk of breaking top-level stuff.
  */
 class WalletFrame : public QFrame
@@ -32,7 +32,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle *platformStyle, PigeonGUI *_gui = 0);
+    explicit WalletFrame(const PlatformStyle *platformStyle, BullGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
@@ -52,7 +52,7 @@ Q_SIGNALS:
 
 private:
     QStackedWidget *walletStack;
-    PigeonGUI *gui;
+    BullGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 
@@ -94,4 +94,4 @@ public Q_SLOTS:
     void outOfSyncWarningClicked();
 };
 
-#endif // PIGEON_QT_WALLETFRAME_H
+#endif // BULL_QT_WALLETFRAME_H

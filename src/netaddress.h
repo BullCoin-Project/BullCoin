@@ -1,13 +1,13 @@
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_NETADDRESS_H
-#define PIGEON_NETADDRESS_H
+#ifndef BULL_NETADDRESS_H
+#define BULL_NETADDRESS_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
 #include "compat.h"
@@ -175,4 +175,4 @@ class CService : public CNetAddr
         }
 };
 
-#endif // PIGEON_NETADDRESS_H
+#endif // BULL_NETADDRESS_H

@@ -28,7 +28,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Quit application</source>
         <translation>Κλείσιμο εφαρμογής</translation>
@@ -190,7 +190,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Insufficient funds</source>
         <translation>Κεφάλαια μη επαρκή</translation>

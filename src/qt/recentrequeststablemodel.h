@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_RECENTREQUESTSTABLEMODEL_H
-#define PIGEON_QT_RECENTREQUESTSTABLEMODEL_H
+#ifndef BULL_QT_RECENTREQUESTSTABLEMODEL_H
+#define BULL_QT_RECENTREQUESTSTABLEMODEL_H
 
 #include "walletmodel.h"
 
@@ -53,7 +53,7 @@ private:
     Qt::SortOrder order;
 };
 
-/** Model for list of recently generated payment requests / pigeon: URIs.
+/** Model for list of recently generated payment requests / bull: URIs.
  * Part of wallet model.
  */
 class RecentRequestsTableModel: public QAbstractTableModel
@@ -105,4 +105,4 @@ private:
     QString getAmountTitle();
 };
 
-#endif // PIGEON_QT_RECENTREQUESTSTABLEMODEL_H
+#endif // BULL_QT_RECENTREQUESTSTABLEMODEL_H

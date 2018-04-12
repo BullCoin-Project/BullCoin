@@ -1,40 +1,40 @@
-Pigeon Core integration/staging tree
+Bull Core integration/staging tree
 =====================================
 
-https://pigeoncoin.org
+https://bullcoin.org
 
-What is Pigeon?
+What is Bull?
 ----------------
 
-Pigeon is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Pigeon uses peer-to-peer technology to operate
+Bull is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. Bull uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Pigeon Core is the name of open source
+out collectively by the network. Bull Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Pigeon Core software, see https://pigeoncoin.org
+the Bull Core software, see https://bullcoin.org
 
 License
 -------
 
-Pigeon Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Bull Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/PigeonProject/Pigeoncoin/tags) are created
-regularly to indicate new official, stable release versions of Pigeon Core.
+completely stable. [Tags](https://github.com/BullProject/Bullcoin/tags) are created
+regularly to indicate new official, stable release versions of Bull Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The developer [mailing list](https://lists.linuxfoundation.org/mailman/listinfo/pigeon-dev)
+The developer [mailing list](https://lists.linuxfoundation.org/mailman/listinfo/bull-dev)
 should be used to discuss complicated or controversial changes before working
 on a patch set.
 
-Developer IRC can be found on Freenode at #pigeon-core-dev.
+Developer IRC can be found on Freenode at #bull-core-dev.
 
 Testing
 -------
@@ -46,7 +46,7 @@ lots of money.
 
 Testnet is now up and running and available to use during development. There is an issue when connecting to the testnet that requires the use of the -maxtipage parameter in order to connect to the test network initially. After the initial launch the -maxtipage parameter is not required.
 
-Use this command to initially start pigeond on the testnet. <code>./pigeond -testnet -maxtipage=259200</code>
+Use this command to initially start bulld on the testnet. <code>./bulld -testnet -maxtipage=259200</code>
 
 ### Automated Testing
 
@@ -68,19 +68,19 @@ to add a test plan to the pull request description if testing the changes is
 not straightforward.
 
 
-About Pigeoncoin
+About Bullcoin
 ----------------
 A digital peer-to-peer network for the facilitation of asset transfer.   Optimzed for miners who have encountered power management issues (power fluctuation volatility) in their experiences thus far with the new x16r mining algorithm. 
 
 Thanks and due credit are extended to the Bitcoin and Ravencoin developers. 
 
-The Pigeoncoin project is launched based on the hard work and continuous effort of over 400 Bitcoin developers who made over 14,000 commits over the life to date of the Bitcoin project, as well as those developers who worked on Ravencoin, the reference implementation of x16r.  We are eternally grateful  for their efforts and diligence in making secure networks, and their support of free and open source software development.  The Pigeoncoin experiment rests solidly on the foundation you built.
+The Bullcoin project is launched based on the hard work and continuous effort of over 400 Bitcoin developers who made over 14,000 commits over the life to date of the Bitcoin project, as well as those developers who worked on Ravencoin, the reference implementation of x16r.  We are eternally grateful  for their efforts and diligence in making secure networks, and their support of free and open source software development.  The Bullcoin experiment rests solidly on the foundation you built.
 
 
 Abstract
-Pigeoncoin aims to implement a blockchain which is optimized specifically for the use case of transferring assets such as securities from one holder to another. Based on the extensive development and testing of Bitcoin, Pigeoncoin is built on a fork of the Bitcoin code. Key changes include a faster block reward time and a change in the quantity of coins. Note that the coin quantity change does not change the inherent weighed distribution schedule.
+Bullcoin aims to implement a blockchain which is optimized specifically for the use case of transferring assets such as securities from one holder to another. Based on the extensive development and testing of Bitcoin, Bullcoin is built on a fork of the Bitcoin code. Key changes include a faster block reward time and a change in the quantity of coins. Note that the coin quantity change does not change the inherent weighed distribution schedule.
 
-Pigeoncoin is free and open source and will be issued and mined transparently with no pre-mine, developer allocation or any other similar set aside. Pigeoncoin is intended to prioritize user control, privacy and censorship resistance and be jurisdiction agnostic while allowing simple optional additional features for users based on need.
+Bullcoin is free and open source and will be issued and mined transparently with no pre-mine, developer allocation or any other similar set aside. Bullcoin is intended to prioritize user control, privacy and censorship resistance and be jurisdiction agnostic while allowing simple optional additional features for users based on need.
 
 
 High Level Background
@@ -90,9 +90,9 @@ The success of the Etherium ERC 20 token shows the demand for tokenized assets t
 
 Bitcoin also has the capability of serving as the rails for tokens by using projects such as Omnilayer, RSK or Counterparty. However, neither Bitcoin nor Ethereum was specifically designed for facilitating ownership of other assets. 
 
-Pigeoncoin is designed to be a use case specific blockchain designed to efficiently handle one specific function: the transfer of assets from one party to another.
+Bullcoin is designed to be a use case specific blockchain designed to efficiently handle one specific function: the transfer of assets from one party to another.
 
-Bitcoin is and always should be focused on its goals of being a better form of money. Bitcoin developers will unlikely prioritize improvements or features which are specifically beneficial to the facilitation of token transfers.  One goal of the Pigeoncoin project is to see if a use case specific blockchain and development effort can create code which can either improve existing structures like Bitcoin or provide advantages for specific use cases.
+Bitcoin is and always should be focused on its goals of being a better form of money. Bitcoin developers will unlikely prioritize improvements or features which are specifically beneficial to the facilitation of token transfers.  One goal of the Bullcoin project is to see if a use case specific blockchain and development effort can create code which can either improve existing structures like Bitcoin or provide advantages for specific use cases.
 
 In the new global economy, borders and jurisdictions will be less relevant as more assets are tradable and trade across borders is increasingly frictionless. In an age where people can move significant amounts of wealth instantly using Bitcoin, global consumers will likely demand the same efficiency for their securities and similar asset holdings.
 

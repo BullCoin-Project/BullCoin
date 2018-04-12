@@ -1,15 +1,15 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_UTILITYDIALOG_H
-#define PIGEON_QT_UTILITYDIALOG_H
+#ifndef BULL_QT_UTILITYDIALOG_H
+#define BULL_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
 
-class PigeonGUI;
+class BullGUI;
 
 namespace Ui {
     class HelpMessageDialog;
@@ -43,10 +43,10 @@ class ShutdownWindow : public QWidget
 
 public:
     explicit ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
-    static QWidget *showShutdownWindow(PigeonGUI *window);
+    static QWidget *showShutdownWindow(BullGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);
 };
 
-#endif // PIGEON_QT_UTILITYDIALOG_H
+#endif // BULL_QT_UTILITYDIALOG_H

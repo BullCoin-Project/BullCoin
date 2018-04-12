@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_SCRIPT_ISMINE_H
-#define PIGEON_SCRIPT_ISMINE_H
+#ifndef BULL_SCRIPT_ISMINE_H
+#define BULL_SCRIPT_ISMINE_H
 
 #include "script/standard.h"
 
@@ -39,4 +39,4 @@ isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey, SigVer
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, bool& isInvalid, SigVersion = SIGVERSION_BASE);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, SigVersion = SIGVERSION_BASE);
 
-#endif // PIGEON_SCRIPT_ISMINE_H
+#endif // BULL_SCRIPT_ISMINE_H

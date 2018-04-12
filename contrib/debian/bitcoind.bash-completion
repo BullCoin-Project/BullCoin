@@ -1,2 +1,2 @@
-contrib/pigeond.bash-completion	pigeond
-contrib/pigeon-cli.bash-completion	pigeon-cli
+contrib/bulld.bash-completion	bulld
+contrib/bull-cli.bash-completion	bull-cli

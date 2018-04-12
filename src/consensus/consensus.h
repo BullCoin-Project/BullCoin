@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CONSENSUS_CONSENSUS_H
-#define PIGEON_CONSENSUS_CONSENSUS_H
+#ifndef BULL_CONSENSUS_CONSENSUS_H
+#define BULL_CONSENSUS_CONSENSUS_H
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -33,4 +33,4 @@ enum {
     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),
 };
 
-#endif // PIGEON_CONSENSUS_CONSENSUS_H
+#endif // BULL_CONSENSUS_CONSENSUS_H

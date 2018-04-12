@@ -104,7 +104,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Võrguga sünkroniseerimine...</translation>
@@ -130,8 +130,8 @@
         <translation>Kõvakettal olevate plokkide reindekseerimine...</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -754,14 +754,14 @@
     </message>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Valikud:</translation>
     </message>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Pigeon Core</translation>
+        <source>Bull Core</source>
+        <translation>Bull Core</translation>
     </message>
     <message>
         <source>Information</source>

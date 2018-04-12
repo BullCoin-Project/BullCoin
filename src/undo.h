@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_UNDO_H
-#define PIGEON_UNDO_H
+#ifndef BULL_UNDO_H
+#define BULL_UNDO_H
 
 #include "compressor.h" 
 #include "consensus/consensus.h"
@@ -110,4 +110,4 @@ public:
     }
 };
 
-#endif // PIGEON_UNDO_H
+#endif // BULL_UNDO_H

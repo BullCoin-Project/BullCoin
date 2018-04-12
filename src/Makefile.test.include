@@ -1,13 +1,13 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-TESTS += test/test_pigeon
-bin_PROGRAMS += test/test_pigeon
-noinst_PROGRAMS += test/test_pigeon_fuzzy
+TESTS += test/test_bull
+bin_PROGRAMS += test/test_bull
+noinst_PROGRAMS += test/test_bull_fuzzy
 TEST_SRCDIR = test
-TEST_BINARY=test/test_pigeon$(EXEEXT)
+TEST_BINARY=test/test_bull$(EXEEXT)
 
 JSON_TEST_FILES = \
   test/data/script_tests.json \
@@ -22,8 +22,8 @@ RAW_TEST_FILES =
 
 GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
 
-# test_pigeon binary #
-PIGEON_TESTS =\
+# test_bull binary #
+BULL_TESTS =\
   test/arith_uint256_tests.cpp \
   test/scriptnum10.h \
   test/addrman_tests.cpp \
@@ -75,9 +75,9 @@ PIGEON_TESTS =\
   test/sigopcount_tests.cpp \
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
-  test/test_pigeon.cpp \
-  test/test_pigeon.h \
-  test/test_pigeon_main.cpp \
+  test/test_bull.cpp \
+  test/test_bull.h \
+  test/test_bull_main.cpp \
   test/timedata_tests.cpp \
   test/torcontrol_tests.cpp \
   test/transaction_tests.cpp \
@@ -88,7 +88,7 @@ PIGEON_TESTS =\
   test/util_tests.cpp
 
 if ENABLE_WALLET
-PIGEON_TESTS += \
+BULL_TESTS += \
   wallet/test/wallet_test_fixture.cpp \
   wallet/test/wallet_test_fixture.h \
   wallet/test/accounting_tests.cpp \
@@ -96,61 +96,61 @@ PIGEON_TESTS += \
   wallet/test/crypto_tests.cpp
 endif
 
-test_test_pigeon_SOURCES = $(PIGEON_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_pigeon_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
-test_test_pigeon_LDADD =
+test_test_bull_SOURCES = $(BULL_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_bull_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_bull_LDADD =
 if ENABLE_WALLET
-test_test_pigeon_LDADD += $(LIBPIGEON_WALLET)
+test_test_bull_LDADD += $(LIBBULL_WALLET)
 endif
-test_test_pigeon_LDADD += $(LIBPIGEON_SERVER) $(LIBPIGEON_CLI) $(LIBPIGEON_COMMON) $(LIBPIGEON_UTIL) $(LIBPIGEON_CONSENSUS) $(LIBPIGEON_CRYPTO) $(LIBUNIVALUE) \
+test_test_bull_LDADD += $(LIBBULL_SERVER) $(LIBBULL_CLI) $(LIBBULL_COMMON) $(LIBBULL_UTIL) $(LIBBULL_CONSENSUS) $(LIBBULL_CRYPTO) $(LIBUNIVALUE) \
   $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
-test_test_pigeon_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_bull_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-test_test_pigeon_LDADD += $(LIBPIGEON_CONSENSUS) $(LIBPIGEON_CRYPTO) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-test_test_pigeon_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+test_test_bull_LDADD += $(LIBBULL_CONSENSUS) $(LIBBULL_CRYPTO) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+test_test_bull_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
 
 if ENABLE_ZMQ
-test_test_pigeon_LDADD += $(ZMQ_LIBS)
+test_test_bull_LDADD += $(ZMQ_LIBS)
 endif
 #
 
-# test_pigeon_fuzzy binary #
-test_test_pigeon_fuzzy_SOURCES = test/test_pigeon_fuzzy.cpp
-test_test_pigeon_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(PIGEON_INCLUDES)
-test_test_pigeon_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-test_test_pigeon_fuzzy_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# test_bull_fuzzy binary #
+test_test_bull_fuzzy_SOURCES = test/test_bull_fuzzy.cpp
+test_test_bull_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(BULL_INCLUDES)
+test_test_bull_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_bull_fuzzy_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-test_test_pigeon_fuzzy_LDADD = \
+test_test_bull_fuzzy_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBPIGEON_SERVER) \
-  $(LIBPIGEON_COMMON) \
-  $(LIBPIGEON_UTIL) \
-  $(LIBPIGEON_CONSENSUS) \
-  $(LIBPIGEON_CRYPTO) \
+  $(LIBBULL_SERVER) \
+  $(LIBBULL_COMMON) \
+  $(LIBBULL_UTIL) \
+  $(LIBBULL_CONSENSUS) \
+  $(LIBBULL_CRYPTO) \
   $(LIBSECP256K1)
 
-test_test_pigeon_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+test_test_bull_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-nodist_test_test_pigeon_SOURCES = $(GENERATED_TEST_FILES)
+nodist_test_test_bull_SOURCES = $(GENERATED_TEST_FILES)
 
-$(PIGEON_TESTS): $(GENERATED_TEST_FILES)
+$(BULL_TESTS): $(GENERATED_TEST_FILES)
 
-CLEAN_PIGEON_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
+CLEAN_BULL_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
 
-CLEANFILES += $(CLEAN_PIGEON_TEST)
+CLEANFILES += $(CLEAN_BULL_TEST)
 
-pigeon_test: $(TEST_BINARY)
+bull_test: $(TEST_BINARY)
 
-pigeon_test_check: $(TEST_BINARY) FORCE
+bull_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
-pigeon_test_clean : FORCE
-	rm -f $(CLEAN_PIGEON_TEST) $(test_test_pigeon_OBJECTS) $(TEST_BINARY)
+bull_test_clean : FORCE
+	rm -f $(CLEAN_BULL_TEST) $(test_test_bull_OBJECTS) $(TEST_BINARY)
 
 check-local:
-	@echo "Running test/util/pigeon-util-test.py..."
-	$(PYTHON) $(top_builddir)/test/util/pigeon-util-test.py
+	@echo "Running test/util/bull-util-test.py..."
+	$(PYTHON) $(top_builddir)/test/util/bull-util-test.py
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
 if EMBEDDED_UNIVALUE
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue check

@@ -1,10 +1,10 @@
 // Copyright (c) 2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_ZMQ_ZMQABSTRACTNOTIFIER_H
-#define PIGEON_ZMQ_ZMQABSTRACTNOTIFIER_H
+#ifndef BULL_ZMQ_ZMQABSTRACTNOTIFIER_H
+#define BULL_ZMQ_ZMQABSTRACTNOTIFIER_H
 
 #include "zmqconfig.h"
 
@@ -42,4 +42,4 @@ protected:
     std::string address;
 };
 
-#endif // PIGEON_ZMQ_ZMQABSTRACTNOTIFIER_H
+#endif // BULL_ZMQ_ZMQABSTRACTNOTIFIER_H

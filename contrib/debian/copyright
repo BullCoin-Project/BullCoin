@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Pigeon
+Upstream-Name: Bull
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#pigeon@freenode.net
-Source: https://github.com/PigeonProject/Pigeoncoin
+ irc://#bull@freenode.net
+Source: https://github.com/BullProject/Bullcoin
 
 Files: *
-Copyright: 2009-2017, Pigeon Core Developers
+Copyright: 2009-2017, Bull Core Developers
 License: Expat
-Comment: The Pigeon Core Developers encompasses the current developers listed on pigeon.org,
+Comment: The Bull Core Developers encompasses the current developers listed on bull.org,
          as well as the numerous contributors to the project.
 
 Files: debian/*
@@ -78,12 +78,12 @@ License: Expat
 Comment: Modifications of Stephan Hutchings Typicons
 
 Files: src/qt/res/icons/about.png
-       src/qt/res/icons/pigeon.*
-       share/pixmaps/pigeon*
-       src/qt/res/src/pigeon.svg
+       src/qt/res/icons/bull.*
+       share/pixmaps/bull*
+       src/qt/res/src/bull.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
-Comment: Site: https://pigeontalk.org/?topic=1756.0
+Comment: Site: https://bulltalk.org/?topic=1756.0
 
 
 License: Expat

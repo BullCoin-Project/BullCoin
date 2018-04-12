@@ -1,10 +1,10 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CRYPTO_SHA512_H
-#define PIGEON_CRYPTO_SHA512_H
+#ifndef BULL_CRYPTO_SHA512_H
+#define BULL_CRYPTO_SHA512_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -26,4 +26,4 @@ public:
     CSHA512& Reset();
 };
 
-#endif // PIGEON_CRYPTO_SHA512_H
+#endif // BULL_CRYPTO_SHA512_H

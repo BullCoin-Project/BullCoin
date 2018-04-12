@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -38,9 +38,9 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle *_platformStyle, QWidget *par
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
 #endif
 
-    // normal pigeon address field
+    // normal bull address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
-    // just a label for displaying pigeon address(es)
+    // just a label for displaying bull address(es)
     ui->payTo_is->setFont(GUIUtil::fixedPitchFont());
 
     // Connect signals
@@ -109,7 +109,7 @@ void SendCoinsEntry::clear()
     ui->memoTextLabel_s->clear();
     ui->payAmount_s->clear();
 
-    // update the display unit, to not use the default ("PGN")
+    // update the display unit, to not use the default ("BUL")
     updateDisplayUnit();
 }
 

@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_PIGEONUNITS_H
-#define PIGEON_QT_PIGEONUNITS_H
+#ifndef BULL_QT_BULLUNITS_H
+#define BULL_QT_BULLUNITS_H
 
 #include "amount.h"
 
@@ -42,24 +42,24 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** Pigeon unit definitions. Encapsulates parsing and formatting
+/** Bull unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class PigeonUnits: public QAbstractListModel
+class BullUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit PigeonUnits(QObject *parent);
+    explicit BullUnits(QObject *parent);
 
-    /** Pigeon units.
-      @note Source: https://en.pigeon.it/wiki/Units . Please add only sensible ones
+    /** Bull units.
+      @note Source: https://en.bull.it/wiki/Units . Please add only sensible ones
      */
     enum Unit
     {
-        PGN,
-        mPGN,
-        uPGN
+        BUL,
+        mBUL,
+        uBUL
     };
 
     enum SeparatorStyle
@@ -122,8 +122,8 @@ public:
     static CAmount maxMoney();
 
 private:
-    QList<PigeonUnits::Unit> unitlist;
+    QList<BullUnits::Unit> unitlist;
 };
-typedef PigeonUnits::Unit PigeonUnit;
+typedef BullUnits::Unit BullUnit;
 
-#endif // PIGEON_QT_PIGEONUNITS_H
+#endif // BULL_QT_BULLUNITS_H

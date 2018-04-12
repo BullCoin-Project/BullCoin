@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_HTTPSERVER_H
-#define PIGEON_HTTPSERVER_H
+#ifndef BULL_HTTPSERVER_H
+#define BULL_HTTPSERVER_H
 
 #include <string>
 #include <stdint.h>
@@ -151,4 +151,4 @@ private:
 
 std::string urlDecode(const std::string &urlEncoded);
 
-#endif // PIGEON_HTTPSERVER_H
+#endif // BULL_HTTPSERVER_H

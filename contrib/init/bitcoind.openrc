@@ -2,41 +2,41 @@
 
 # backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/pigeon/.pigeon" ]; then
-	PIGEOND_DEFAULT_DATADIR="/var/lib/pigeon/.pigeon"
+if [ -d "/var/lib/bull/.bull" ]; then
+	BULLD_DEFAULT_DATADIR="/var/lib/bull/.bull"
 else
-	PIGEOND_DEFAULT_DATADIR="/var/lib/pigeond"
+	BULLD_DEFAULT_DATADIR="/var/lib/bulld"
 fi
 
-PIGEOND_CONFIGFILE=${PIGEOND_CONFIGFILE:-/etc/pigeon/pigeon.conf}
-PIGEOND_PIDDIR=${PIGEOND_PIDDIR:-/var/run/pigeond}
-PIGEOND_PIDFILE=${PIGEOND_PIDFILE:-${PIGEOND_PIDDIR}/pigeond.pid}
-PIGEOND_DATADIR=${PIGEOND_DATADIR:-${PIGEOND_DEFAULT_DATADIR}}
-PIGEOND_USER=${PIGEOND_USER:-${PIGEON_USER:-pigeon}}
-PIGEOND_GROUP=${PIGEOND_GROUP:-pigeon}
-PIGEOND_BIN=${PIGEOND_BIN:-/usr/bin/pigeond}
-PIGEOND_NICE=${PIGEOND_NICE:-${NICELEVEL:-0}}
-PIGEOND_OPTS="${PIGEOND_OPTS:-${PIGEON_OPTS}}"
+BULLD_CONFIGFILE=${BULLD_CONFIGFILE:-/etc/bull/bull.conf}
+BULLD_PIDDIR=${BULLD_PIDDIR:-/var/run/bulld}
+BULLD_PIDFILE=${BULLD_PIDFILE:-${BULLD_PIDDIR}/bulld.pid}
+BULLD_DATADIR=${BULLD_DATADIR:-${BULLD_DEFAULT_DATADIR}}
+BULLD_USER=${BULLD_USER:-${BULL_USER:-bull}}
+BULLD_GROUP=${BULLD_GROUP:-bull}
+BULLD_BIN=${BULLD_BIN:-/usr/bin/bulld}
+BULLD_NICE=${BULLD_NICE:-${NICELEVEL:-0}}
+BULLD_OPTS="${BULLD_OPTS:-${BULL_OPTS}}"
 
-name="Pigeon Core Daemon"
-description="Pigeon cryptocurrency P2P network daemon"
+name="Bull Core Daemon"
+description="Bull cryptocurrency P2P network daemon"
 
-command="/usr/bin/pigeond"
-command_args="-pid=\"${PIGEOND_PIDFILE}\" \
-		-conf=\"${PIGEOND_CONFIGFILE}\" \
-		-datadir=\"${PIGEOND_DATADIR}\" \
+command="/usr/bin/bulld"
+command_args="-pid=\"${BULLD_PIDFILE}\" \
+		-conf=\"${BULLD_CONFIGFILE}\" \
+		-datadir=\"${BULLD_DATADIR}\" \
 		-daemon \
-		${PIGEOND_OPTS}"
+		${BULLD_OPTS}"
 
-required_files="${PIGEOND_CONFIGFILE}"
-start_stop_daemon_args="-u ${PIGEOND_USER} \
-			-N ${PIGEOND_NICE} -w 2000"
-pidfile="${PIGEOND_PIDFILE}"
+required_files="${BULLD_CONFIGFILE}"
+start_stop_daemon_args="-u ${BULLD_USER} \
+			-N ${BULLD_NICE} -w 2000"
+pidfile="${BULLD_PIDFILE}"
 
 # The retry schedule to use when stopping the daemon. Could be either
 # a timeout in seconds or multiple signal/timeout pairs (like
 # "SIGKILL/180 SIGTERM/300")
-retry="${PIGEOND_SIGTERM_TIMEOUT}"
+retry="${BULLD_SIGTERM_TIMEOUT}"
 
 depend() {
 	need localmount net
@@ -50,29 +50,29 @@ start_pre() {
 	checkpath \
 	-d \
 	--mode 0750 \
-	--owner "${PIGEOND_USER}:${PIGEOND_GROUP}" \
-	"${PIGEOND_DATADIR}"
+	--owner "${BULLD_USER}:${BULLD_GROUP}" \
+	"${BULLD_DATADIR}"
 
 	checkpath \
 	-d \
 	--mode 0755 \
-	--owner "${PIGEOND_USER}:${PIGEOND_GROUP}" \
-	"${PIGEOND_PIDDIR}"
+	--owner "${BULLD_USER}:${BULLD_GROUP}" \
+	"${BULLD_PIDDIR}"
 
 	checkpath -f \
-	-o ${PIGEOND_USER}:${PIGEOND_GROUP} \
+	-o ${BULLD_USER}:${BULLD_GROUP} \
 	-m 0660 \
-	${PIGEOND_CONFIGFILE}
+	${BULLD_CONFIGFILE}
 
 	checkconfig || return 1
 }
 
 checkconfig()
 {
-	if ! grep -qs '^rpcpassword=' "${PIGEOND_CONFIGFILE}" ; then
+	if ! grep -qs '^rpcpassword=' "${BULLD_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run pigeond."
-		eerror "The setting must appear in ${PIGEOND_CONFIGFILE}"
+		eerror "ERROR: You must set a secure rpcpassword to run bulld."
+		eerror "The setting must appear in ${BULLD_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
 		eerror "and must not be the same as the rpcuser setting."
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"Pigeon Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"Bull Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

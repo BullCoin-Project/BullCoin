@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_TXDB_H
-#define PIGEON_TXDB_H
+#ifndef BULL_TXDB_H
+#define BULL_TXDB_H
 
 #include "coins.h"
 #include "dbwrapper.h"
@@ -34,7 +34,7 @@ static const int64_t nMinDbCache = 4;
 static const int64_t nMaxBlockDBCache = 2;
 //! Max memory allocated to block tree DB specific cache, if -txindex (MiB)
 // Unlike for the UTXO database, for the txindex scenario the leveldb cache make
-// a meaningful difference: https://github.com/PigeonProject/Pigeoncoin/pull/8273#issuecomment-229601991
+// a meaningful difference: https://github.com/BullProject/Bullcoin/pull/8273#issuecomment-229601991
 static const int64_t nMaxBlockDBAndTxIndexCache = 1024;
 //! Max memory allocated to coin DB specific cache (MiB)
 static const int64_t nMaxCoinsDBCache = 8;
@@ -127,4 +127,4 @@ public:
     bool LoadBlockIndexGuts(const Consensus::Params& consensusParams, std::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // PIGEON_TXDB_H
+#endif // BULL_TXDB_H

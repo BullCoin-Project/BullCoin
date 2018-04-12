@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,7 +41,7 @@
 extern std::vector<CWalletRef> vpwallets;
 //////////////////////////////////////////////////////////////////////////////
 //
-// PigeonMiner
+// BullMiner
 //
 
 //
@@ -507,11 +507,11 @@ CWallet *GetFirstWallet() {
     return(vpwallets[0]);
 }
 
-void static PigeonMiner(const CChainParams& chainparams)
+void static BullMiner(const CChainParams& chainparams)
 {
-    LogPrintf("PigeonMiner -- started\n");
+    LogPrintf("BullMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("pigeon-miner");
+    RenameThread("bull-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -519,7 +519,7 @@ void static PigeonMiner(const CChainParams& chainparams)
     CWallet *  pWallet = GetFirstWallet();
 
     if (!EnsureWalletIsAvailable(pWallet, false)) {
-        LogPrintf("PigeonMiner -- Wallet not available\n");
+        LogPrintf("BullMiner -- Wallet not available\n");
     }
 
     if (pWallet == NULL)
@@ -576,13 +576,13 @@ void static PigeonMiner(const CChainParams& chainparams)
 
             if (!pblocktemplate.get())
             {
-                LogPrintf("PigeonMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("BullMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("PigeonMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("BullMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -601,7 +601,7 @@ void static PigeonMiner(const CChainParams& chainparams)
                     {
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("PigeonMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("BullMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -648,17 +648,17 @@ void static PigeonMiner(const CChainParams& chainparams)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("PigeonMiner -- terminated\n");
+        LogPrintf("BullMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("PigeonMiner -- runtime error: %s\n", e.what());
+        LogPrintf("BullMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
-int GeneratePigeons(bool fGenerate, int nThreads, const CChainParams& chainparams)
+int GenerateBulls(bool fGenerate, int nThreads, const CChainParams& chainparams)
 {
 
     static boost::thread_group* minerThreads = NULL;
@@ -685,7 +685,7 @@ int GeneratePigeons(bool fGenerate, int nThreads, const CChainParams& chainparam
     nHashesPerSec = 0;
 
     for (int i = 0; i < nThreads; i++){
-        minerThreads->create_thread(boost::bind(&PigeonMiner, boost::cref(chainparams)));
+        minerThreads->create_thread(boost::bind(&BullMiner, boost::cref(chainparams)));
     }
 
     return(numCores);

@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_TEST_PAYMENTSERVERTESTS_H
-#define PIGEON_QT_TEST_PAYMENTSERVERTESTS_H
+#ifndef BULL_QT_TEST_PAYMENTSERVERTESTS_H
+#define BULL_QT_TEST_PAYMENTSERVERTESTS_H
 
 #include "../paymentserver.h"
 
@@ -33,4 +33,4 @@ public:
     SendCoinsRecipient recipient;
 };
 
-#endif // PIGEON_QT_TEST_PAYMENTSERVERTESTS_H
+#endif // BULL_QT_TEST_PAYMENTSERVERTESTS_H

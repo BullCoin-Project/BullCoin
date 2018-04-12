@@ -1,10 +1,10 @@
 // Copyright (c) 2012-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CHECKQUEUE_H
-#define PIGEON_CHECKQUEUE_H
+#ifndef BULL_CHECKQUEUE_H
+#define BULL_CHECKQUEUE_H
 
 #include "sync.h"
 
@@ -215,4 +215,4 @@ public:
     }
 };
 
-#endif // PIGEON_CHECKQUEUE_H
+#endif // BULL_CHECKQUEUE_H

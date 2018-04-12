@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CUCKOOCACHE_H
-#define PIGEON_CUCKOOCACHE_H
+#ifndef BULL_CUCKOOCACHE_H
+#define BULL_CUCKOOCACHE_H
 
 #include <array>
 #include <algorithm>
@@ -478,4 +478,4 @@ public:
 };
 } // namespace CuckooCache
 
-#endif // PIGEON_CUCKOOCACHE_H
+#endif // BULL_CUCKOOCACHE_H

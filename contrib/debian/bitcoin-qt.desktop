@@ -1,13 +1,13 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Pigeon Core
-Comment=Connect to the Pigeon P2P Network
-Comment[de]=Verbinde mit dem Pigeon peer-to-peer Netzwerk
-Comment[fr]=Pigeon, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Pigeon, eşten eşe kriptografik sanal para birimi
-Exec=pigeon-qt %u
+Name=Bull Core
+Comment=Connect to the Bull P2P Network
+Comment[de]=Verbinde mit dem Bull peer-to-peer Netzwerk
+Comment[fr]=Bull, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bull, eşten eşe kriptografik sanal para birimi
+Exec=bull-qt %u
 Terminal=false
 Type=Application
-Icon=pigeon128
-MimeType=x-scheme-handler/pigeon;
+Icon=bull128
+MimeType=x-scheme-handler/bull;
 Categories=Office;Finance;

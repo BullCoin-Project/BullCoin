@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_WALLET_FEEBUMPER_H
-#define PIGEON_WALLET_FEEBUMPER_H
+#ifndef BULL_WALLET_FEEBUMPER_H
+#define BULL_WALLET_FEEBUMPER_H
 
 #include <primitives/transaction.h>
 
@@ -59,4 +59,4 @@ private:
     CAmount nNewFee;
 };
 
-#endif // PIGEON_WALLET_FEEBUMPER_H
+#endif // BULL_WALLET_FEEBUMPER_H

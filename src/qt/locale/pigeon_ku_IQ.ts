@@ -40,7 +40,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>&amp;Send</source>
         <translation>&amp;ناردن</translation>
@@ -374,7 +374,7 @@
     </message>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>هەڵبژاردنەکان:</translation>

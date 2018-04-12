@@ -1,10 +1,10 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_POLICY_RBF_H
-#define PIGEON_POLICY_RBF_H
+#ifndef BULL_POLICY_RBF_H
+#define BULL_POLICY_RBF_H
 
 #include "txmempool.h"
 
@@ -26,4 +26,4 @@ bool SignalsOptInRBF(const CTransaction &tx);
 // as the sequence numbers of all in-mempool ancestors.
 RBFTransactionState IsRBFOptIn(const CTransaction &tx, CTxMemPool &pool);
 
-#endif // PIGEON_POLICY_RBF_H
+#endif // BULL_POLICY_RBF_H

@@ -1,10 +1,10 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_BLOOM_H
-#define PIGEON_BLOOM_H
+#ifndef BULL_BLOOM_H
+#define BULL_BLOOM_H
 
 #include "serialize.h"
 
@@ -141,4 +141,4 @@ private:
     int nHashFuncs;
 };
 
-#endif // PIGEON_BLOOM_H
+#endif // BULL_BLOOM_H

@@ -1,11 +1,11 @@
 // Copyright (c) 2012 Pieter Wuille
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_ADDRMAN_H
-#define PIGEON_ADDRMAN_H
+#ifndef BULL_ADDRMAN_H
+#define BULL_ADDRMAN_H
 
 #include "netaddress.h"
 #include "protocol.h"
@@ -603,4 +603,4 @@ public:
 
 };
 
-#endif // PIGEON_ADDRMAN_H
+#endif // BULL_ADDRMAN_H

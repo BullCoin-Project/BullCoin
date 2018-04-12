@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     </context>
 <context>
     <name>CoinControlDialog</name>
@@ -170,6 +170,6 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     </context>
 </TS>

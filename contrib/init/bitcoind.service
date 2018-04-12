@@ -1,15 +1,15 @@
 [Unit]
-Description=Pigeon's distributed currency daemon
+Description=Bull's distributed currency daemon
 After=network.target
 
 [Service]
-User=pigeon
-Group=pigeon
+User=bull
+Group=bull
 
 Type=forking
-PIDFile=/var/lib/pigeond/pigeond.pid
-ExecStart=/usr/bin/pigeond -daemon -pid=/var/lib/pigeond/pigeond.pid \
--conf=/etc/pigeon/pigeon.conf -datadir=/var/lib/pigeond -disablewallet
+PIDFile=/var/lib/bulld/bulld.pid
+ExecStart=/usr/bin/bulld -daemon -pid=/var/lib/bulld/bulld.pid \
+-conf=/etc/bull/bull.conf -datadir=/var/lib/bulld -disablewallet
 
 Restart=always
 PrivateTmp=true

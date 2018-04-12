@@ -1,9 +1,9 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "test_pigeon.h"
+#include "test_bull.h"
 
 #include "chainparams.h"
 #include "consensus/consensus.h"
@@ -60,7 +60,7 @@ TestingSetup::TestingSetup(const std::string& chainName) : BasicTestingSetup(cha
 
         RegisterAllCoreRPCCommands(tableRPC);
         ClearDatadirCache();
-        pathTemp = fs::temp_directory_path() / strprintf("test_pigeon_%lu_%i", (unsigned long)GetTime(), (int)(InsecureRandRange(100000)));
+        pathTemp = fs::temp_directory_path() / strprintf("test_bull_%lu_%i", (unsigned long)GetTime(), (int)(InsecureRandRange(100000)));
         fs::create_directories(pathTemp);
         gArgs.ForceSetArg("-datadir", pathTemp.string());
 

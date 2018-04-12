@@ -1,13 +1,13 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_PAYMENTSERVER_H
-#define PIGEON_QT_PAYMENTSERVER_H
+#ifndef BULL_QT_PAYMENTSERVER_H
+#define BULL_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// pigeon: URIs
+// bull: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during
@@ -146,4 +146,4 @@ private:
     OptionsModel *optionsModel;
 };
 
-#endif // PIGEON_QT_PAYMENTSERVER_H
+#endif // BULL_QT_PAYMENTSERVER_H

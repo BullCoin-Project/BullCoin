@@ -1,10 +1,10 @@
 // Copyright (c) 2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_WALLET_RPCWALLET_H
-#define PIGEON_WALLET_RPCWALLET_H
+#ifndef BULL_WALLET_RPCWALLET_H
+#define BULL_WALLET_RPCWALLET_H
 
 #include <string>
 
@@ -26,4 +26,4 @@ std::string HelpRequiringPassphrase(CWallet *);
 void EnsureWalletIsUnlocked(CWallet *);
 bool EnsureWalletIsAvailable(CWallet *, bool avoidException);
 
-#endif //PIGEON_WALLET_RPCWALLET_H
+#endif //BULL_WALLET_RPCWALLET_H

@@ -1,33 +1,33 @@
-# /etc/conf.d/pigeond: config file for /etc/init.d/pigeond
+# /etc/conf.d/bulld: config file for /etc/init.d/bulld
 
 # Config file location
-#PIGEOND_CONFIGFILE="/etc/pigeon/pigeon.conf"
+#BULLD_CONFIGFILE="/etc/bull/bull.conf"
 
-# What directory to write pidfile to?  (created and owned by $PIGEOND_USER)
-#PIGEOND_PIDDIR="/var/run/pigeond"
+# What directory to write pidfile to?  (created and owned by $BULLD_USER)
+#BULLD_PIDDIR="/var/run/bulld"
 
 # What filename to give the pidfile
-#PIGEOND_PIDFILE="${PIGEOND_PIDDIR}/pigeond.pid"
+#BULLD_PIDFILE="${BULLD_PIDDIR}/bulld.pid"
 
-# Where to write pigeond data (be mindful that the blockchain is large)
-#PIGEOND_DATADIR="/var/lib/pigeond"
+# Where to write bulld data (be mindful that the blockchain is large)
+#BULLD_DATADIR="/var/lib/bulld"
 
-# User and group to own pigeond process
-#PIGEOND_USER="pigeon"
-#PIGEOND_GROUP="pigeon"
+# User and group to own bulld process
+#BULLD_USER="bull"
+#BULLD_GROUP="bull"
 
-# Path to pigeond executable
-#PIGEOND_BIN="/usr/bin/pigeond"
+# Path to bulld executable
+#BULLD_BIN="/usr/bin/bulld"
 
-# Nice value to run pigeond under
-#PIGEOND_NICE=0
+# Nice value to run bulld under
+#BULLD_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
-#PIGEOND_OPTS=""
+#BULLD_OPTS=""
 
-# The timeout in seconds OpenRC will wait for pigeond to terminate
+# The timeout in seconds OpenRC will wait for bulld to terminate
 # after a SIGTERM has been raised.
 # Note that this will be mapped as argument to start-stop-daemon's
 # '--retry' option, which means you can specify a retry schedule
 # here. For more information see man 8 start-stop-daemon.
-PIGEOND_SIGTERM_TIMEOUT=60
+BULLD_SIGTERM_TIMEOUT=60

@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_ADDRDB_H
-#define PIGEON_ADDRDB_H
+#ifndef BULL_ADDRDB_H
+#define BULL_ADDRDB_H
 
 #include "fs.h"
 #include "serialize.h"
@@ -100,4 +100,4 @@ public:
     bool Read(banmap_t& banSet);
 };
 
-#endif // PIGEON_ADDRDB_H
+#endif // BULL_ADDRDB_H

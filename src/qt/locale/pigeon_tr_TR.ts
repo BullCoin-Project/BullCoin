@@ -52,7 +52,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>&amp;Receiving addresses...</source>
         <translation>Alış adresleri</translation>
@@ -170,6 +170,6 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     </context>
 </TS>

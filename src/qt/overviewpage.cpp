@@ -1,12 +1,12 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
-#include "pigeonunits.h"
+#include "bullunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -27,7 +27,7 @@ class TxViewDelegate : public QAbstractItemDelegate
     Q_OBJECT
 public:
     explicit TxViewDelegate(const PlatformStyle *_platformStyle, QObject *parent=nullptr):
-        QAbstractItemDelegate(parent), unit(PigeonUnits::PGN),
+        QAbstractItemDelegate(parent), unit(BullUnits::BUL),
         platformStyle(_platformStyle)
     {
 
@@ -85,7 +85,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(foreground);
-        QString amountText = PigeonUnits::formatWithUnit(unit, amount, true, PigeonUnits::separatorAlways);
+        QString amountText = BullUnits::formatWithUnit(unit, amount, true, BullUnits::separatorAlways);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -169,14 +169,14 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
-    ui->labelBalance->setText(PigeonUnits::formatWithUnit(unit, balance, false, PigeonUnits::separatorAlways));
-    ui->labelUnconfirmed->setText(PigeonUnits::formatWithUnit(unit, unconfirmedBalance, false, PigeonUnits::separatorAlways));
-    ui->labelImmature->setText(PigeonUnits::formatWithUnit(unit, immatureBalance, false, PigeonUnits::separatorAlways));
-    ui->labelTotal->setText(PigeonUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance, false, PigeonUnits::separatorAlways));
-    ui->labelWatchAvailable->setText(PigeonUnits::formatWithUnit(unit, watchOnlyBalance, false, PigeonUnits::separatorAlways));
-    ui->labelWatchPending->setText(PigeonUnits::formatWithUnit(unit, watchUnconfBalance, false, PigeonUnits::separatorAlways));
-    ui->labelWatchImmature->setText(PigeonUnits::formatWithUnit(unit, watchImmatureBalance, false, PigeonUnits::separatorAlways));
-    ui->labelWatchTotal->setText(PigeonUnits::formatWithUnit(unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, PigeonUnits::separatorAlways));
+    ui->labelBalance->setText(BullUnits::formatWithUnit(unit, balance, false, BullUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(BullUnits::formatWithUnit(unit, unconfirmedBalance, false, BullUnits::separatorAlways));
+    ui->labelImmature->setText(BullUnits::formatWithUnit(unit, immatureBalance, false, BullUnits::separatorAlways));
+    ui->labelTotal->setText(BullUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance, false, BullUnits::separatorAlways));
+    ui->labelWatchAvailable->setText(BullUnits::formatWithUnit(unit, watchOnlyBalance, false, BullUnits::separatorAlways));
+    ui->labelWatchPending->setText(BullUnits::formatWithUnit(unit, watchUnconfBalance, false, BullUnits::separatorAlways));
+    ui->labelWatchImmature->setText(BullUnits::formatWithUnit(unit, watchImmatureBalance, false, BullUnits::separatorAlways));
+    ui->labelWatchTotal->setText(BullUnits::formatWithUnit(unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BullUnits::separatorAlways));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -242,7 +242,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("PGN")
+    // update the display unit, to not use the default ("BUL")
     updateDisplayUnit();
 }
 

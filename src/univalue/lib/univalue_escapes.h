@@ -1,6 +1,6 @@
 // Automatically generated file. Do not modify.
-#ifndef PIGEON_UNIVALUE_UNIVALUE_ESCAPES_H
-#define PIGEON_UNIVALUE_UNIVALUE_ESCAPES_H
+#ifndef BULL_UNIVALUE_UNIVALUE_ESCAPES_H
+#define BULL_UNIVALUE_UNIVALUE_ESCAPES_H
 static const char *escapes[256] = {
 	"\\u0000",
 	"\\u0001",
@@ -259,4 +259,4 @@ static const char *escapes[256] = {
 	NULL,
 	NULL,
 };
-#endif // PIGEON_UNIVALUE_UNIVALUE_ESCAPES_H
+#endif // BULL_UNIVALUE_UNIVALUE_ESCAPES_H

@@ -13,31 +13,31 @@
 %endif
 %endif
 
-Name:		pigeon
+Name:		bull
 Version:	0.12.0
 Release:	2%{?dist}
 Summary:	Peer to Peer Cryptographic Currency
 
 Group:		Applications/System
 License:	MIT
-URL:		https://pigeon.org/
-Source0:	https://pigeon.org/bin/pigeon-core-%{version}/pigeon-%{version}.tar.gz
+URL:		https://bull.org/
+Source0:	https://bull.org/bin/bull-core-%{version}/bull-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
-Source10:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/contrib/debian/examples/pigeon.conf
+Source10:	https://raw.githubusercontent.com/bull/bull/v%{version}/contrib/debian/examples/bull.conf
 
 #man pages
-Source20:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/doc/man/pigeond.1
-Source21:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/doc/man/pigeon-cli.1
-Source22:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/doc/man/pigeon-qt.1
+Source20:	https://raw.githubusercontent.com/bull/bull/v%{version}/doc/man/bulld.1
+Source21:	https://raw.githubusercontent.com/bull/bull/v%{version}/doc/man/bull-cli.1
+Source22:	https://raw.githubusercontent.com/bull/bull/v%{version}/doc/man/bull-qt.1
 
 #selinux
-Source30:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/contrib/rpm/pigeon.te
-# Source31 - what about pigeon-tx and bench_pigeon ???
-Source31:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/contrib/rpm/pigeon.fc
-Source32:	https://raw.githubusercontent.com/pigeon/pigeon/v%{version}/contrib/rpm/pigeon.if
+Source30:	https://raw.githubusercontent.com/bull/bull/v%{version}/contrib/rpm/bull.te
+# Source31 - what about bull-tx and bench_bull ???
+Source31:	https://raw.githubusercontent.com/bull/bull/v%{version}/contrib/rpm/bull.fc
+Source32:	https://raw.githubusercontent.com/bull/bull/v%{version}/contrib/rpm/bull.if
 
-Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Pigeon.svg
+Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bull.svg
 
 %if 0%{?_use_libressl:1}
 BuildRequires:	libressl-devel
@@ -50,13 +50,13 @@ BuildRequires:	autoconf automake libtool
 BuildRequires:	libevent-devel
 
 
-Patch0:		pigeon-0.12.0-libressl.patch
+Patch0:		bull-0.12.0-libressl.patch
 
 
 %description
-Pigeon is a digital cryptographic currency that uses peer-to-peer technology to
+Bull is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
-issuing of pigeons is carried out collectively by the network.
+issuing of bulls is carried out collectively by the network.
 
 %if %{_buildqt}
 %package core
@@ -79,42 +79,42 @@ BuildRequires:	%{_bindir}/inkscape
 BuildRequires:	%{_bindir}/convert
 
 %description core
-Pigeon is a digital cryptographic currency that uses peer-to-peer technology to
+Bull is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
-issuing of pigeons is carried out collectively by the network.
+issuing of bulls is carried out collectively by the network.
 
 This package contains the Qt based graphical client and node. If you are looking
-to run a Pigeon wallet, this is probably the package you want.
+to run a Bull wallet, this is probably the package you want.
 %endif
 
 
 %package libs
-Summary:	Pigeon shared libraries
+Summary:	Bull shared libraries
 Group:		System Environment/Libraries
 
 %description libs
-This package provides the pigeonconsensus shared libraries. These libraries
+This package provides the bullconsensus shared libraries. These libraries
 may be used by third party software to provide consensus verification
 functionality.
 
 Unless you know need this package, you probably do not.
 
 %package devel
-Summary:	Development files for pigeon
+Summary:	Development files for bull
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 This package contains the header files and static library for the
-pigeonconsensus shared library. If you are developing or compiling software
+bullconsensus shared library. If you are developing or compiling software
 that wants to link against that library, then you need this package installed.
 
 Most people do not need this package installed.
 
 %package server
-Summary:	The pigeon daemon
+Summary:	The bull daemon
 Group:		System Environment/Daemons
-Requires:	pigeon-utils = %{version}-%{release}
+Requires:	bull-utils = %{version}-%{release}
 Requires:	selinux-policy policycoreutils-python
 Requires(pre):	shadow-utils
 Requires(post):	%{_sbindir}/semodule %{_sbindir}/restorecon %{_sbindir}/fixfiles %{_sbindir}/sestatus
@@ -124,34 +124,34 @@ BuildRequires:	checkpolicy
 BuildRequires:	%{_datadir}/selinux/devel/Makefile
 
 %description server
-This package provides a stand-alone pigeon-core daemon. For most users, this
+This package provides a stand-alone bull-core daemon. For most users, this
 package is only needed if they need a full-node without the graphical client.
 
 Some third party wallet software will want this package to provide the actual
-pigeon-core node they use to connect to the network.
+bull-core node they use to connect to the network.
 
-If you use the graphical pigeon-core client then you almost certainly do not
+If you use the graphical bull-core client then you almost certainly do not
 need this package.
 
 %package utils
-Summary:	Pigeon utilities
+Summary:	Bull utilities
 Group:		Applications/System
 
 %description utils
 This package provides several command line utilities for interacting with a
-pigeon-core daemon.
+bull-core daemon.
 
-The pigeon-cli utility allows you to communicate and control a pigeon daemon
-over RPC, the pigeon-tx utility allows you to create a custom transaction, and
-the bench_pigeon utility can be used to perform some benchmarks.
+The bull-cli utility allows you to communicate and control a bull daemon
+over RPC, the bull-tx utility allows you to create a custom transaction, and
+the bench_bull utility can be used to perform some benchmarks.
 
-This package contains utilities needed by the pigeon-server package.
+This package contains utilities needed by the bull-server package.
 
 
 %prep
 %setup -q
 %patch0 -p1 -b .libressl
-cp -p %{SOURCE10} ./pigeon.conf.example
+cp -p %{SOURCE10} ./bull.conf.example
 tar -zxf %{SOURCE1}
 cp -p db-%{bdbv}.NC/LICENSE ./db-%{bdbv}.NC-LICENSE
 mkdir db4 SELinux
@@ -172,7 +172,7 @@ make %{?_smp_mflags}
 pushd SELinux
 for selinuxvariant in %{selinux_variants}; do
 	make NAME=${selinuxvariant} -f %{_datadir}/selinux/devel/Makefile
-	mv pigeon.pp pigeon.pp.${selinuxvariant}
+	mv bull.pp bull.pp.${selinuxvariant}
 	make NAME=${selinuxvariant} -f %{_datadir}/selinux/devel/Makefile clean
 done
 popd
@@ -182,42 +182,42 @@ popd
 make install DESTDIR=%{buildroot}
 
 mkdir -p -m755 %{buildroot}%{_sbindir}
-mv %{buildroot}%{_bindir}/pigeond %{buildroot}%{_sbindir}/pigeond
+mv %{buildroot}%{_bindir}/bulld %{buildroot}%{_sbindir}/bulld
 
 # systemd stuff
 mkdir -p %{buildroot}%{_tmpfilesdir}
-cat <<EOF > %{buildroot}%{_tmpfilesdir}/pigeon.conf
-d /run/pigeond 0750 pigeon pigeon -
+cat <<EOF > %{buildroot}%{_tmpfilesdir}/bull.conf
+d /run/bulld 0750 bull bull -
 EOF
-touch -a -m -t 201504280000 %{buildroot}%{_tmpfilesdir}/pigeon.conf
+touch -a -m -t 201504280000 %{buildroot}%{_tmpfilesdir}/bull.conf
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-cat <<EOF > %{buildroot}%{_sysconfdir}/sysconfig/pigeon
-# Provide options to the pigeon daemon here, for example
+cat <<EOF > %{buildroot}%{_sysconfdir}/sysconfig/bull
+# Provide options to the bull daemon here, for example
 # OPTIONS="-testnet -disable-wallet"
 
 OPTIONS=""
 
 # System service defaults.
 # Don't change these unless you know what you're doing.
-CONFIG_FILE="%{_sysconfdir}/pigeon/pigeon.conf"
-DATA_DIR="%{_localstatedir}/lib/pigeon"
-PID_FILE="/run/pigeond/pigeond.pid"
+CONFIG_FILE="%{_sysconfdir}/bull/bull.conf"
+DATA_DIR="%{_localstatedir}/lib/bull"
+PID_FILE="/run/bulld/bulld.pid"
 EOF
-touch -a -m -t 201504280000 %{buildroot}%{_sysconfdir}/sysconfig/pigeon
+touch -a -m -t 201504280000 %{buildroot}%{_sysconfdir}/sysconfig/bull
 
 mkdir -p %{buildroot}%{_unitdir}
-cat <<EOF > %{buildroot}%{_unitdir}/pigeon.service
+cat <<EOF > %{buildroot}%{_unitdir}/bull.service
 [Unit]
-Description=Pigeon daemon
+Description=Bull daemon
 After=syslog.target network.target
 
 [Service]
 Type=forking
-ExecStart=%{_sbindir}/pigeond -daemon -conf=\${CONFIG_FILE} -datadir=\${DATA_DIR} -pid=\${PID_FILE} \$OPTIONS
-EnvironmentFile=%{_sysconfdir}/sysconfig/pigeon
-User=pigeon
-Group=pigeon
+ExecStart=%{_sbindir}/bulld -daemon -conf=\${CONFIG_FILE} -datadir=\${DATA_DIR} -pid=\${PID_FILE} \$OPTIONS
+EnvironmentFile=%{_sysconfdir}/sysconfig/bull
+User=bull
+Group=bull
 
 Restart=on-failure
 PrivateTmp=true
@@ -229,63 +229,63 @@ StartLimitBurst=5
 [Install]
 WantedBy=multi-user.target
 EOF
-touch -a -m -t 201504280000 %{buildroot}%{_unitdir}/pigeon.service
+touch -a -m -t 201504280000 %{buildroot}%{_unitdir}/bull.service
 #end systemd stuff
 
-mkdir %{buildroot}%{_sysconfdir}/pigeon
-mkdir -p %{buildroot}%{_localstatedir}/lib/pigeon
+mkdir %{buildroot}%{_sysconfdir}/bull
+mkdir -p %{buildroot}%{_localstatedir}/lib/bull
 
 #SELinux
 for selinuxvariant in %{selinux_variants}; do
 	install -d %{buildroot}%{_datadir}/selinux/${selinuxvariant}
-	install -p -m 644 SELinux/pigeon.pp.${selinuxvariant} %{buildroot}%{_datadir}/selinux/${selinuxvariant}/pigeon.pp
+	install -p -m 644 SELinux/bull.pp.${selinuxvariant} %{buildroot}%{_datadir}/selinux/${selinuxvariant}/bull.pp
 done
 
 %if %{_buildqt}
 # qt icons
-install -D -p share/pixmaps/pigeon.ico %{buildroot}%{_datadir}/pixmaps/pigeon.ico
+install -D -p share/pixmaps/bull.ico %{buildroot}%{_datadir}/pixmaps/bull.ico
 install -p share/pixmaps/nsis-header.bmp %{buildroot}%{_datadir}/pixmaps/
 install -p share/pixmaps/nsis-wizard.bmp %{buildroot}%{_datadir}/pixmaps/
-install -p %{SOURCE100} %{buildroot}%{_datadir}/pixmaps/pigeon.svg
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/pigeon16.png -w16 -h16
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/pigeon32.png -w32 -h32
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/pigeon64.png -w64 -h64
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/pigeon128.png -w128 -h128
-%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/pigeon256.png -w256 -h256
-%{_bindir}/convert -resize 16x16 %{buildroot}%{_datadir}/pixmaps/pigeon256.png %{buildroot}%{_datadir}/pixmaps/pigeon16.xpm
-%{_bindir}/convert -resize 32x32 %{buildroot}%{_datadir}/pixmaps/pigeon256.png %{buildroot}%{_datadir}/pixmaps/pigeon32.xpm
-%{_bindir}/convert -resize 64x64 %{buildroot}%{_datadir}/pixmaps/pigeon256.png %{buildroot}%{_datadir}/pixmaps/pigeon64.xpm
-%{_bindir}/convert -resize 128x128 %{buildroot}%{_datadir}/pixmaps/pigeon256.png %{buildroot}%{_datadir}/pixmaps/pigeon128.xpm
-%{_bindir}/convert %{buildroot}%{_datadir}/pixmaps/pigeon256.png %{buildroot}%{_datadir}/pixmaps/pigeon256.xpm
+install -p %{SOURCE100} %{buildroot}%{_datadir}/pixmaps/bull.svg
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/bull16.png -w16 -h16
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/bull32.png -w32 -h32
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/bull64.png -w64 -h64
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/bull128.png -w128 -h128
+%{_bindir}/inkscape %{SOURCE100} --export-png=%{buildroot}%{_datadir}/pixmaps/bull256.png -w256 -h256
+%{_bindir}/convert -resize 16x16 %{buildroot}%{_datadir}/pixmaps/bull256.png %{buildroot}%{_datadir}/pixmaps/bull16.xpm
+%{_bindir}/convert -resize 32x32 %{buildroot}%{_datadir}/pixmaps/bull256.png %{buildroot}%{_datadir}/pixmaps/bull32.xpm
+%{_bindir}/convert -resize 64x64 %{buildroot}%{_datadir}/pixmaps/bull256.png %{buildroot}%{_datadir}/pixmaps/bull64.xpm
+%{_bindir}/convert -resize 128x128 %{buildroot}%{_datadir}/pixmaps/bull256.png %{buildroot}%{_datadir}/pixmaps/bull128.xpm
+%{_bindir}/convert %{buildroot}%{_datadir}/pixmaps/bull256.png %{buildroot}%{_datadir}/pixmaps/bull256.xpm
 touch %{buildroot}%{_datadir}/pixmaps/*.png -r %{SOURCE100}
 touch %{buildroot}%{_datadir}/pixmaps/*.xpm -r %{SOURCE100}
 
 # Desktop File - change the touch timestamp if modifying
 mkdir -p %{buildroot}%{_datadir}/applications
-cat <<EOF > %{buildroot}%{_datadir}/applications/pigeon-core.desktop
+cat <<EOF > %{buildroot}%{_datadir}/applications/bull-core.desktop
 [Desktop Entry]
 Encoding=UTF-8
-Name=Pigeon
-Comment=Pigeon P2P Cryptocurrency
-Comment[fr]=Pigeon, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Pigeon, eşten eşe kriptografik sanal para birimi
-Exec=pigeon-qt %u
+Name=Bull
+Comment=Bull P2P Cryptocurrency
+Comment[fr]=Bull, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bull, eşten eşe kriptografik sanal para birimi
+Exec=bull-qt %u
 Terminal=false
 Type=Application
-Icon=pigeon128
-MimeType=x-scheme-handler/pigeon;
+Icon=bull128
+MimeType=x-scheme-handler/bull;
 Categories=Office;Finance;
 EOF
 # change touch date when modifying desktop
-touch -a -m -t 201511100546 %{buildroot}%{_datadir}/applications/pigeon-core.desktop
-%{_bindir}/desktop-file-validate %{buildroot}%{_datadir}/applications/pigeon-core.desktop
+touch -a -m -t 201511100546 %{buildroot}%{_datadir}/applications/bull-core.desktop
+%{_bindir}/desktop-file-validate %{buildroot}%{_datadir}/applications/bull-core.desktop
 
 # KDE protocol - change the touch timestamp if modifying
 mkdir -p %{buildroot}%{_datadir}/kde4/services
-cat <<EOF > %{buildroot}%{_datadir}/kde4/services/pigeon-core.protocol
+cat <<EOF > %{buildroot}%{_datadir}/kde4/services/bull-core.protocol
 [Protocol]
-exec=pigeon-qt '%u'
-protocol=pigeon
+exec=bull-qt '%u'
+protocol=bull
 input=none
 output=none
 helper=true
@@ -296,14 +296,14 @@ makedir=false
 deleting=false
 EOF
 # change touch date when modifying protocol
-touch -a -m -t 201511100546 %{buildroot}%{_datadir}/kde4/services/pigeon-core.protocol
+touch -a -m -t 201511100546 %{buildroot}%{_datadir}/kde4/services/bull-core.protocol
 %endif
 
 # man pages
-install -D -p %{SOURCE20} %{buildroot}%{_mandir}/man1/pigeond.1
-install -p %{SOURCE21} %{buildroot}%{_mandir}/man1/pigeon-cli.1
+install -D -p %{SOURCE20} %{buildroot}%{_mandir}/man1/bulld.1
+install -p %{SOURCE21} %{buildroot}%{_mandir}/man1/bull-cli.1
 %if %{_buildqt}
-install -p %{SOURCE22} %{buildroot}%{_mandir}/man1/pigeon-qt.1
+install -p %{SOURCE22} %{buildroot}%{_mandir}/man1/bull-qt.1
 %endif
 
 # nuke these, we do extensive testing of binaries in %%check before packaging
@@ -311,7 +311,7 @@ rm -f %{buildroot}%{_bindir}/test_*
 
 %check
 make check
-srcdir=src test/pigeon-util-test.py
+srcdir=src test/bull-util-test.py
 test/functional/test_runner.py --extended
 
 %post libs -p /sbin/ldconfig
@@ -319,37 +319,37 @@ test/functional/test_runner.py --extended
 %postun libs -p /sbin/ldconfig
 
 %pre server
-getent group pigeon >/dev/null || groupadd -r pigeon
-getent passwd pigeon >/dev/null ||
-	useradd -r -g pigeon -d /var/lib/pigeon -s /sbin/nologin \
-	-c "Pigeon wallet server" pigeon
+getent group bull >/dev/null || groupadd -r bull
+getent passwd bull >/dev/null ||
+	useradd -r -g bull -d /var/lib/bull -s /sbin/nologin \
+	-c "Bull wallet server" bull
 exit 0
 
 %post server
-%systemd_post pigeon.service
+%systemd_post bull.service
 # SELinux
 if [ `%{_sbindir}/sestatus |grep -c "disabled"` -eq 0 ]; then
 for selinuxvariant in %{selinux_variants}; do
-	%{_sbindir}/semodule -s ${selinuxvariant} -i %{_datadir}/selinux/${selinuxvariant}/pigeon.pp &> /dev/null || :
+	%{_sbindir}/semodule -s ${selinuxvariant} -i %{_datadir}/selinux/${selinuxvariant}/bull.pp &> /dev/null || :
 done
-%{_sbindir}/semanage port -a -t pigeon_port_t -p tcp 8756
-%{_sbindir}/semanage port -a -t pigeon_port_t -p tcp 8757
-%{_sbindir}/semanage port -a -t pigeon_port_t -p tcp 18756
-%{_sbindir}/semanage port -a -t pigeon_port_t -p tcp 18757
-%{_sbindir}/semanage port -a -t pigeon_port_t -p tcp 18443
-%{_sbindir}/semanage port -a -t pigeon_port_t -p tcp 18444
-%{_sbindir}/fixfiles -R pigeon-server restore &> /dev/null || :
-%{_sbindir}/restorecon -R %{_localstatedir}/lib/pigeon || :
+%{_sbindir}/semanage port -a -t bull_port_t -p tcp 8756
+%{_sbindir}/semanage port -a -t bull_port_t -p tcp 8757
+%{_sbindir}/semanage port -a -t bull_port_t -p tcp 18756
+%{_sbindir}/semanage port -a -t bull_port_t -p tcp 18757
+%{_sbindir}/semanage port -a -t bull_port_t -p tcp 18443
+%{_sbindir}/semanage port -a -t bull_port_t -p tcp 18444
+%{_sbindir}/fixfiles -R bull-server restore &> /dev/null || :
+%{_sbindir}/restorecon -R %{_localstatedir}/lib/bull || :
 fi
 
 %posttrans server
 %{_bindir}/systemd-tmpfiles --create
 
 %preun server
-%systemd_preun pigeon.service
+%systemd_preun bull.service
 
 %postun server
-%systemd_postun pigeon.service
+%systemd_postun bull.service
 # SELinux
 if [ $1 -eq 0 ]; then
 	if [ `%{_sbindir}/sestatus |grep -c "disabled"` -eq 0 ]; then
@@ -360,11 +360,11 @@ if [ $1 -eq 0 ]; then
 	%{_sbindir}/semanage port -d -p tcp 18443
 	%{_sbindir}/semanage port -d -p tcp 18444
 	for selinuxvariant in %{selinux_variants}; do
-		%{_sbindir}/semodule -s ${selinuxvariant} -r pigeon &> /dev/null || :
+		%{_sbindir}/semodule -s ${selinuxvariant} -r bull &> /dev/null || :
 	done
-	%{_sbindir}/fixfiles -R pigeon-server restore &> /dev/null || :
-	[ -d %{_localstatedir}/lib/pigeon ] && \
-		%{_sbindir}/restorecon -R %{_localstatedir}/lib/pigeon &> /dev/null || :
+	%{_sbindir}/fixfiles -R bull-server restore &> /dev/null || :
+	[ -d %{_localstatedir}/lib/bull ] && \
+		%{_sbindir}/restorecon -R %{_localstatedir}/lib/bull &> /dev/null || :
 	fi
 fi
 
@@ -375,16 +375,16 @@ rm -rf %{buildroot}
 %files core
 %defattr(-,root,root,-)
 %license COPYING db-%{bdbv}.NC-LICENSE
-%doc COPYING pigeon.conf.example doc/README.md doc/bips.md doc/files.md doc/multiwallet-qt.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
-%attr(0755,root,root) %{_bindir}/pigeon-qt
-%attr(0644,root,root) %{_datadir}/applications/pigeon-core.desktop
-%attr(0644,root,root) %{_datadir}/kde4/services/pigeon-core.protocol
+%doc COPYING bull.conf.example doc/README.md doc/bips.md doc/files.md doc/multiwallet-qt.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
+%attr(0755,root,root) %{_bindir}/bull-qt
+%attr(0644,root,root) %{_datadir}/applications/bull-core.desktop
+%attr(0644,root,root) %{_datadir}/kde4/services/bull-core.protocol
 %attr(0644,root,root) %{_datadir}/pixmaps/*.ico
 %attr(0644,root,root) %{_datadir}/pixmaps/*.bmp
 %attr(0644,root,root) %{_datadir}/pixmaps/*.svg
 %attr(0644,root,root) %{_datadir}/pixmaps/*.png
 %attr(0644,root,root) %{_datadir}/pixmaps/*.xpm
-%attr(0644,root,root) %{_mandir}/man1/pigeon-qt.1*
+%attr(0644,root,root) %{_mandir}/man1/bull-qt.1*
 %endif
 
 %files libs
@@ -406,30 +406,30 @@ rm -rf %{buildroot}
 %files server
 %defattr(-,root,root,-)
 %license COPYING db-%{bdbv}.NC-LICENSE
-%doc COPYING pigeon.conf.example doc/README.md doc/REST-interface.md doc/bips.md doc/dnsseed-policy.md doc/files.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
-%attr(0755,root,root) %{_sbindir}/pigeond
-%attr(0644,root,root) %{_tmpfilesdir}/pigeon.conf
-%attr(0644,root,root) %{_unitdir}/pigeon.service
-%dir %attr(0750,pigeon,pigeon) %{_sysconfdir}/pigeon
-%dir %attr(0750,pigeon,pigeon) %{_localstatedir}/lib/pigeon
-%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/sysconfig/pigeon
+%doc COPYING bull.conf.example doc/README.md doc/REST-interface.md doc/bips.md doc/dnsseed-policy.md doc/files.md doc/reduce-traffic.md doc/release-notes.md doc/tor.md
+%attr(0755,root,root) %{_sbindir}/bulld
+%attr(0644,root,root) %{_tmpfilesdir}/bull.conf
+%attr(0644,root,root) %{_unitdir}/bull.service
+%dir %attr(0750,bull,bull) %{_sysconfdir}/bull
+%dir %attr(0750,bull,bull) %{_localstatedir}/lib/bull
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/sysconfig/bull
 %attr(0644,root,root) %{_datadir}/selinux/*/*.pp
-%attr(0644,root,root) %{_mandir}/man1/pigeond.1*
+%attr(0644,root,root) %{_mandir}/man1/bulld.1*
 
 %files utils
 %defattr(-,root,root,-)
 %license COPYING
-%doc COPYING pigeon.conf.example doc/README.md
-%attr(0755,root,root) %{_bindir}/pigeon-cli
-%attr(0755,root,root) %{_bindir}/pigeon-tx
-%attr(0755,root,root) %{_bindir}/bench_pigeon
-%attr(0644,root,root) %{_mandir}/man1/pigeon-cli.1*
+%doc COPYING bull.conf.example doc/README.md
+%attr(0755,root,root) %{_bindir}/bull-cli
+%attr(0755,root,root) %{_bindir}/bull-tx
+%attr(0755,root,root) %{_bindir}/bench_bull
+%attr(0644,root,root) %{_mandir}/man1/bull-cli.1*
 
 
 
 %changelog
 * Fri Feb 26 2016 Alice Wonder <buildmaster@librelamp.com> - 0.12.0-2
-- Rename Qt package from pigeon to pigeon-core
+- Rename Qt package from bull to bull-core
 - Make building of the Qt package optional
 - When building the Qt package, default to Qt5 but allow building
 -  against Qt4
@@ -439,4 +439,4 @@ rm -rf %{buildroot}
 - Initial spec file for 0.12.0 release
 
 # This spec file is written from scratch but a lot of the packaging decisions are directly
-# based upon the 0.11.2 package spec file from https://www.ringingliberty.com/pigeon/
+# based upon the 0.11.2 package spec file from https://www.ringingliberty.com/bull/

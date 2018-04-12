@@ -96,7 +96,7 @@
     </message>
 </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Chứ ký &amp; Tin nhắn...</translation>
@@ -186,8 +186,8 @@
         <translation>Đánh chỉ số (indexing) lại các khối (blocks) trên ổ đĩa ...</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
-        <translation>Gửi coins đến tài khoản Pigeon</translation>
+        <source>Send coins to a Bull address</source>
+        <translation>Gửi coins đến tài khoản Bull</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -206,8 +206,8 @@
         <translation>&amp;Tin nhắn xác thực</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -234,12 +234,12 @@
         <translation>Mã hoá các khoá bí mật trong Ví của bạn.</translation>
     </message>
     <message>
-        <source>Sign messages with your Pigeon addresses to prove you own them</source>
-        <translation>Dùng địa chỉ Pigeon của bạn ký các tin nhắn để xác minh những nội dung tin nhắn đó là của bạn.</translation>
+        <source>Sign messages with your Bull addresses to prove you own them</source>
+        <translation>Dùng địa chỉ Bull của bạn ký các tin nhắn để xác minh những nội dung tin nhắn đó là của bạn.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Pigeon addresses</source>
-        <translation>Kiểm tra các tin nhắn để chắc chắn rằng chúng được ký bằng các địa chỉ Pigeon xác định.</translation>
+        <source>Verify messages to ensure they were signed with specified Bull addresses</source>
+        <translation>Kiểm tra các tin nhắn để chắc chắn rằng chúng được ký bằng các địa chỉ Bull xác định.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -258,8 +258,8 @@
         <translation>Thanh công cụ (toolbar)</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pigeon: URIs)</source>
-        <translation>Yêu cầu thanh toán(tạo mã QR và địa chỉ Pigeon: URLs)</translation>
+        <source>Request payments (generates QR codes and bull: URIs)</source>
+        <translation>Yêu cầu thanh toán(tạo mã QR và địa chỉ Bull: URLs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -270,8 +270,8 @@
         <translation>Hiện thỉ danh sách các địa chỉ và nhãn đã dùng để nhận.</translation>
     </message>
     <message>
-        <source>Open a pigeon: URI or payment request</source>
-        <translation>Mở pigeon:URL hoặc yêu cầu thanh toán</translation>
+        <source>Open a bull: URI or payment request</source>
+        <translation>Mở bull:URL hoặc yêu cầu thanh toán</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -536,8 +536,8 @@
         <translation>Ví</translation>
     </message>
     <message>
-        <source>Connect to the Pigeon network through a SOCKS5 proxy.</source>
-        <translation>Kết nối đến máy chủ Pigeon thông qua SOCKS5 proxy.</translation>
+        <source>Connect to the Bull network through a SOCKS5 proxy.</source>
+        <translation>Kết nối đến máy chủ Bull thông qua SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1012,14 +1012,14 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Lựa chọn:</translation>
     </message>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Pigeon Core</translation>
+        <source>Bull Core</source>
+        <translation>Bull Core</translation>
     </message>
     <message>
         <source>(default: %u)</source>

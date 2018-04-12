@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_WALLETMODEL_H
-#define PIGEON_QT_WALLETMODEL_H
+#ifndef BULL_QT_WALLETMODEL_H
+#define BULL_QT_WALLETMODEL_H
 
 #include "paymentrequestplus.h"
 #include "walletmodeltransaction.h"
@@ -95,7 +95,7 @@ public:
     }
 };
 
-/** Interface to Pigeon wallet from Qt view code. */
+/** Interface to Bull wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT
@@ -286,4 +286,4 @@ public Q_SLOTS:
     void pollBalanceChanged();
 };
 
-#endif // PIGEON_QT_WALLETMODEL_H
+#endif // BULL_QT_WALLETMODEL_H

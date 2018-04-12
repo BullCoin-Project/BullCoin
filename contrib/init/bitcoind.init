@@ -1,36 +1,36 @@
 #!/bin/bash
 #
-#  pigeond The pigeon core server.
+#  bulld The bull core server.
 #
 #
 # chkconfig: 345 80 20
-# description: pigeond
-# processname: pigeond
+# description: bulld
+# processname: bulld
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/pigeond, see below
-if [ -f /etc/sysconfig/pigeond ]; then
-        . /etc/sysconfig/pigeond
+# you can override defaults in /etc/sysconfig/bulld, see below
+if [ -f /etc/sysconfig/bulld ]; then
+        . /etc/sysconfig/bulld
 fi
 
 RETVAL=0
 
-prog=pigeond
-# you can override the lockfile via PIGEOND_LOCKFILE in /etc/sysconfig/pigeond
-lockfile=${PIGEOND_LOCKFILE-/var/lock/subsys/pigeond}
+prog=bulld
+# you can override the lockfile via BULLD_LOCKFILE in /etc/sysconfig/bulld
+lockfile=${BULLD_LOCKFILE-/var/lock/subsys/bulld}
 
-# pigeond defaults to /usr/bin/pigeond, override with PIGEOND_BIN
-pigeond=${PIGEOND_BIN-/usr/bin/pigeond}
+# bulld defaults to /usr/bin/bulld, override with BULLD_BIN
+bulld=${BULLD_BIN-/usr/bin/bulld}
 
-# pigeond opts default to -disablewallet, override with PIGEOND_OPTS
-pigeond_opts=${PIGEOND_OPTS--disablewallet}
+# bulld opts default to -disablewallet, override with BULLD_OPTS
+bulld_opts=${BULLD_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "
-    daemon $DAEMONOPTS $pigeond $pigeond_opts
+    daemon $DAEMONOPTS $bulld $bulld_opts
     RETVAL=$?
     echo
     [ $RETVAL -eq 0 ] && touch $lockfile

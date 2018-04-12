@@ -56,7 +56,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Sincronizando con la red...</translation>
@@ -110,16 +110,16 @@
         <translation>Recibiendo direcciones</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
-        <translation>Enviar monedas a una dirección Pigeon</translation>
+        <source>Send coins to a Bull address</source>
+        <translation>Enviar monedas a una dirección Bull</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Cambie la clave utilizada para el cifrado del monedero</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -437,7 +437,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Opciones:</translation>

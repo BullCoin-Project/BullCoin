@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_BENCH_BENCH_H
-#define PIGEON_BENCH_BENCH_H
+#ifndef BULL_BENCH_BENCH_H
+#define BULL_BENCH_BENCH_H
 
 #include <functional>
 #include <limits>
@@ -78,4 +78,4 @@ namespace benchmark {
 #define BENCHMARK(n) \
     benchmark::BenchRunner BOOST_PP_CAT(bench_, BOOST_PP_CAT(__LINE__, n))(BOOST_PP_STRINGIZE(n), n);
 
-#endif // PIGEON_BENCH_BENCH_H
+#endif // BULL_BENCH_BENCH_H

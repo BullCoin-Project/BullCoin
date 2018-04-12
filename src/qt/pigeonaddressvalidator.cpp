@@ -1,9 +1,9 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "pigeonaddressvalidator.h"
+#include "bulladdressvalidator.h"
 
 #include "base58.h"
 
@@ -16,12 +16,12 @@
   - All lower-case letters except for 'l'
 */
 
-PigeonAddressEntryValidator::PigeonAddressEntryValidator(QObject *parent) :
+BullAddressEntryValidator::BullAddressEntryValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State PigeonAddressEntryValidator::validate(QString &input, int &pos) const
+QValidator::State BullAddressEntryValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
 
@@ -81,15 +81,15 @@ QValidator::State PigeonAddressEntryValidator::validate(QString &input, int &pos
     return state;
 }
 
-PigeonAddressCheckValidator::PigeonAddressCheckValidator(QObject *parent) :
+BullAddressCheckValidator::BullAddressCheckValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State PigeonAddressCheckValidator::validate(QString &input, int &pos) const
+QValidator::State BullAddressCheckValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
-    // Validate the passed Pigeon address
+    // Validate the passed Bull address
     if (IsValidDestinationString(input.toStdString())) {
         return QValidator::Acceptable;
     }

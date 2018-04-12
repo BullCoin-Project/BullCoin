@@ -52,7 +52,7 @@
     </message>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>&amp;Overview</source>
         <translation>&amp;கண்ணோட்டம்</translation>
@@ -90,8 +90,8 @@
         <translation>&amp;செய்தியை சரிசெய்...</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -706,10 +706,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Pigeon மையம்</translation>
+        <source>Bull Core</source>
+        <translation>Bull மையம்</translation>
     </message>
     <message>
         <source>(default: %u)</source>

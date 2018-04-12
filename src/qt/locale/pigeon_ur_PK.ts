@@ -80,7 +80,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Error</source>
         <translation>نقص</translation>
@@ -238,7 +238,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Insufficient funds</source>
         <translation>ناکافی فنڈز</translation>

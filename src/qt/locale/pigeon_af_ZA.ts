@@ -176,7 +176,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Sinchroniseer met die netwerk ...</translation>
@@ -214,8 +214,8 @@
         <translation>&amp;Opsies</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -770,7 +770,7 @@
     </message>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Opsies:</translation>

@@ -62,12 +62,12 @@
         <translation>Ontvanger adresse</translation>
     </message>
     <message>
-        <source>These are your Pigeon addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Hierdie is die adresse vanwaar u Pigeon betalings stuur. U moet altyd die bedrag en die adres van die ontvanger nagaan voordat u enige munte stuur.</translation>
+        <source>These are your Bull addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Hierdie is die adresse vanwaar u Bull betalings stuur. U moet altyd die bedrag en die adres van die ontvanger nagaan voordat u enige munte stuur.</translation>
     </message>
     <message>
-        <source>These are your Pigeon addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Hierdie is die adresse waar u Pigeons sal ontvang. Ons beveel aan dat u 'n nuwe adres kies vir elke transaksie</translation>
+        <source>These are your Bull addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Hierdie is die adresse waar u Bulls sal ontvang. Ons beveel aan dat u 'n nuwe adres kies vir elke transaksie</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -168,8 +168,8 @@
         <translation>Bevestig dat die beursie gekodifiseer is</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIGEONS&lt;/b&gt;!</source>
-        <translation>Waarskuwing: Indien u die beursie kodifiseer en u vergeet u wagwoord &lt;b&gt;VERLOOR U AL U PIGEONS&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BULLS&lt;/b&gt;!</source>
+        <translation>Waarskuwing: Indien u die beursie kodifiseer en u vergeet u wagwoord &lt;b&gt;VERLOOR U AL U BULLS&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -228,7 +228,7 @@
     </message>
 </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Teken &amp;boodskap...</translation>
@@ -330,8 +330,8 @@
         <translation>Besig met herindeksering van blokke op hardeskyf...</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
-        <translation>Stuur munte na 'n Pigeon adres</translation>
+        <source>Send coins to a Bull address</source>
+        <translation>Stuur munte na 'n Bull adres</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -350,8 +350,8 @@
         <translation>Maak ontfouting en diagnostiese konsole oop</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -378,12 +378,12 @@
         <translation>Kodifiseer die private sleutes wat aan jou beursie gekoppel is.</translation>
     </message>
     <message>
-        <source>Sign messages with your Pigeon addresses to prove you own them</source>
-        <translation>Onderteken boodskappe met u Pigeon adresse om u eienaarskap te bewys</translation>
+        <source>Sign messages with your Bull addresses to prove you own them</source>
+        <translation>Onderteken boodskappe met u Bull adresse om u eienaarskap te bewys</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Pigeon addresses</source>
-        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde Pigeon adresse</translation>
+        <source>Verify messages to ensure they were signed with specified Bull addresses</source>
+        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde Bull adresse</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -398,8 +398,8 @@
         <translation>Orebalk</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pigeon: URIs)</source>
-        <translation>Versoek betalings (genereer QR-kodes en pigeon: URI's)</translation>
+        <source>Request payments (generates QR codes and bull: URIs)</source>
+        <translation>Versoek betalings (genereer QR-kodes en bull: URI's)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -410,8 +410,8 @@
         <translation>Vertoon die lys van gebruikte ontvangers-adresse en etikette</translation>
     </message>
     <message>
-        <source>Open a pigeon: URI or payment request</source>
-        <translation>Skep 'n pigeon: URI of betalingsversoek</translation>
+        <source>Open a bull: URI or payment request</source>
+        <translation>Skep 'n bull: URI of betalingsversoek</translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -1010,10 +1010,10 @@
     </message>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Pigeon Kern</translation>
+        <source>Bull Core</source>
+        <translation>Bull Kern</translation>
     </message>
     <message>
         <source>Information</source>

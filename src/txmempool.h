@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_TXMEMPOOL_H
-#define PIGEON_TXMEMPOOL_H
+#ifndef BULL_TXMEMPOOL_H
+#define BULL_TXMEMPOOL_H
 
 #include <memory>
 #include <set>
@@ -776,4 +776,4 @@ struct DisconnectedBlockTransactions {
     }
 };
 
-#endif // PIGEON_TXMEMPOOL_H
+#endif // BULL_TXMEMPOOL_H

@@ -1,10 +1,10 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_DBWRAPPER_H
-#define PIGEON_DBWRAPPER_H
+#ifndef BULL_DBWRAPPER_H
+#define BULL_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "fs.h"
@@ -341,4 +341,4 @@ public:
 
 };
 
-#endif // PIGEON_DBWRAPPER_H
+#endif // BULL_DBWRAPPER_H

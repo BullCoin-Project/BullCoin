@@ -62,11 +62,11 @@
         <translation>כתובות לקבלה</translation>
     </message>
     <message>
-        <source>These are your Pigeon addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Bull addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>אלו הן כתובות הביטקוין שלך לשליחת תשלומים. חשוב לבדוק את כמות הכתובות המקבלות לפני שליחת מטבעות.</translation>
     </message>
     <message>
-        <source>These are your Pigeon addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Bull addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>אלו הן כתובות הביטקוין שלך לקבלת תשלומים. מומלץ להשתמש בכתובת חדשה לכל העברה.</translation>
     </message>
     <message>
@@ -168,7 +168,7 @@
         <translation>אימות הצפנת הארנק</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR PIGEONS&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BULLS&lt;/b&gt;!</source>
         <translation>אזהרה: איבוד מילת הצופן לאחר הצפנת הארנק עשויה לגרום לכך &lt;b&gt;שכל הביטקוינים שלך יאבדו&lt;/b&gt;!</translation>
     </message>
     <message>
@@ -180,7 +180,7 @@
         <translation>הארנק מוצפן</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your pigeons from being stolen by malware infecting your computer.</source>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bulls from being stolen by malware infecting your computer.</source>
         <translation>%1 ייסגר כעת כדי לסיים את תהליך ההצפנה. נא לשים לב כי הצפנת הארנק שלך לא יכול להגן על הביטקוינים שלך מפני גניבה או נוזקה שתוקפת את מחשבך.</translation>
     </message>
     <message>
@@ -232,7 +232,7 @@
     </message>
 </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;חתימה על הודעה…</translation>
@@ -338,7 +338,7 @@
         <translation>המקטעים נוספים למפתח בכונן…</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
+        <source>Send coins to a Bull address</source>
         <translation>שליחת מטבעות לכתובת ביטקוין</translation>
     </message>
     <message>
@@ -362,7 +362,7 @@
         <translation>&amp;אימות הודעה…</translation>
     </message>
     <message>
-        <source>Pigeon</source>
+        <source>Bull</source>
         <translation>ביטקוין</translation>
     </message>
     <message>
@@ -390,11 +390,11 @@
         <translation>הצפנת המפתחות הפרטיים ששייכים לארנק שלך</translation>
     </message>
     <message>
-        <source>Sign messages with your Pigeon addresses to prove you own them</source>
+        <source>Sign messages with your Bull addresses to prove you own them</source>
         <translation>חתום על הודעות עם כתובות הביטקוין שלך כדי להוכיח שהן בבעלותך</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Pigeon addresses</source>
+        <source>Verify messages to ensure they were signed with specified Bull addresses</source>
         <translation>אמת הודעות כדי להבטיח שהן נחתמו עם כתובת ביטקוין מסוימות</translation>
     </message>
     <message>
@@ -414,8 +414,8 @@
         <translation>סרגל כלים לשוניות</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pigeon: URIs)</source>
-        <translation>בקשת תשלומים (יצירה של קודים מסוג QR וסכימות כתובות משאב של :pigeon)</translation>
+        <source>Request payments (generates QR codes and bull: URIs)</source>
+        <translation>בקשת תשלומים (יצירה של קודים מסוג QR וסכימות כתובות משאב של :bull)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -426,7 +426,7 @@
         <translation>הצגת רשימת הכתובות והתוויות הנמצאות בשימוש</translation>
     </message>
     <message>
-        <source>Open a pigeon: URI or payment request</source>
+        <source>Open a bull: URI or payment request</source>
         <translation>פתיחת ביטקוין: כתובת משאב או בקשת תשלום</translation>
     </message>
     <message>
@@ -434,7 +434,7 @@
         <translation>אפשרויות &amp;שורת הפקודה</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Pigeon network</source>
+        <source>%n active connection(s) to Bull network</source>
         <translation><numerusform>חיבור אחד פעיל לרשת ביטקוין</numerusform><numerusform>%n חיבורים פעילים לרשת ביטקוין</numerusform></translation>
     </message>
     <message>
@@ -470,7 +470,7 @@
         <translation>עדכני</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Pigeon command-line options</source>
+        <source>Show the %1 help message to get a list with possible Bull command-line options</source>
         <translation>יש להציג את הודעת העזרה של %1 כדי להציג רשימה עם אפשרויות שורת פקודה לביטקוין</translation>
     </message>
     <message>
@@ -532,7 +532,7 @@
         <translation>הארנק &lt;b&gt;מוצפן&lt;/b&gt; ו&lt;b&gt;נעול&lt;/b&gt; כרגע</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Pigeon can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Bull can no longer continue safely and will quit.</source>
         <translation>אירעה שגיאה חמורה. אין אפשרות להשתמש עוד בביטקוין באופן מאובטח והיישום ייסגר.</translation>
     </message>
 </context>
@@ -714,7 +714,7 @@
         <translation>עריכת כתובת השליחה</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Pigeon address.</source>
+        <source>The entered address "%1" is not a valid Bull address.</source>
         <translation>הכתובת שהוקלדה „%1” היא אינה כתובת ביטקוין תקנית.</translation>
     </message>
     <message>
@@ -996,7 +996,7 @@
         <translation>עודף &amp;בלתי מאושר מההשקעה</translation>
     </message>
     <message>
-        <source>Automatically open the Pigeon client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Bull client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>פתיחת הפתחה של ביטקוין בנתב באופן אוטומטי. עובד רק אם UPnP מופעל ונתמך בנתב.</translation>
     </message>
     <message>
@@ -1119,7 +1119,7 @@
         <translation>טופס</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Pigeon network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bull network after a connection is established, but this process has not completed yet.</source>
         <translation>המידע המוצג עשוי להיות מיושן. הארנק שלך מסתנכרן באופן אוטומטי עם רשת הביטקוין לאחר יצירת החיבור, אך התהליך טרם הסתיים.</translation>
     </message>
     <message>
@@ -1194,8 +1194,8 @@
         <translation>שגיאת בקשת תשלום</translation>
     </message>
     <message>
-        <source>Cannot start pigeon: click-to-pay handler</source>
-        <translation>לא ניתן להפעיל את המקשר pigeon: click-to-pay</translation>
+        <source>Cannot start bull: click-to-pay handler</source>
+        <translation>לא ניתן להפעיל את המקשר bull: click-to-pay</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1268,7 +1268,7 @@
         <translation>כמות</translation>
     </message>
     <message>
-        <source>Enter a Pigeon address (e.g. %1)</source>
+        <source>Enter a Bull address (e.g. %1)</source>
         <translation>נא להזין כתובת ביטקוין (למשל: %1)</translation>
     </message>
     <message>
@@ -1668,7 +1668,7 @@
         <translation>ש&amp;ימוש &amp;חוזר בכתובת קבלה קיימת (לא מומלץ)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Pigeon network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bull network.</source>
         <translation>הודעת רשות לצירוף לבקשת התשלום שתוצג בעת פתיחת הבקשה. לתשומת לבך: ההודעה לא תישלח עם התשלום ברשת ביטקוין.</translation>
     </message>
     <message>
@@ -2025,7 +2025,7 @@
         <translation>תשלום של העמלה הנדרשת בלבד על סך %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Pigeon address</source>
+        <source>Warning: Invalid Bull address</source>
         <translation>אזהרה: כתובת ביטקיון שגויה</translation>
     </message>
     <message>
@@ -2068,7 +2068,7 @@
         <translation>זהו תשלום רגיל.</translation>
     </message>
     <message>
-        <source>The Pigeon address to send the payment to</source>
+        <source>The Bull address to send the payment to</source>
         <translation>כתובת הביטקוין של המוטב</translation>
     </message>
     <message>
@@ -2088,7 +2088,7 @@
         <translation>הסרת רשומה זו</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less pigeons than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less bulls than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>העמלה תנוכה מהסכום שנשלח. הנמען יקבל פחות ביטקוינים ממה שהזנת בשדה הסכום. אם נבחרו מספר נמענים, העמלה תחולק באופן שווה.</translation>
     </message>
     <message>
@@ -2108,7 +2108,7 @@
         <translation>יש להזין תווית עבור כתובת זו כדי להוסיף אותה לרשימת הכתובות בשימוש</translation>
     </message>
     <message>
-        <source>A message that was attached to the pigeon: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Pigeon network.</source>
+        <source>A message that was attached to the bull: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bull network.</source>
         <translation>הודעה שצורפה לביטקוין: כתובת שתאוחסן בהעברה לצורך מעקב מצדך. לתשומת לבך: הודעה זו לא תישלח ברשת הביטקוין.</translation>
     </message>
     <message>
@@ -2149,7 +2149,7 @@
         <translation>חתימה על הו&amp;דעה</translation>
     </message>
     <message>
-        <source>The Pigeon address to sign the message with</source>
+        <source>The Bull address to sign the message with</source>
         <translation>כתובת הביטקוין אתה לחתום אתה את ההודעה</translation>
     </message>
     <message>
@@ -2181,7 +2181,7 @@
         <translation>העתקת החתימה הנוכחית ללוח הגזירים</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Pigeon address</source>
+        <source>Sign the message to prove you own this Bull address</source>
         <translation>ניתן לחתום על ההודעה כדי להוכיח שכתובת הביטקוין הזו בבעלותך.</translation>
     </message>
     <message>
@@ -2201,11 +2201,11 @@
         <translation>&amp;אימות הודעה</translation>
     </message>
     <message>
-        <source>The Pigeon address the message was signed with</source>
+        <source>The Bull address the message was signed with</source>
         <translation>כתובת הביטקוין שאתה נחתמה ההודעה</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Pigeon address</source>
+        <source>Verify the message to ensure it was signed with the specified Bull address</source>
         <translation>ניתן לאמת את ההודעה כדי להבטיח שהיא נחתמה עם כתובת הביטקוין הנתונה</translation>
     </message>
     <message>
@@ -2676,7 +2676,7 @@
     </message>
 </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>אפשרויות:</translation>
@@ -2710,7 +2710,7 @@
         <translation>ריצה כסוכן ברקע וקבלת פקודות</translation>
     </message>
     <message>
-        <source>Pigeon Core</source>
+        <source>Bull Core</source>
         <translation>ליבת ביטקוין</translation>
     </message>
     <message>

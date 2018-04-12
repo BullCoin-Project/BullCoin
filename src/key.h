@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_KEY_H
-#define PIGEON_KEY_H
+#ifndef BULL_KEY_H
+#define BULL_KEY_H
 
 #include "pubkey.h"
 #include "serialize.h"
@@ -184,4 +184,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-#endif // PIGEON_KEY_H
+#endif // BULL_KEY_H

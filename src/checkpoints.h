@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CHECKPOINTS_H
-#define PIGEON_CHECKPOINTS_H
+#ifndef BULL_CHECKPOINTS_H
+#define BULL_CHECKPOINTS_H
 
 #include "uint256.h"
 
@@ -25,4 +25,4 @@ CBlockIndex* GetLastCheckpoint(const CCheckpointData& data);
 
 } //namespace Checkpoints
 
-#endif // PIGEON_CHECKPOINTS_H
+#endif // BULL_CHECKPOINTS_H

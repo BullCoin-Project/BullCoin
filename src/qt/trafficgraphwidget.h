@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_TRAFFICGRAPHWIDGET_H
-#define PIGEON_QT_TRAFFICGRAPHWIDGET_H
+#ifndef BULL_QT_TRAFFICGRAPHWIDGET_H
+#define BULL_QT_TRAFFICGRAPHWIDGET_H
 
 #include <QWidget>
 #include <QQueue>
@@ -46,4 +46,4 @@ private:
     ClientModel *clientModel;
 };
 
-#endif // PIGEON_QT_TRAFFICGRAPHWIDGET_H
+#endif // BULL_QT_TRAFFICGRAPHWIDGET_H

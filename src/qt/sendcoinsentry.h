@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_SENDCOINSENTRY_H
-#define PIGEON_QT_SENDCOINSENTRY_H
+#ifndef BULL_QT_SENDCOINSENTRY_H
+#define BULL_QT_SENDCOINSENTRY_H
 
 #include "walletmodel.h"
 
@@ -18,7 +18,7 @@ namespace Ui {
 }
 
 /**
- * A single entry in the dialog for sending pigeons.
+ * A single entry in the dialog for sending bulls.
  * Stacked widget, with different UIs for payment requests
  * with a strong payee identity.
  */
@@ -71,4 +71,4 @@ private:
     bool updateLabel(const QString &address);
 };
 
-#endif // PIGEON_QT_SENDCOINSENTRY_H
+#endif // BULL_QT_SENDCOINSENTRY_H

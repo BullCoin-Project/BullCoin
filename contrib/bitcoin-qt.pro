@@ -18,4 +18,4 @@ FORMS += \
     ../src/qt/forms/transactiondescdialog.ui \
 
 RESOURCES += \
-    ../src/qt/pigeon.qrc
+    ../src/qt/bull.qrc

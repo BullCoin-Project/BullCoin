@@ -1,13 +1,13 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CRYPTO_COMMON_H
-#define PIGEON_CRYPTO_COMMON_H
+#ifndef BULL_CRYPTO_COMMON_H
+#define BULL_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
 #include <stdint.h>
@@ -101,4 +101,4 @@ uint64_t static inline CountBits(uint64_t x)
     return ret;
 }
 
-#endif // PIGEON_CRYPTO_COMMON_H
+#endif // BULL_CRYPTO_COMMON_H

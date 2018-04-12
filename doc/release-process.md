@@ -3,9 +3,9 @@ Release Process
 
 Before every release candidate:
 
-* Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/PigeonProject/Pigeoncoin/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/BullProject/Bullcoin/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/PigeonProject/Pigeoncoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/BullProject/Bullcoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
 Before every minor and major release:
 
@@ -21,7 +21,7 @@ Before every minor and major release:
 
 Before every major release:
 
-* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/PigeonProject/Pigeoncoin/pull/7415) for an example.
+* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/BullProject/Bullcoin/pull/7415) for an example.
 * Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
 * Update `src/chainparams.cpp` chainTxData with statistics about the transaction count and rate.
 * Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
@@ -33,12 +33,12 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/pigeon-core/gitian.sigs.git
-    git clone https://github.com/pigeon-core/pigeon-detached-sigs.git
+    git clone https://github.com/bull-core/gitian.sigs.git
+    git clone https://github.com/bull-core/bull-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/PigeonProject/Pigeoncoin.git
+    git clone https://github.com/BullProject/Bullcoin.git
 
-### Pigeon maintainers/release engineers, suggestion for writing release notes
+### Bull maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -61,7 +61,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./pigeon
+    pushd ./bull
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -84,7 +84,7 @@ Ensure gitian-builder is up-to-date:
 
     pushd ./gitian-builder
     mkdir -p inputs
-    wget -P inputs https://pigeoncoin.org/cfields/osslsigncode-Backports-to-1.7.1.patch
+    wget -P inputs https://bullcoin.org/cfields/osslsigncode-Backports-to-1.7.1.patch
     wget -P inputs http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
     popd
 
@@ -95,7 +95,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../pigeon/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../bull/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -103,50 +103,50 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url pigeon=/path/to/pigeon,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url bull=/path/to/bull,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Pigeon Core for Linux, Windows, and OS X:
+### Build and sign Bull Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --num-make 2 --memory 3000 --commit pigeon=v${VERSION} ../pigeon/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../pigeon/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/pigeon-*.tar.gz build/out/src/pigeon-*.tar.gz ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit bull=v${VERSION} ../bull/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../bull/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/bull-*.tar.gz build/out/src/bull-*.tar.gz ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit pigeon=v${VERSION} ../pigeon/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../pigeon/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/pigeon-*-win-unsigned.tar.gz inputs/pigeon-win-unsigned.tar.gz
-    mv build/out/pigeon-*.zip build/out/pigeon-*.exe ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit bull=v${VERSION} ../bull/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../bull/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/bull-*-win-unsigned.tar.gz inputs/bull-win-unsigned.tar.gz
+    mv build/out/bull-*.zip build/out/bull-*.exe ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit pigeon=v${VERSION} ../pigeon/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../pigeon/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/pigeon-*-osx-unsigned.tar.gz inputs/pigeon-osx-unsigned.tar.gz
-    mv build/out/pigeon-*.tar.gz build/out/pigeon-*.dmg ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit bull=v${VERSION} ../bull/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../bull/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/bull-*-osx-unsigned.tar.gz inputs/bull-osx-unsigned.tar.gz
+    mv build/out/bull-*.tar.gz build/out/bull-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`pigeon-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`pigeon-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`pigeon-${VERSION}-win[32|64]-setup-unsigned.exe`, `pigeon-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`pigeon-${VERSION}-osx-unsigned.dmg`, `pigeon-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`bull-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`bull-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`bull-${VERSION}-win[32|64]-setup-unsigned.exe`, `bull-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`bull-${VERSION}-osx-unsigned.dmg`, `bull-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import pigeon/contrib/gitian-keys/*.pgp
+    gpg --import bull/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../pigeon/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../pigeon/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../pigeon/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../bull/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../bull/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../bull/contrib/gitian-descriptors/gitian-osx.yml
     popd
 
 ### Next steps:
@@ -167,22 +167,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer pigeon-osx-unsigned.tar.gz to osx for signing
-    tar xf pigeon-osx-unsigned.tar.gz
+    transfer bull-osx-unsigned.tar.gz to osx for signing
+    tar xf bull-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf pigeon-win-unsigned.tar.gz
+    tar xf bull-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/pigeon-detached-sigs
+    cd ~/bull-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -195,25 +195,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [pigeon-detached-sigs](https://github.com/pigeon-core/pigeon-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [bull-detached-sigs](https://github.com/bull-core/bull-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../pigeon/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../pigeon/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../pigeon/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/pigeon-osx-signed.dmg ../pigeon-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../bull/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../bull/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../bull/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/bull-osx-signed.dmg ../bull-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../pigeon/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../pigeon/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../pigeon/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/pigeon-*win64-setup.exe ../pigeon-${VERSION}-win64-setup.exe
-    mv build/out/pigeon-*win32-setup.exe ../pigeon-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../bull/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../bull/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../bull/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/bull-*win64-setup.exe ../bull-${VERSION}-win64-setup.exe
+    mv build/out/bull-*win32-setup.exe ../bull-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -235,23 +235,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-pigeon-${VERSION}-aarch64-linux-gnu.tar.gz
-pigeon-${VERSION}-arm-linux-gnueabihf.tar.gz
-pigeon-${VERSION}-i686-pc-linux-gnu.tar.gz
-pigeon-${VERSION}-x86_64-linux-gnu.tar.gz
-pigeon-${VERSION}-osx64.tar.gz
-pigeon-${VERSION}-osx.dmg
-pigeon-${VERSION}.tar.gz
-pigeon-${VERSION}-win32-setup.exe
-pigeon-${VERSION}-win32.zip
-pigeon-${VERSION}-win64-setup.exe
-pigeon-${VERSION}-win64.zip
+bull-${VERSION}-aarch64-linux-gnu.tar.gz
+bull-${VERSION}-arm-linux-gnueabihf.tar.gz
+bull-${VERSION}-i686-pc-linux-gnu.tar.gz
+bull-${VERSION}-x86_64-linux-gnu.tar.gz
+bull-${VERSION}-osx64.tar.gz
+bull-${VERSION}-osx.dmg
+bull-${VERSION}.tar.gz
+bull-${VERSION}-win32-setup.exe
+bull-${VERSION}-win32.zip
+bull-${VERSION}-win64-setup.exe
+bull-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the pigeon.org server, nor put them in the torrent*.
+space *do not upload these to the bull.org server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -261,49 +261,49 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the pigeon.org server
-  into `/var/www/bin/pigeon-core-${VERSION}`
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the bull.org server
+  into `/var/www/bin/bull-core-${VERSION}`
 
 - A `.torrent` will appear in the directory after a few minutes. Optionally help seed this torrent. To get the `magnet:` URI use:
 ```bash
 transmission-show -m <torrent file>
 ```
 Insert the magnet URI into the announcement sent to mailing lists. This permits
-people without access to `pigeon.org` to download the binary distribution.
+people without access to `bull.org` to download the binary distribution.
 Also put it into the `optional_magnetlink:` slot in the YAML file for
-pigeon.org (see below for pigeon.org update instructions).
+bull.org (see below for bull.org update instructions).
 
-- Update pigeon.org version
+- Update bull.org version
 
-  - First, check to see if the Pigeon.org maintainers have prepared a
-    release: https://github.com/pigeon-dot-org/pigeon.org/labels/Releases
+  - First, check to see if the Bull.org maintainers have prepared a
+    release: https://github.com/bull-dot-org/bull.org/labels/Releases
 
       - If they have, it will have previously failed their Travis CI
         checks because the final release files weren't uploaded.
         Trigger a Travis CI rebuild---if it passes, merge.
 
-  - If they have not prepared a release, follow the Pigeon.org release
-    instructions: https://github.com/pigeon-dot-org/pigeon.org#release-notes
+  - If they have not prepared a release, follow the Bull.org release
+    instructions: https://github.com/bull-dot-org/bull.org#release-notes
 
   - After the pull request is merged, the website will automatically show the newest version within 15 minutes, as well
     as update the OS download links. Ping @saivann/@harding (saivann/harding on Freenode) in case anything goes wrong
 
 - Announce the release:
 
-  - pigeon-dev and pigeon-core-dev mailing list
+  - bull-dev and bull-core-dev mailing list
 
-  - Pigeon Core announcements list https://pigeoncoin.org/en/list/announcements/join/
+  - Bull Core announcements list https://bullcoin.org/en/list/announcements/join/
 
-  - pigeoncore.org blog post
+  - bullcore.org blog post
 
-  - Update title of #pigeon on Freenode IRC
+  - Update title of #bull on Freenode IRC
 
-  - Optionally twitter, reddit /r/Pigeon, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/Bull, ... but this will usually sort out itself
 
-  - Notify BlueMatt so that he can start building [the PPAs](https://launchpad.net/~pigeon/+archive/ubuntu/pigeon)
+  - Notify BlueMatt so that he can start building [the PPAs](https://launchpad.net/~bull/+archive/ubuntu/bull)
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/PigeonProject/Pigeoncoin/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/BullProject/Bullcoin/releases/new) with a link to the archived release notes.
 
   - Celebrate

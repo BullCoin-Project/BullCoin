@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_PIGEONAMOUNTFIELD_H
-#define PIGEON_QT_PIGEONAMOUNTFIELD_H
+#ifndef BULL_QT_BULLAMOUNTFIELD_H
+#define BULL_QT_BULLAMOUNTFIELD_H
 
 #include "amount.h"
 
@@ -16,18 +16,18 @@ QT_BEGIN_NAMESPACE
 class QValueComboBox;
 QT_END_NAMESPACE
 
-/** Widget for entering pigeon amounts.
+/** Widget for entering bull amounts.
   */
-class PigeonAmountField: public QWidget
+class BullAmountField: public QWidget
 {
     Q_OBJECT
 
     // ugly hack: for some unknown reason CAmount (instead of qint64) does not work here as expected
-    // discussion: https://github.com/PigeonProject/Pigeoncoin/pull/5117
+    // discussion: https://github.com/BullProject/Bullcoin/pull/5117
     Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY valueChanged USER true)
 
 public:
-    explicit PigeonAmountField(QWidget *parent = 0);
+    explicit BullAmountField(QWidget *parent = 0);
 
     CAmount value(bool *value=0) const;
     void setValue(const CAmount& value);
@@ -73,4 +73,4 @@ private Q_SLOTS:
 
 };
 
-#endif // PIGEON_QT_PIGEONAMOUNTFIELD_H
+#endif // BULL_QT_BULLAMOUNTFIELD_H

@@ -64,7 +64,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Parakstīt &amp;ziņojumu...</translation>
@@ -142,8 +142,8 @@
         <translation>Bloku reindeksēšana no diska...</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
-        <translation>Nosūtīt bitkoinus uz Pigeon adresi</translation>
+        <source>Send coins to a Bull address</source>
+        <translation>Nosūtīt bitkoinus uz Bull adresi</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +166,8 @@
         <translation>&amp;Pārbaudīt ziņojumu...</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +194,12 @@
         <translation>Šifrēt privātās atslēgas kuras pieder tavam maciņam</translation>
     </message>
     <message>
-        <source>Sign messages with your Pigeon addresses to prove you own them</source>
-        <translation>Parakstīt ziņojumus ar savām Pigeon adresēm lai pierādītu ka tās pieder tev</translation>
+        <source>Sign messages with your Bull addresses to prove you own them</source>
+        <translation>Parakstīt ziņojumus ar savām Bull adresēm lai pierādītu ka tās pieder tev</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Pigeon addresses</source>
-        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām Pigeon adresēm</translation>
+        <source>Verify messages to ensure they were signed with specified Bull addresses</source>
+        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām Bull adresēm</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -218,12 +218,12 @@
         <translation>Ciļņu rīkjosla</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and pigeon: URIs)</source>
-        <translation>Pieprasīt maksājumus (izveido QR kodu un pigeon: URIs)</translation>
+        <source>Request payments (generates QR codes and bull: URIs)</source>
+        <translation>Pieprasīt maksājumus (izveido QR kodu un bull: URIs)</translation>
     </message>
     <message>
-        <source>Open a pigeon: URI or payment request</source>
-        <translation>Atvērt pigeon URI vai maksājuma pieprasījumu</translation>
+        <source>Open a bull: URI or payment request</source>
+        <translation>Atvērt bull URI vai maksājuma pieprasījumu</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -499,15 +499,15 @@
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
-        <translation>Ieslēgt pigeon &amp;kontroles funkcijas</translation>
+        <translation>Ieslēgt bull &amp;kontroles funkcijas</translation>
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
         <translation>&amp;Tērēt neapstiprinātu atlikumu</translation>
     </message>
     <message>
-        <source>Automatically open the Pigeon client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Uz rūtera automātiski atvērt Pigeon klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
+        <source>Automatically open the Bull client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Uz rūtera automātiski atvērt Bull klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -559,7 +559,7 @@
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
-        <translation>Vai rādīt Pigeon kontroles funkcijas vai nē.</translation>
+        <translation>Vai rādīt Bull kontroles funkcijas vai nē.</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -593,8 +593,8 @@
         <translation>Forma</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Pigeon network after a connection is established, but this process has not completed yet.</source>
-        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar Pigeon tīklu, taču šis process vēl nav beidzies.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bull network after a connection is established, but this process has not completed yet.</source>
+        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar Bull tīklu, taču šis process vēl nav beidzies.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -852,7 +852,7 @@
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Pigeon Kontroles Funkcijas</translation>
+        <translation>Bull Kontroles Funkcijas</translation>
     </message>
     <message>
         <source>Inputs...</source>
@@ -1027,8 +1027,8 @@
         <translation>Kopēt parakstu uz sistēmas starpliktuvi</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Pigeon address</source>
-        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs Pigeon adreses īpašnieks.</translation>
+        <source>Sign the message to prove you own this Bull address</source>
+        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs Bull adreses īpašnieks.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1098,7 +1098,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Iespējas:</translation>
@@ -1124,8 +1124,8 @@
         <translation>Darbināt fonā kā servisu un pieņemt komandas</translation>
     </message>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Pigeon Core</translation>
+        <source>Bull Core</source>
+        <translation>Bull Core</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

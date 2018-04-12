@@ -1,10 +1,10 @@
 // Copyright (c) 2015 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_MERKLE
-#define PIGEON_MERKLE
+#ifndef BULL_MERKLE
+#define BULL_MERKLE
 
 #include <stdint.h>
 #include <vector>

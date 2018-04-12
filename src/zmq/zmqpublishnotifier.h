@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_ZMQ_ZMQPUBLISHNOTIFIER_H
-#define PIGEON_ZMQ_ZMQPUBLISHNOTIFIER_H
+#ifndef BULL_ZMQ_ZMQPUBLISHNOTIFIER_H
+#define BULL_ZMQ_ZMQPUBLISHNOTIFIER_H
 
 #include "zmqabstractnotifier.h"
 
@@ -53,4 +53,4 @@ public:
     bool NotifyTransaction(const CTransaction &transaction) override;
 };
 
-#endif // PIGEON_ZMQ_ZMQPUBLISHNOTIFIER_H
+#endif // BULL_ZMQ_ZMQPUBLISHNOTIFIER_H

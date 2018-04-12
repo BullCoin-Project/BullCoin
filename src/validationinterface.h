@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_VALIDATIONINTERFACE_H
-#define PIGEON_VALIDATIONINTERFACE_H
+#ifndef BULL_VALIDATIONINTERFACE_H
+#define BULL_VALIDATIONINTERFACE_H
 
 #include <memory>
 
@@ -105,4 +105,4 @@ public:
 
 CMainSignals& GetMainSignals();
 
-#endif // PIGEON_VALIDATIONINTERFACE_H
+#endif // BULL_VALIDATIONINTERFACE_H

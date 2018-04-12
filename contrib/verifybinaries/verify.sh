@@ -1,11 +1,11 @@
 #!/bin/bash
 # Copyright (c) 2016 The Bitcoin Core developers
-# Copyright (c) 2017 The Pigeon Core developers
+# Copyright (c) 2017 The Bull Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 ###   This script attempts to download the signature file SHA256SUMS.asc from
-###   pigeoncore.org and pigeon.org and compares them.
+###   bullcore.org and bull.org and compares them.
 ###   It first checks if the signature passes, and then downloads the files specified in
 ###   the file, and checks if the hashes of these files match those that are specified
 ###   in the signature file.
@@ -19,15 +19,15 @@ function clean_up {
    done
 }
 
-WORKINGDIR="/tmp/pigeon_verify_binaries"
+WORKINGDIR="/tmp/bull_verify_binaries"
 TMPFILE="hashes.tmp"
 
 SIGNATUREFILENAME="SHA256SUMS.asc"
 RCSUBDIR="test"
-HOST1="https://pigeoncoin.org"
-HOST2="https://pigeon.org"
+HOST1="https://bullcoin.org"
+HOST2="https://bull.org"
 BASEDIR="/bin/"
-VERSIONPREFIX="pigeon-core-"
+VERSIONPREFIX="bull-core-"
 RCVERSIONSTRING="rc"
 
 if [ ! -d "$WORKINGDIR" ]; then
@@ -38,7 +38,7 @@ cd "$WORKINGDIR"
 
 #test if a version number has been passed as an argument
 if [ -n "$1" ]; then
-   #let's also check if the version number includes the prefix 'pigeon-',
+   #let's also check if the version number includes the prefix 'bull-',
    #  and add this prefix if it doesn't
    if [[ $1 == "$VERSIONPREFIX"* ]]; then
       VERSION="$1"
@@ -98,7 +98,7 @@ fi
 
 WGETOUT=$(wget -N -O "$SIGNATUREFILENAME.2" "$HOST2$BASEDIR$SIGNATUREFILENAME" 2>&1)
 if [ $? -ne 0 ]; then
-   echo "pigeon.org failed to provide signature file, but pigeoncore.org did?"
+   echo "bull.org failed to provide signature file, but bullcore.org did?"
    echo "wget output:"
    echo "$WGETOUT"|sed 's/^/\t/g'
    clean_up $SIGNATUREFILENAME
@@ -107,7 +107,7 @@ fi
 
 SIGFILEDIFFS="$(diff $SIGNATUREFILENAME $SIGNATUREFILENAME.2)"
 if [ "$SIGFILEDIFFS" != "" ]; then
-   echo "pigeon.org and pigeoncore.org signature files were not equal?"
+   echo "bull.org and bullcore.org signature files were not equal?"
    clean_up $SIGNATUREFILENAME $SIGNATUREFILENAME.2
    exit 4
 fi
@@ -126,7 +126,7 @@ if [ $RET -ne 0 ]; then
       echo "Bad signature."
    elif [ $RET -eq 2 ]; then
       #or if a gpg error has occurred
-      echo "gpg error. Do you have the Pigeon Core binary release signing key installed?"
+      echo "gpg error. Do you have the Bull Core binary release signing key installed?"
    fi
 
    echo "gpg output:"

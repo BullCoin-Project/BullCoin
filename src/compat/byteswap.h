@@ -1,13 +1,13 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_COMPAT_BYTESWAP_H
-#define PIGEON_COMPAT_BYTESWAP_H
+#ifndef BULL_COMPAT_BYTESWAP_H
+#define BULL_COMPAT_BYTESWAP_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pigeon-config.h"
+#include "config/bull-config.h"
 #endif
 
 #include <stdint.h>
@@ -64,4 +64,4 @@ inline uint64_t bswap_64(uint64_t x)
 
 #endif // defined(__APPLE__)
 
-#endif // PIGEON_COMPAT_BYTESWAP_H
+#endif // BULL_COMPAT_BYTESWAP_H

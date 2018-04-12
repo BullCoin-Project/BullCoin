@@ -1,10 +1,10 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_CORE_MEMUSAGE_H
-#define PIGEON_CORE_MEMUSAGE_H
+#ifndef BULL_CORE_MEMUSAGE_H
+#define BULL_CORE_MEMUSAGE_H
 
 #include "primitives/transaction.h"
 #include "primitives/block.h"
@@ -69,4 +69,4 @@ static inline size_t RecursiveDynamicUsage(const std::shared_ptr<X>& p) {
     return p ? memusage::DynamicUsage(p) + RecursiveDynamicUsage(*p) : 0;
 }
 
-#endif // PIGEON_CORE_MEMUSAGE_H
+#endif // BULL_CORE_MEMUSAGE_H

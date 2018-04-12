@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_PRIMITIVES_BLOCK_H
-#define PIGEON_PRIMITIVES_BLOCK_H
+#ifndef BULL_PRIMITIVES_BLOCK_H
+#define BULL_PRIMITIVES_BLOCK_H
 
 #include "primitives/transaction.h"
 #include "serialize.h"
@@ -158,4 +158,4 @@ struct CBlockLocator
     }
 };
 
-#endif // PIGEON_PRIMITIVES_BLOCK_H
+#endif // BULL_PRIMITIVES_BLOCK_H

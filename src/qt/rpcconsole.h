@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_RPCCONSOLE_H
-#define PIGEON_QT_RPCCONSOLE_H
+#ifndef BULL_QT_RPCCONSOLE_H
+#define BULL_QT_RPCCONSOLE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"
@@ -28,7 +28,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local Pigeon RPC console. */
+/** Local Bull RPC console. */
 class RPCConsole: public QWidget
 {
     Q_OBJECT
@@ -157,4 +157,4 @@ private:
     void updateNetworkState();
 };
 
-#endif // PIGEON_QT_RPCCONSOLE_H
+#endif // BULL_QT_RPCCONSOLE_H

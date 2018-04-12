@@ -52,7 +52,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Cysoni â'r rhwydwaith...</translation>
@@ -114,8 +114,8 @@
         <translation>Newid y cyfrinymadrodd a ddefnyddiwyd ar gyfer amgryptio'r waled</translation>
     </message>
     <message>
-        <source>Pigeon</source>
-        <translation>Pigeon</translation>
+        <source>Bull</source>
+        <translation>Bull</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -478,14 +478,14 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Opsiynau:</translation>
     </message>
     <message>
-        <source>Pigeon Core</source>
-        <translation>Craidd Pigeon</translation>
+        <source>Bull Core</source>
+        <translation>Craidd Bull</translation>
     </message>
     <message>
         <source>Information</source>

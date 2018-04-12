@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_NET_PROCESSING_H
-#define PIGEON_NET_PROCESSING_H
+#ifndef BULL_NET_PROCESSING_H
+#define BULL_NET_PROCESSING_H
 
 #include "net.h"
 #include "validationinterface.h"
@@ -70,4 +70,4 @@ bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 /** Increase a node's misbehavior score. */
 void Misbehaving(NodeId nodeid, int howmuch);
 
-#endif // PIGEON_NET_PROCESSING_H
+#endif // BULL_NET_PROCESSING_H

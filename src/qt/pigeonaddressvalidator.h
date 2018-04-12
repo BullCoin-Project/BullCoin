@@ -1,36 +1,36 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_QT_PIGEONADDRESSVALIDATOR_H
-#define PIGEON_QT_PIGEONADDRESSVALIDATOR_H
+#ifndef BULL_QT_BULLADDRESSVALIDATOR_H
+#define BULL_QT_BULLADDRESSVALIDATOR_H
 
 #include <QValidator>
 
 /** Base58 entry widget validator, checks for valid characters and
  * removes some whitespace.
  */
-class PigeonAddressEntryValidator : public QValidator
+class BullAddressEntryValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit PigeonAddressEntryValidator(QObject *parent);
+    explicit BullAddressEntryValidator(QObject *parent);
 
     State validate(QString &input, int &pos) const;
 };
 
-/** Pigeon address widget validator, checks for a valid pigeon address.
+/** Bull address widget validator, checks for a valid bull address.
  */
-class PigeonAddressCheckValidator : public QValidator
+class BullAddressCheckValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit PigeonAddressCheckValidator(QObject *parent);
+    explicit BullAddressCheckValidator(QObject *parent);
 
     State validate(QString &input, int &pos) const;
 };
 
-#endif // PIGEON_QT_PIGEONADDRESSVALIDATOR_H
+#endif // BULL_QT_BULLADDRESSVALIDATOR_H

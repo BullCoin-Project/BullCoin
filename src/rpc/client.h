@@ -1,11 +1,11 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_RPCCLIENT_H
-#define PIGEON_RPCCLIENT_H
+#ifndef BULL_RPCCLIENT_H
+#define BULL_RPCCLIENT_H
 
 #include <univalue.h>
 
@@ -20,4 +20,4 @@ UniValue RPCConvertNamedValues(const std::string& strMethod, const std::vector<s
  */
 UniValue ParseNonRFCJSONValue(const std::string& strVal);
 
-#endif // PIGEON_RPCCLIENT_H
+#endif // BULL_RPCCLIENT_H

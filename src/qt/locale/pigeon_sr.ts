@@ -76,7 +76,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Синхронизација са мрежом у току...</translation>
@@ -130,8 +130,8 @@
         <translation>Промени &amp;лозинку...</translation>
     </message>
     <message>
-        <source>Send coins to a Pigeon address</source>
-        <translation>Пошаљите новац на pigeon адресу</translation>
+        <source>Send coins to a Bull address</source>
+        <translation>Пошаљите новац на bull адресу</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -442,7 +442,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     <message>
         <source>Options:</source>
         <translation>Opcije</translation>

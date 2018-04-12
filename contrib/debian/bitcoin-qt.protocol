@@ -1,6 +1,6 @@
 [Protocol]
-exec=pigeon-qt '%u'
-protocol=pigeon
+exec=bull-qt '%u'
+protocol=bull
 input=none
 output=none
 helper=true

@@ -88,7 +88,7 @@
     </message>
 </context>
 <context>
-    <name>PigeonGUI</name>
+    <name>BullGUI</name>
     <message>
         <source>&amp;Transactions</source>
         <translation>Transazioni</translation>
@@ -202,6 +202,6 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>pigeon-core</name>
+    <name>bull-core</name>
     </context>
 </TS>

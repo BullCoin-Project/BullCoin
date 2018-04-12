@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2017 The Pigeon Core developers
+// Copyright (c) 2017 The Bull Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIGEON_NETMESSAGEMAKER_H
-#define PIGEON_NETMESSAGEMAKER_H
+#ifndef BULL_NETMESSAGEMAKER_H
+#define BULL_NETMESSAGEMAKER_H
 
 #include "net.h"
 #include "serialize.h"
@@ -34,4 +34,4 @@ private:
     const int nVersion;
 };
 
-#endif // PIGEON_NETMESSAGEMAKER_H
+#endif // BULL_NETMESSAGEMAKER_H
