@@ -124,7 +124,7 @@ public:
         consensus.nSegwitEnabled = true;
         consensus.nCSVEnabled = true;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 2016 * 60; //difficulty time 1.4 days
+        consensus.nPowTargetTimespan = 1 * 60; //difficulty time every block
         consensus.nPowTargetSpacing = 1 * 60; //block time
 	consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
