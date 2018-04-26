@@ -117,7 +117,7 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 500000;  //~ 4 yrs at 1 min block time
+        consensus.nSubsidyHalvingInterval = 800000;  //~ 555 days
         consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
@@ -231,11 +231,11 @@ public:
         vSeeds.emplace_back("seed2.x16s.org", false);
         vSeeds.emplace_back("seed2.bullcoin.org", false);
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55); // changed 60 to 55
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122); // changed 122 to 123
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x08, 0x77, 0xA1, 0x2A}; // was {0x04, 0x88, 0xB2, 0x1E}
-        base58Prefixes[EXT_SECRET_KEY] = {0x08, 0x77, 0xA1, 0x2A}; // was {0x04, 0x88, 0xB2, 0x1E}
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25); // B
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,68); // U
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,48); // L
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x19, 0x35, 0xB5, 0x4C}; // was {0x04, 0x88, 0xB2, 0x1E}
+        base58Prefixes[EXT_SECRET_KEY] = {0x19, 0x35, 0xB5, 0x4C}; // was {0x04, 0x88, 0xB2, 0x1E}
 
         bech32_hrp = "pc"; // changed from "rc" to "pc"
 
@@ -269,7 +269,7 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+        consensus.nSubsidyHalvingInterval = 800000;  //~ 555 days
         consensus.nBIP34Enabled = true;
         consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.nBIP66Enabled = true;
@@ -277,7 +277,7 @@ public:
         consensus.nCSVEnabled = true;
 
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
+        consensus.nPowTargetTimespan = 1 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
@@ -295,14 +295,14 @@ public:
         consensus.defaultAssumeValid = uint256S("0x00");
 
 
-        pchMessageStart[0] = 0x52;
-        pchMessageStart[1] = 0x56;
-        pchMessageStart[2] = 0x4E;
-        pchMessageStart[3] = 0x54;
+        pchMessageStart[0] = 0x63;
+        pchMessageStart[1] = 0x78;
+        pchMessageStart[2] = 0x9c;
+        pchMessageStart[3] = 0x7e;
         nDefaultPort = 11211;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1521662222, 32516807, 0x1e00ffff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1521662222, 32516807, 0x1e00ffff, 4, 99 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
         //Test MerkleRoot and GenesisBlock
@@ -315,11 +315,11 @@ public:
         vSeeds.emplace_back("test-seed.x16s.org", false);
         vSeeds.emplace_back("test-seed.bullcoin.org", false);
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,112); // from 111
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,193); // from 196
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,233); // from 239
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x03, 0x53, 0x77, 0xCA}; // from {0x04, 0x35, 0x87, 0xCF};
-        base58Prefixes[EXT_SECRET_KEY] = {0x03, 0x53, 0x88, 0x91}; // {0x04, 0x35, 0x83, 0x94};
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,85); // b
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,130); // u
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,104); // i or j
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x95, 0x87, 0x42, 0xCC}; 
+        base58Prefixes[EXT_SECRET_KEY] = {0x95, 0x87, 0x42, 0xCC}; 
 
         bech32_hrp = "tr";
 
@@ -360,7 +360,7 @@ public:
         consensus.nCSVEnabled = true;
         consensus.nSubsidyHalvingInterval = 150;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
+        consensus.nPowTargetTimespan = 1 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
@@ -376,14 +376,14 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
-        pchMessageStart[0] = 0x43;
-        pchMessageStart[1] = 0x52;
-        pchMessageStart[2] = 0x4F;
-        pchMessageStart[3] = 0x57;
+        pchMessageStart[0] = 0x76;
+        pchMessageStart[1] = 0x91;
+        pchMessageStart[2] = 0x5B;
+        pchMessageStart[3] = 0x3C;
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1521663333, 5898126, 0x207fffff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1521663333, 5898126, 0x207fffff, 4, 99 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
         std::cout << "HGB: " << consensus.hashGenesisBlock.GetHex() << std::endl;
@@ -410,11 +410,11 @@ public:
             0
         };
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,112); // from 111
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,193); // from 196
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,233); // from 239
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x03, 0x53, 0x77, 0xCA}; // from {0x04, 0x35, 0x87, 0xCF};
-        base58Prefixes[EXT_SECRET_KEY] = {0x03, 0x53, 0x88, 0x91}; // {0x04, 0x35, 0x83, 0x94};
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,23); // A
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,25); // B
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,28); // C
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x98, 0xC5, 0xAB, 0x9C}; 
+        base58Prefixes[EXT_SECRET_KEY] = {0x98, 0xC5, 0xAB, 0x9C}; 
 
         bech32_hrp = "rcrt";
     }
